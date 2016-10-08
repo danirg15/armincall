@@ -1,0 +1,8 @@
+Server
+1. Reminder middleware to send email notifications
+
+
+Client
+1. Uptime monitor
+2. Each panel shows the remaining time for next event
+3. Auth
