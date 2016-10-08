@@ -21,13 +21,12 @@ var path = require('path')
 var logger = require('morgan');
 
 
+const EventEmitter = require('./events/EventEmitter')
 
-//mocha https://www.codementor.io/nodejs/tutorial/unit-testing-nodejs-tdd-mocha-sinon
-//https://medium.com/defmethod-works/building-an-express-node-js-app-with-angular-2-and-the-twitter-api-4eebd06fecff#.uceqazhg7
-//https://getmdl.io/templates/index.html
+EventEmitter.bind({'event': 'newCall', 'uri': '/events/calls'})
+//EventEmitter.bind('/events/calls/incomming')
 
-require('./events/CallEventEmitter').init('/events/calls')
-
+EventEmitter.listen()
 
 //////////////////////////////////////
 ////////	MIDDLEWARES 	
@@ -37,7 +36,6 @@ app.use(bodyParser.json())
 
 app.use(cookieParser());
 app.use(session({ secret: 'secrets', resave: false, saveUninitialized: false }));
-//app.use(flash());
 
 //Dev logger
 app.use(logger('dev'));
@@ -48,14 +46,6 @@ app.use(express.static(path.join(__dirname, 'client')));
 // 	res.sendfile(__dirname + '/client/index.html');
 // })
 
-
-
-
-//////////////////////////////////////
-////////	Template Engine
-/////////////////////////////////////
-// app.set('views', __dirname + '/views');
-// app.set('view engine', 'ejs');
 
 //////////////////////////////////////
 ////////	DB connection 	

@@ -10,7 +10,7 @@ router.get('/calls/:id', CallController.getOne)
 
 router.post('/calls', validate(validator.call), CallController.store)
 
-router.put('/calls/:id', validate(validator.call), CallController.update)
+router.put('/calls/:id', /*validate(validator.call),*/ CallController.update)
 
 router.delete('/calls/:id', CallController.destroy)
 

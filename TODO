@@ -1,8 +1,21 @@
 Server
 1. Reminder middleware to send email notifications
-
+2. Promises
+3. Mocha Test
+4. Implement API for incoming calls
+5. Ask moment.js for the days of the current month, for the chart of this month. 
+Use select of months
+6. Check the Call HTTP PUT validator
 
 Client
 1. Uptime monitor
 2. Each panel shows the remaining time for next event
 3. Auth
+4. Modals ng2
+5. Charts calls, by month
+6. Tooltips
+
+
+//mocha https://www.codementor.io/nodejs/tutorial/unit-testing-nodejs-tdd-mocha-sinon
+//https://medium.com/defmethod-works/building-an-express-node-js-app-with-angular-2-and-the-twitter-api-4eebd06fecff#.uceqazhg7
+//https://getmdl.io/templates/index.html

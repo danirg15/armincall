@@ -12,11 +12,13 @@ import { DiffForHumansPipe }  from './pipes/diffForHumans.pipe'
 import { DurationForHumansPipe } from './pipes/durationForHumans.pipe'
 import { ReplaceSubstringPipe } from './pipes/replaceSubstring.pipe'
 
+import { PopoverModule } from 'ng2-popover'
 
 @NgModule({
     imports: [
         CommonModule, 
-        RouterModule
+        RouterModule,
+        PopoverModule
     ],
     declarations: [
         NavBarComponent, 
