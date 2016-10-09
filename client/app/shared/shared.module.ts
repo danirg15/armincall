@@ -13,12 +13,14 @@ import { DurationForHumansPipe } from './pipes/durationForHumans.pipe'
 import { ReplaceSubstringPipe } from './pipes/replaceSubstring.pipe'
 
 import { PopoverModule } from 'ng2-popover'
-
+import { ModalModule } from 'ng2-modal'
+ 
 @NgModule({
     imports: [
         CommonModule, 
         RouterModule,
-        PopoverModule
+        PopoverModule,
+        ModalModule
     ],
     declarations: [
         NavBarComponent, 
