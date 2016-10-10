@@ -3,14 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'doughnut-chart',
     template: `
-        <base-chart class="chart"
-                [data]="data"
-                [labels]="labels"
-                [options]="options"
-                [colors]="colours"
-                [legend]="legend"
-                [chartType]="type">
-        </base-chart>
+        <div style='display:block'>
+            <canvas baseChart
+                    [data]="data"
+                    [labels]="labels"
+                    [options]="options"
+                    [colors]="colours"
+                    [legend]="legend"
+                    [chartType]="type">
+            </canvas>
+        </div>
     `
 })
 export class DoughnutChartComponent implements OnInit {

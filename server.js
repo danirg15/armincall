@@ -23,8 +23,14 @@ var logger = require('morgan');
 
 const EventEmitter = require('./events/EventEmitter')
 
-EventEmitter.bind({'event': 'newCall', 'uri': '/events/calls'})
-//EventEmitter.bind('/events/calls/incomming')
+EventEmitter.bind({
+	'event': 'newCall', 
+	'uri': '/events/calls/new'
+})
+EventEmitter.bind({
+	'event': 'incommingCall', 
+	'uri': '/events/calls/incomming'
+})
 
 EventEmitter.listen()
 

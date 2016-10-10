@@ -43,7 +43,7 @@ import {CallService}        from '../services/call.service'
                     </td>
                     <td>{{call.caller_number}}</td>
                     <td>{{call.reciever_number}}</td>
-                    <td>{{call.date | diffForHumans}} {{ call.date }}</td>
+                    <td>{{call.date | diffForHumans}}</td>
                     <td>{{call.durationInSeconds | durationForHumans}}</td>
                     <td>{{call.status}}</td>
                     <td>
@@ -55,12 +55,17 @@ import {CallService}        from '../services/call.service'
                 </tr>
             </tbody>
         </table> 
+
+        <h1 *ngIf="incommingCall" >Incommingggg!</h1>
+
     `,
 })
 export class CallsComponent implements OnInit, OnDestroy {
     calls: any[] = []
     selectedCalls: any[] = []
     connection;
+
+    incommingCall = false 
 
     constructor(private callService: CallService) { 
 
@@ -72,8 +77,23 @@ export class CallsComponent implements OnInit, OnDestroy {
 
         this.connection = this.callService.getNewCalls()
                               .subscribe(newCall => this.calls.push(newCall))
+
+        this.callService.getIncommingCalls()
+                        .subscribe( incomming => {
+                            this.incommingCall = true
+
+                            this.delaya()
+
+                        })
     }
 
+    delaya(){
+        setTimeout(() => {
+            this.incommingCall = false
+        }, 3000)
+    }
+
+    
     ngOnDestroy() {
         this.connection.unsubscribe()
     }

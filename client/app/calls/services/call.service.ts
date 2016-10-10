@@ -24,7 +24,7 @@ export class CallService {
 
     getNewCalls() {
         var socket = null
-        var url = 'http://localhost:5000/events/calls'
+        var url = 'http://localhost:5000/events/calls/new'
 
         let observable = new Observable(observer => {
             socket = io(url);
@@ -40,6 +40,28 @@ export class CallService {
         
         return observable;
     }
+
+    getIncommingCalls(){
+
+        //TODO refactor duplicated code
+        var socket = null
+        var url = 'http://localhost:5000/events/calls/incomming'
+
+        let observable = new Observable(observer => {
+            socket = io(url);
+
+            socket.on('incommingCall', (data) => {
+                observer.next(data)  
+            });
+
+            return () => {
+                socket.disconnect()
+            };  
+        })     
+        
+        return observable;
+    }
+
 
     updateCall(call){
         return this.http.put(this.url+'/'+call._id , JSON.stringify(call), {headers: this.headers})

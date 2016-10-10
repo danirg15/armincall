@@ -4,17 +4,18 @@ import { ChartService } from '../services/chart.service'
 @Component({
     selector: 'line-chart',
     template: `
-    
-        <base-chart class="chart"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [colors]="lineChartColours"
-                [legend]="lineChartLegend"
-                [chartType]="lineChartType">
-        </base-chart>
-    
-    `,
+        <div style='display:block'>
+            <canvas baseChart
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColours"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType">
+            </canvas>
+        </div>
+    `
+
 })
 export class LineChartComponent implements OnInit {
     lineChartLabels:Array<any> = [];
@@ -44,8 +45,6 @@ export class LineChartComponent implements OnInit {
 
     lineChartLegend:boolean = true;
     lineChartType:string = 'line';
-
-    
     constructor(private chartService: ChartService) { 
 
     }
