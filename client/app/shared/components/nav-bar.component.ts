@@ -25,10 +25,5 @@ export class NavBarComponent implements OnInit{
     }
 
 
-    test(t){
-        console.log(t)
-    }
-
-    
    
 }

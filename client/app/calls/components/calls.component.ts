@@ -1,77 +1,25 @@
-import {Component, OnInit, OnDestroy}  from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild}  from '@angular/core';
 import {CallService}        from '../services/call.service'
 
 @Component({
-    template: `
-        <div class="page-header">
-            <h2>Llamadas</h2>
-        </div>
-
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Llamadas Pendientes</a></li>
-            <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Historial</a></li>
-        </ul>
-
-        <br><br>
-
-        <table class="table table-striped table-hover ">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Taller</th>
-                    <th>Emisor</th>
-                    <th>Receptor</th>
-                    <th>Fecha/Hora</th>
-                    <th>Duración</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let call of calls">
-                    <td>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="" (change)="select($event, call)" />
-                            </label>
-                        </div>
-                    </td>
-                    <td> 
-                        <a [routerLink]="['/workshops', 111]"> 
-                            {{call.workshop?.name}} 
-                        </a> 
-                    </td>
-                    <td>{{call.caller_number}}</td>
-                    <td>{{call.reciever_number}}</td>
-                    <td>{{call.date | diffForHumans}}</td>
-                    <td>{{call.durationInSeconds | durationForHumans}}</td>
-                    <td>{{call.status}}</td>
-                    <td>
-                        <a class="btn btn-warning btn-sm" (click)="discard(call)">
-                            Descartar
-                        </a>
-                    </td>
-                    
-                </tr>
-            </tbody>
-        </table> 
-
-        <h1 *ngIf="incommingCall" >Incommingggg!</h1>
-
-    `,
+    templateUrl: 'app/calls/templates/calls.template.html'
 })
 export class CallsComponent implements OnInit, OnDestroy {
     calls: any[] = []
     selectedCalls: any[] = []
     connection;
-
-    incommingCall = false 
+    incommingCall = {}
+    
+    @ViewChild('incommingCallModal') modal;
 
     constructor(private callService: CallService) { 
-
+        
     }
 
+
     ngOnInit() { 
+       // this.modal.open()
+
         this.callService.getPendingCalls()
                         .subscribe(calls => this.calls = calls)
 
@@ -80,19 +28,15 @@ export class CallsComponent implements OnInit, OnDestroy {
 
         this.callService.getIncommingCalls()
                         .subscribe( incomming => {
-                            this.incommingCall = true
+                            this.modal.open()
 
-                            this.delaya()
+                            this.incommingCall = incomming
 
+                            setTimeout(() => {
+                                this.modal.close()
+                            }, 10000)
                         })
     }
-
-    delaya(){
-        setTimeout(() => {
-            this.incommingCall = false
-        }, 3000)
-    }
-
     
     ngOnDestroy() {
         this.connection.unsubscribe()

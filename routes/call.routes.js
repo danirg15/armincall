@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const CallController = require('../controllers/CallController')
+const Workshop = require('../models/workshop')
 const validate = require('express-validation');
 const validator = require('./validators');
 const EventEmitter = require('../events/EventEmitter')
@@ -16,13 +17,23 @@ router.delete('/calls/:id', CallController.destroy)
 
 
 router.get('/calls/events/incomming', function (req, res) {
-	if (!req.query.number) {
+	let data = {
+		'number': req.query.number
+	}
+
+	if (!data.number) {
 		res.status(400).send('Missing "number" parameter!')
 	}
 	else{
-		EventEmitter.emit('incommingCall', req.query.number)
-		res.status(200).json({})
-	}
+		Workshop.findOne({'phone': data.number}, function(err, workshop) {
+            if (!err && workshop) 
+            	data['workshop'] = workshop
+            
+            console.log(data)
+            EventEmitter.emit('incommingCall', data)
+			res.status(200).json({})
+		})	
+    }
 })
 
 
