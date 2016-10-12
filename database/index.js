@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 
-module.exports.connect = function(){
+module.exports.connect = function(uri){
     
-    mongoose.connect(process.env.MONGODB_URI, function(err) {
+    mongoose.connect(uri, function(err) {
         if (err) throw err;
-        console.log('Connected to db');
+        //console.log('Connected to DB: '+uri);
     });
 
 }

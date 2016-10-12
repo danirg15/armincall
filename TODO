@@ -6,7 +6,8 @@ Server
 5. Ask moment.js for the days of the current month, for the chart of this month. 
 Use select of months
 6. Fix the Call HTTP PUT validator
-7. Refactor call.routes for incomming calls
+7. Refactor call.routes for incomming calls (use async)
+8. Make donut chart
 
 Client
 1. Uptime monitor

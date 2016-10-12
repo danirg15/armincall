@@ -4,17 +4,17 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "export NODE_ENV=dev && nodemon server",
+    "test": "export NODE_ENV=test && mocha --timeout 10000"
   },
   "author": "dani",
   "license": "ISC",
   "dependencies": {
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
-    "connect-flash": "^0.1.1",
+    "config": "^1.21.0",
     "cookie-parser": "^1.4.1",
     "dotenv": "^2.0.0",
-    "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-jwt": "^3.4.0",
     "express-session": "^1.13.0",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "gulp": "^3.9.1",
     "mocha": "^3.0.0",
     "morgan": "^1.6.1"
