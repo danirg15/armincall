@@ -5,10 +5,9 @@ import { RouterModule }  from '@angular/router'
 import { SharedModule }  from '../shared/shared.module'
 import { ModalModule }   from 'ng2-modal'
 
-import { CallsComponent }   from './components/calls.component'
-import { CallService }      from './services/call.service'
-
-
+import { CallsComponent }       from './components/calls.component'
+import { IncommingComponent }   from './components/incomming.component'
+import { CallService }          from './services/call.service'
 
 @NgModule({
     imports: [
@@ -18,7 +17,7 @@ import { CallService }      from './services/call.service'
         ModalModule, 
         SharedModule
     ],
-    declarations: [CallsComponent],
+    declarations: [CallsComponent, IncommingComponent],
     exports: [CallsComponent],
     providers: [CallService]
 })

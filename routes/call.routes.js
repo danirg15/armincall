@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const CallController = require('../controllers/CallController')
 const Workshop = require('../models/workshop')
+const Ticket = require('../models/ticket')
 const validate = require('express-validation');
 const validator = require('./validators');
 const EventEmitter = require('../events/EventEmitter')
@@ -26,12 +27,29 @@ router.get('/calls/events/incomming', function (req, res) {
 	}
 	else{
 		Workshop.findOne({'phone': data.number}, function(err, workshop) {
-            if (!err && workshop) 
+			let filter = {
+				'completed': false
+			}
+
+            if (!err && workshop) {
             	data['workshop'] = workshop
+            	filter['workshop'] = workshop._id
+
+            	Ticket.find({ $and: [filter]}, function(err, tickets){
+	            	if (!err && tickets) 
+	            		data['tickets'] = tickets
+
+	            	//console.log(data)
+	            	EventEmitter.emit('incommingCall', data)
+					res.status(200).json({})
+	            })
+            }
+            else{
+            	EventEmitter.emit('incommingCall', data)
+				res.status(200).json({})
+            }
+
             
-            console.log(data)
-            EventEmitter.emit('incommingCall', data)
-			res.status(200).json({})
 		})	
     }
 })

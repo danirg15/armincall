@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewChild}  from '@angular/core';
+import {Component, OnInit, OnDestroy}  from '@angular/core';
 import {CallService}        from '../services/call.service'
 
 @Component({
@@ -8,34 +8,17 @@ export class CallsComponent implements OnInit, OnDestroy {
     calls: any[] = []
     selectedCalls: any[] = []
     connection;
-    incommingCall = {}
     
-    @ViewChild('incommingCallModal') modal;
-
     constructor(private callService: CallService) { 
         
     }
 
-
     ngOnInit() { 
-       // this.modal.open()
-
         this.callService.getPendingCalls()
                         .subscribe(calls => this.calls = calls)
 
         this.connection = this.callService.getNewCalls()
                               .subscribe(newCall => this.calls.push(newCall))
-
-        this.callService.getIncommingCalls()
-                        .subscribe( incomming => {
-                            this.modal.open()
-
-                            this.incommingCall = incomming
-
-                            setTimeout(() => {
-                                this.modal.close()
-                            }, 10000)
-                        })
     }
     
     ngOnDestroy() {
