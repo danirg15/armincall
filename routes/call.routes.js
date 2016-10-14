@@ -17,7 +17,7 @@ router.put('/calls/:id', /*validate(validator.call),*/ CallController.update)
 router.delete('/calls/:id', CallController.destroy)
 
 
-router.get('/calls/events/incomming', function (req, res) {
+router.get('/calls/events/incomming', validate(validator.incomming), function (req, res) {
 	let data = {
 		'number': req.query.number
 	}

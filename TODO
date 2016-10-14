@@ -1,13 +1,12 @@
 Server
 1. Reminder middleware to send email notifications
-2. Promises
 3. Mocha Test
-4. Implement API for incoming calls
 5. Ask moment.js for the days of the current month, for the chart of this month. 
 Use select of months
 6. Fix the Call HTTP PUT validator
 7. Refactor call.routes for incomming calls (use async)
 8. Make donut chart
+9. mongo hidden
 
 Client
 1. Uptime monitor
