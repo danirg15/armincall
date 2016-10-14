@@ -10,10 +10,8 @@ import { TicketsModule }    from './tickets/tickets.module'
 import { WorkshopsModule }  from './workshops/workshops.module'
 
 import { DashboardModule }  from './dashboard/dashboard.module'
-//import { NavBarComponent }    from './shared/components/nav-bar.component'
 import { routing }          from './app.routing';
  
-
 
 @NgModule({
   imports:  [ 
@@ -28,7 +26,7 @@ import { routing }          from './app.routing';
     routing 
   ],
   declarations: [ 
-    AppComponent 
+    AppComponent
   ],
   bootstrap:    [ AppComponent ]
 })

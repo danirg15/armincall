@@ -23,7 +23,9 @@ export class NavBarComponent implements OnInit{
         this.sharedServices.getBadges()
                            .subscribe(badges => this.badges = badges)
     }
-
-
    
+    test(e){
+        console.log(e)
+    }
+
 }

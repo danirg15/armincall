@@ -13,8 +13,8 @@ export class ChartService {
         this.headers.append("Content-Type", "application/json")
     }
 
-    getAll(){
-        return this.http.get(this.url + 'months/' + 6, {headers: this.headers})
+    getAll(n_months){
+        return this.http.get(this.url + 'months/' + n_months, {headers: this.headers})
                         .map(res => res.json())
     }
 

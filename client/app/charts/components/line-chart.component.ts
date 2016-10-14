@@ -4,6 +4,18 @@ import { ChartService } from '../services/chart.service'
 @Component({
     selector: 'line-chart',
     template: `
+        <div class="text-center">
+            <input type="radio" 
+                   name="radio1" 
+                   value="6" 
+                   (change)="newChartData($event)" checked> Últimos 6 meses &nbsp;
+            
+            <input type="radio" 
+                   name="radio1" 
+                   value="12" 
+                   (change)="newChartData($event)"> Último anio &nbsp;
+        </div>
+
         <div style='display:block'>
             <canvas baseChart
                     [datasets]="lineChartData"
@@ -49,8 +61,19 @@ export class LineChartComponent implements OnInit {
 
     }
 
+
     ngOnInit() {
-        this.chartService.getAll().subscribe( data => {
+        this.loadChartData(1)
+    }
+
+    newChartData(e){
+        if(e.target.checked){
+            this.loadChartData(e.target.value)
+        }
+    }
+
+    loadChartData(n_months){
+        this.chartService.getAll(n_months).subscribe( data => {
             this.lineChartLabels = data.tags
             this.lineChartData[0].data = data.counts
         })

@@ -7,8 +7,6 @@ import { Subject } from 'rxjs/Subject';
     template: `
         <modal #incommingCallModal 
                 title="Llamada entrante"
-                cancelButtonLabel="cancel"
-                submitButtonLabel="submit"
                 modalClass="modal-lg"
                 [hideCloseButton]="false"
                 [closeOnEscape]="true"
@@ -54,10 +52,18 @@ import { Subject } from 'rxjs/Subject';
                     </div>
 
                     <div class="col-md-offset-2 col-md-5">  
-                        
-                        MAP
-
+                        <div *ngIf="incommingCall.workshop">
+                            <div class="form-group">
+                                <label><u>Nueva Incidencia</u></label>
+                                <textarea #description class="form-control" rows="3"></textarea>
+                            </div>
+                            <button class="btn btn-primary btn-sm"
+                                     (click)="saveTicket(incommingCall.workshop, description.value)">
+                                     Guardar
+                            </button>      
+                        </div>
                     </div>
+
                 </div>
                 
                 <br>
@@ -103,20 +109,27 @@ export class IncommingComponent implements OnInit, OnDestroy {
     constructor(private callService: CallService) { }
 
     ngOnInit() { 
+        //this.modal.open()
+
         this.connection = this.callService.getIncommingCalls()
                         .subscribe( incomming => {
                             this.modal.open()
 
                             this.incommingCall = incomming
 
-                            setTimeout(() => {
-                                this.modal.close()
-                                this.incommingCall = {}
-                            }, 10000)
                         })
     }
 
     ngOnDestroy(){
         this.connection.unsubscribe()
     }
+
+    saveTicket(workshop, description){
+        console.log(description)
+        console.log(workshop)
+
+        
+
+    }
+
 }
