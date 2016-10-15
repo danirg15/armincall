@@ -2,13 +2,13 @@ const Call = require('../models/call')
 
 module.exports = {
 
-    getAll: function(req, res){
-        filter = {}
+    getAll: (req, res) => {
+        options = {}
 
         if(req.query.isValidated)
-            filter['isValidated'] = req.query.isValidated
+            options['isValidated'] = req.query.isValidated
 
-        Call.find(filter).populate('workshop').exec(function(err, calls){
+        Call.getAll(options, (err, calls) => {
             if (err) res.status(400).send(err)
             else res.status(200).json(calls)
         })

@@ -18,6 +18,12 @@ const CallSchema = mongoose.Schema({
 )
 
 
+CallSchema.statics.getAll(options, callback){
+	this.find(options).populate('workshop').exec(callback)
+}
+
+
+
 //--------------------------------------------
 //		Middlewares
 //--------------------------------------------
