@@ -5,6 +5,7 @@ const Ticket = require('../models/ticket')
 const validate = require('express-validation');
 const validator = require('./validators');
 const EventEmitter = require('../events/EventEmitter')
+const async = require('async')
 
 router.get('/calls', CallController.getAll)
 
@@ -17,41 +18,46 @@ router.put('/calls/:id', /*validate(validator.call),*/ CallController.update)
 router.delete('/calls/:id', CallController.destroy)
 
 
-router.get('/calls/events/incomming', validate(validator.incomming), function (req, res) {
-	let data = {
-		'number': req.query.number
-	}
-
-	if (!data.number) {
-		res.status(400).send('Missing "number" parameter!')
-	}
-	else{
-		Workshop.findOne({'phone': data.number}, function(err, workshop) {
-			let filter = {
-				'completed': false
-			}
-
-            if (!err && workshop) {
-            	data['workshop'] = workshop
-            	filter['workshop'] = workshop._id
-
-            	Ticket.find({ $and: [filter]}, function(err, tickets){
-	            	if (!err && tickets) 
-	            		data['tickets'] = tickets
-
-	            	//console.log(data)
-	            	EventEmitter.emit('incommingCall', data)
-					res.status(200).json({})
-	            })
-            }
-            else{
-            	EventEmitter.emit('incommingCall', data)
-				res.status(200).json({})
-            }
-
-            
-		})	
+router.get('/calls/events/incomming', /*validate(validator.incomming),*/ (req, res) => {
+    let data = {
+        'number': req.query.number
     }
+
+    async.waterfall([
+        function (callback){
+            Workshop.findOne({'phone': data.number}, (err, workshop) => {
+                callback(err, workshop)
+            })    
+        },
+        function (workshop, callback){
+            Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]}, (err, tickets) => {
+                callback(err, tickets)
+            })
+        }
+
+    ], function (err, result) {
+            if (err) throw err
+            res.status(200).json(result)
+    })
+
+	/*Workshop.findOne({'phone': req.query.number}, (err, workshop) => {
+        if (!err && workshop) {
+        	Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]}, (err, tickets) => {
+            	
+            	EventEmitter.emit('incommingCall', {
+            		'number': req.query.number,
+            		'workshop': workshop,
+            		'tickets': tickets
+            	})
+				res.status(200).json({})
+            })
+        }
+        else{
+        	EventEmitter.emit('incommingCall', data)
+			res.status(200).json({})
+        }
+	})*/	
+    
 })
 
 
