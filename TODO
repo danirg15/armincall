@@ -7,6 +7,7 @@ Use select of months
 7. Refactor call.routes for incomming calls (use async)
 8. Make donut chart
 9. mongo hidden
+10. Adjust token refresh time
 
 Client
 1. Uptime monitor
