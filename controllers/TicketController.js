@@ -1,43 +1,28 @@
 const Ticket = require('../models/ticket')
 
 module.exports = {
-
-    getAll: function(req, res){
-        Ticket.find({}, function(err, tickets){
-            if (err) res.status(400).send(err)
-            else res.status(200).json(tickets)
-        })
+    getAll: (options, callback) => {
+        Ticket.find(options, callback)
     },
 
-    getOne: function(req, res){
-        Ticket.findById(req.params.id, function(err, ticket){
-            if (err) res.status(400).send(err)
-            else res.status(200).json(ticket)
-        })
+    getOne: (ticket_id, callback) => {
+        Ticket.findById(ticket_id, callback)
     },
 
-    store: function(req, res){
-        let ticket = new Ticket(req.body)
-
-        ticket.save(function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        });
+    store: (ticket, callback) => {
+        (new Ticket(ticket)).save(callback)
     }, 
 
-    update: function(req, res){
-        Ticket.findByIdAndUpdate(req.params.id, req.body,function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        })
+    update: (ticket_id, fields, callback) => {
+        Ticket.findByIdAndUpdate(ticket_id, fields, callback)
     },
 
-    destroy: function(req, res){
-        Ticket.findByIdAndRemove(req.params.id, function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        })
-    }
+    destroy: (ticket_id, callback) => {
+        Ticket.findByIdAndRemove(ticket_id, callback)
+    },
 
-};
+    count: (options, callback) => {
+        Ticket.count(options, callback)
+    }
+}
 

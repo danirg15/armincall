@@ -1,22 +1,13 @@
 const moment = require('moment')
 
 
-const months = [
-	"Ene", 
-	"Feb", 
-	"Mar", 
-	"Abr", 
-	"May",
-	"Jun",
-	"Jul",
-	"Ago",
-	"Sep",
-	"Oct",
-	"Nov",
-	"Dic"
-]
 
 function getLastsMonthsTag(n_months){
+	const months = [
+		"Ene", "Feb", "Mar", "Abr", "May",
+		"Jun","Jul","Ago","Sep","Oct","Nov","Dic"
+	]
+
 	let tags = []
 	let currentMonth = moment().month()
 

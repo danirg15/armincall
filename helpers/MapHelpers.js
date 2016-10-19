@@ -8,7 +8,7 @@ module.exports = {
         request(url+address, function (error, response, body) {
             var body = JSON.parse(body)
 
-            if (!error && response.statusCode == 200 && body.status=="OK") {
+            if (!error && response.statusCode == 200 && body.status == "OK") {
                 let location = body.results[0].geometry.location;
                 callback(error, location)
             }

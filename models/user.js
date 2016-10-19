@@ -16,7 +16,7 @@ const UserSchema = mongoose.Schema({
 //--------------------------------------------
 
 UserSchema.pre('save', function(next) {
-	this.password = passwordHash.generate(this.username);
+	this.password = passwordHash.generate(this.password);
 	next()
 });
 

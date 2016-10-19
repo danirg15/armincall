@@ -1,51 +1,31 @@
 const Call = require('../models/call')
 
 module.exports = {
-
-    getAll: (req, res) => {
-        options = {}
-
-        if(req.query.isValidated)
-            options['isValidated'] = req.query.isValidated
-
-        Call.getAll(options, (err, calls) => {
-            if (err) res.status(400).send(err)
-            else res.status(200).json(calls)
-        })
+    getAll: (options, callback) => {
+        Call.getAll(options, callback)
     },
 
-    getOne: function(req, res){
-        Call.findById(req.params.id, function(err, call){
-            if (err) res.status(400).send(err)
-            else res.status(200).json(call)
-        })
+    getOne: (call_id, callback) => {
+        Call.findById(call_id, callback)
     },
 
-    store: function(req, res){
-        let call = new Call(req.body)
-
-        call.save(function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        });
+    store: (call, callback) => {
+        (new Call(call)).save(callback);
     }, 
 
-    update: function(req, res){
-        Call.findByIdAndUpdate(req.params.id, req.body,function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        })
+    update: (call_id, fields, callback) => {
+        Call.findByIdAndUpdate(call_id, fields, callback)
     },
 
-    destroy: function(req, res){
-        Call.findByIdAndRemove(req.params.id, function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        })
+    destroy: (call_id, callback) => {
+        Call.findByIdAndRemove(call_id, callback)
     },
 
+    count: (options, callback) => {
+        Call.count(options, callback)
+    },
 
-    getCountOfMonths: function(n_months, callback){
+    getCountOfMonths: (n_months, callback) => {
         let pipeline = [
             // Get only records created in the last 30 days
             {$match:{
@@ -69,10 +49,8 @@ module.exports = {
             
         ]
 
-        Call.aggregate().append(pipeline).exec(function(err, docs){
-            callback(err, docs)
-        })
+        Call.aggregate().append(pipeline).exec(callback)
     }
 
-};
+}
 
