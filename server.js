@@ -1,18 +1,16 @@
 //--------------------------------------------
 //		App Modules
 //--------------------------------------------
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const env = require('dotenv').config();
-const jwt = require('jsonwebtoken');
-const jwtAuth = require('./middleware/jwtAuth');
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
+const env = require('dotenv').config()
 const path = require('path')
 const EventEmitter = require('./events/EventEmitter')
-const logger = require('morgan');
-const config = require('config');
+const logger = require('morgan')
+const config = require('config')
 
 
 //--------------------------------------------
@@ -43,6 +41,8 @@ app.use(express.static(path.join(__dirname, 'client')));
 //--------------------------------------------
 //		Routing
 //--------------------------------------------
+
+app.use('/api', require('./routes/auth.routes'))
 app.use('/api', require('./routes/call.routes'))
 app.use('/api', require('./routes/ticket.routes'))
 app.use('/api', require('./routes/reminder.routes'))
@@ -64,22 +64,6 @@ EventEmitter.bind({
 
 EventEmitter.listen()
 
-
-app.get('/private', jwtAuth, (req, res) => {
-	res.send("Welcome to private area")
-})
-
-app.get('/getToken', (req, res) => {
-	let token = require('./auth').getNewToken({
-
-		'id': 2
-
-	}, function(err, token){
-		if (err) throw err
-		res.json({'token': token})
-	})
-	
-})
 
 
 //--------------------------------------------

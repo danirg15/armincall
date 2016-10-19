@@ -42,12 +42,15 @@ describe('Reminders', () => {
               .post('/api/reminders')
               .send(reminder)
               .end((err, res) => {
+                  //let response = JSON.parse(res.text)
+
+
                   res.should.have.status(400)
                   res.body.should.be.a('object')
                   //res.body.should.have.property('status')
                   //res.body.errors.should.have.property('p');
                   //res.body.errors.pages.should.have.property('kind').eql('required');
-                done(res)
+                done()
               })
         })
     })

@@ -20,7 +20,7 @@ let self = module.exports = {
 
     refreshToken: (payload, callback) => {
         let diff = payload.exp - payload.iat
-        let refresh_time = payload.iat + (diff / 2) //refresh token in the middle of his life
+        let refresh_time = payload.exp - (diff * 0.05)//Time to refresh when it's under 5% to expire
         let now = Date.now()/1000
 
         if (now > refresh_time)

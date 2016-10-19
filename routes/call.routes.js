@@ -18,7 +18,10 @@ router.put('/calls/:id', /*validate(validator.call),*/ CallController.update)
 router.delete('/calls/:id', CallController.destroy)
 
 
-router.get('/calls/events/incomming', /*validate(validator.incomming),*/ (req, res) => {
+router.get('/tester', /*validate(validator.incomming),*/ (req, res) => {
+    
+    console.log("1")
+
     let data = {
         'number': req.query.number
     }
@@ -37,7 +40,7 @@ router.get('/calls/events/incomming', /*validate(validator.incomming),*/ (req, r
 
     ], function (err, result) {
             if (err) throw err
-            res.status(200).json(result)
+            //res.status(200).json(result)
     })
 
 	/*Workshop.findOne({'phone': req.query.number}, (err, workshop) => {
