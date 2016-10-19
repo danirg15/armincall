@@ -1,17 +1,45 @@
-let router = require('express').Router()
-let TicketController = require('../controllers/TicketController')
-let validate = require('express-validation');
-let validator = require('./validators');
+const router 			= require('express').Router()
+const TicketController 	= require('../controllers/TicketController')
+const validate 			= require('express-validation');
+const validator 		= require('./validators');
 
 
-router.get('/tickets', TicketController.getAll)
+router.get('/tickets', (req, res) => {
+	TicketController.getAll(req.query, (err, tickets) => {
+		if (err) res.status(500).json(err)
+        else res.status(200).json(tickets)
+	})	
+})
 
-router.get('/tickets/:id', TicketController.getOne)
+router.get('/tickets/:id', (req, res) => {
+	TicketController.getOne(req.params.id, (err, ticket) => {
+		if (err) res.status(500).json(err)
+        else res.status(200).json(ticket)
+	})
+}) 
 
-router.post('/tickets', validate(validator.ticket), TicketController.store)
+router.post('/tickets', validate(validator.ticket), (req, res) => {
+	TicketController.store(req.body, (err) => {
+		if (err) res.status(500).json(err)
+        else res.status(201).json({})
+	})
+})
 
-router.put('/tickets/:id', validate(validator.ticket),TicketController.update)
+router.put('/tickets/:id', validate(validator.ticket), (req, res) => {
+	TicketController.update(req.params.id, req.body, (err) => {
+		if (err) res.status(500).json(err)
+        else res.status(200).json({})
+	})	
+})
 
-router.delete('/tickets/:id', TicketController.destroy)
+router.delete('/tickets/:id', (req, res) => {
+	TicketController.destroy(req.params.id, (err) => {
+		if (err) res.status(500).json(err)
+        else res.status(200).json({})
+	})
+})
 
-module.exports = router;
+module.exports = router
+
+
+

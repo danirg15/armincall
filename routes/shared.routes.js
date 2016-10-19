@@ -1,46 +1,36 @@
-let router = require('express').Router()
-let async = require('async')
-let data = require('../data/static_data.json')
+const router    = require('express').Router()
+const async     = require('async')
+const data      = require('../data/static_data.json')
 
-let Reminder = require('../models/reminder')
-let Demo = require('../models/demo')
-let Call = require('../models/call')
-let Ticket = require('../models/ticket')
+const ReminderController  = require('../controllers/ReminderController')
+const DemoController      = require('../controllers/DemoController')
+const CallController      = require('../controllers/CallController')
+const TicketController    = require('../controllers/TicketController')
 
 
-router.get('/distributors', function(req, res){
+router.get('/distributors', (req, res) => {
     res.json(data.distributors)
 });
 
-router.get('/badges', function(req, res){
-    
+router.get('/badges', (req, res) => {
     async.parallel({
-        pendingReminders: function(callback) {
-            Reminder.count({}, function(err, reminders){
-                callback(err, reminders)
-            })
+        pendingReminders: (callback) => {
+            ReminderController.count({}, callback)
         },
-        pendingDemos: function(callback) {
-            Demo.count({}, function(err, demos){
-                callback(err, demos)
-            })
+        pendingDemos: (callback) => {
+            DemoController.count({}, callback)
         },
-        pendingCalls: function(callback) {
-            Call.count({ isValidated: false }, function(err, calls){
-                callback(err, calls)
-            })
+        pendingCalls: (callback) => {
+            CallController.count({ 'isValidated': false }, callback)
         },
-        pendingTickets: function(callback) {
-            Ticket.count({ completed: false }, function(err, tickets){
-                callback(err, tickets)
-            })
+        pendingTickets: (callback) => {
+            Ticket.count({ 'completed': false }, callback)
         }
     },
-    function(err, results) {
-        if (err) res.status(400).send(err)
+    (err, results) => {
+        if (err) res.status(500).send(err)
         else res.status(200).json(results)
-    });
-
+    })
 })
 
 module.exports = router;

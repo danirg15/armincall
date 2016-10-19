@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Workshop = require('./workshop')
-const EventEmitter = require('../events/EventEmitter')
+const SocketIOEventEmitter = require('../events/SocketIOEventEmitter')
 
 
 const CallSchema = mongoose.Schema({
@@ -52,7 +52,7 @@ CallSchema.post('save', function(doc) {
 		if(!err && workshop)
 			call.workshop = workshop
 
-		EventEmitter.emit('newCall',call)
+		SocketIOEventEmitter.emit('newCall',call)
 	})		
 	
 })

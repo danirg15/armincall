@@ -1,4 +1,4 @@
-let router = require('express').Router()
+let router 			= require('express').Router()
 let ChartController = require('../controllers/ChartController')
 
 

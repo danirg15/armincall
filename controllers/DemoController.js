@@ -1,43 +1,28 @@
 const Demo = require('../models/demo')
 
 module.exports = {
-
-    getAll: function(req, res){
-        Demo.find({}, function(err, demos){
-            if (err) res.status(400).send(err)
-            else res.status(200).json(demos)
-        })
+    getAll: (options, callback) => {
+        Demo.find(options, callback)
     },
 
-    getOne: function(req, res){
-        Demo.findById(req.params.id, function(err, demo){
-            if (err) res.status(400).send(err)
-            else res.status(200).json(demo)
-        })
+    getOne: (demo_id, callback) => {
+        Demo.findById(demo_id, callback)
     },
 
-    store: function(req, res){
-        let demo = new Demo(req.body)
-
-        demo.save(function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        });
+    store: (demo, callback) => {
+        (new Demo(demo)).save(callback);
     }, 
 
-    update: function(req, res){
-        Demo.findByIdAndUpdate(req.params.id, req.body,function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        })
+    update: (demo_id, fields, callback) => {
+        Demo.findByIdAndUpdate(demo_id, fields, callback)
     },
 
-    destroy: function(req, res){
-        Demo.findByIdAndRemove(req.params.id, function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        })
-    }
+    destroy: (demo_id, callback) => {
+        Demo.findByIdAndRemove(demo_id, callback)
+    },
 
-};
+    count: (options, callback) => {
+        Demo.count(options, callback)
+    }
+}
 

@@ -4,11 +4,10 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const env = require('dotenv').config()
 const path = require('path')
-const EventEmitter = require('./events/EventEmitter')
+const SocketIOEventEmitter = require('./events/SocketIOEventEmitter')
 const logger = require('morgan')
 const config = require('config')
 
@@ -18,7 +17,6 @@ const config = require('config')
 //--------------------------------------------
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-//app.use(cookieParser());
 app.use(session({ secret: 'secrets', resave: false, saveUninitialized: false }));
 
 
@@ -30,7 +28,6 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
 //		DB connection
 //--------------------------------------------
 require('./database').connect(config.DB_URI)
-
 
 
 
@@ -53,17 +50,16 @@ app.use('/api', require('./routes/chart.routes'))
 app.use('/api', require('./routes/shared.routes'))
 
 
-EventEmitter.bind({
+SocketIOEventEmitter.bind({
 	'event': 'newCall', 
 	'uri': '/events/calls/new'
 })
-EventEmitter.bind({
+SocketIOEventEmitter.bind({
 	'event': 'incommingCall', 
 	'uri': '/events/calls/incomming'
 })
 
-EventEmitter.listen()
-
+SocketIOEventEmitter.listen()
 
 
 //--------------------------------------------

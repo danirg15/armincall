@@ -1,27 +1,50 @@
-const router = require('express').Router()
-const CallController = require('../controllers/CallController')
-const Workshop = require('../models/workshop')
-const Ticket = require('../models/ticket')
-const validate = require('express-validation');
-const validator = require('./validators');
-const EventEmitter = require('../events/EventEmitter')
-const async = require('async')
+const router            = require('express').Router()
+const validate          = require('express-validation');
+const async             = require('async')
+const validator         = require('./validators');
+const SocketIOEventEmitter      = require('../events/SocketIOEventEmitter')
 
-router.get('/calls', CallController.getAll)
-
-router.get('/calls/:id', CallController.getOne)
-
-router.post('/calls', validate(validator.call), CallController.store)
-
-router.put('/calls/:id', /*validate(validator.call),*/ CallController.update)
-
-router.delete('/calls/:id', CallController.destroy)
+const CallController    = require('../controllers/CallController')
+const Workshop          = require('../models/workshop')
+const Ticket            = require('../models/ticket')
 
 
-router.get('/tester', /*validate(validator.incomming),*/ (req, res) => {
+router.get('/calls', (req, res) => {
+    CallController.getAll(req.query, (err, calls) => {
+        if (err) res.status(500).json(err)
+        else res.status(200).json(calls)
+    })
+})
     
-    console.log("1")
+router.get('/calls/:id', (req, res) => {
+    CallController.getOne(req.params.id, (err, call) => {
+        if (err) res.status(500).json(err)
+        else res.status(200).json(call)
+    })
+})
 
+router.post('/calls', validate(validator.call.full), (req, res) =>{
+    CallController.store(req.body, (err) => {
+        if (err) res.status(500).json(err)
+        else res.status(201).json({})
+    })
+})
+
+router.put('/calls/:id', validate(validator.call.optional), (req, res) => {
+    CallController.update(req.params.id, req.body, (err) => {
+        if (err) res.status(500).json(err)
+        else res.status(200).json({})
+    })
+})
+
+router.delete('/calls/:id', (req, res) => {
+    CallController.destroy(req.params.id, (err) => {
+        if (err) res.status(500).json(err)
+        else res.status(200).json({})
+    })  
+})
+
+router.get('/calls/emit/incomming', /*validate(validator.incomming),*/ (req, res) => {
     let data = {
         'number': req.query.number
     }
