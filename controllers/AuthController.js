@@ -6,13 +6,16 @@ module.exports = {
 
 	login: (username, password, callback) => {
 		User.findOne({
-			'username': username,
-			'password': passwordHash.generate(password)
+			'username': username
 		}, (err, user) => {
-			if (!err && user) 
+
+			if (!err && user && passwordHash.verify(password, user.password)){
 				auth.getNewToken({ 'user_id': user._id }, callback)
-			else
+			}
+			else{
 				callback(err, null)
+			}
+
 		})			
 	}
 
