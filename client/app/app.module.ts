@@ -8,10 +8,9 @@ import { RemindersModule }  from './reminders/reminders.module'
 import { SharedModule }     from './shared/shared.module'
 import { TicketsModule }    from './tickets/tickets.module'
 import { WorkshopsModule }  from './workshops/workshops.module'
-
+import { AuthModule }       from './auth/auth.module'
 import { DashboardModule }  from './dashboard/dashboard.module'
 import { routing }          from './app.routing';
- 
 
 @NgModule({
   imports:  [ 
@@ -23,6 +22,7 @@ import { routing }          from './app.routing';
     TicketsModule,
     WorkshopsModule,
     DashboardModule,
+    AuthModule,
     routing 
   ],
   declarations: [ 
