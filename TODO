@@ -9,6 +9,7 @@ Use select of months
 11. validators for routes with params & query params as filters
 12. Validate auth routes
 
+
 Client
 1. Uptime monitor
 2. Each panel shows the remaining time for next event

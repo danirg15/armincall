@@ -56,34 +56,22 @@ router.get('/calls/emit/incomming', /*validate(validator.incomming),*/ (req, res
             })    
         },
         function (workshop, callback){
-            Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]}, (err, tickets) => {
-                callback(err, tickets)
-            })
+            if(workshop){
+                Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]}, (err, tickets) => {
+                    callback(err, {workshop, tickets})
+                })
+            }
+            else{
+                callback(null, null)
+            }
         }
 
     ], function (err, result) {
             if (err) throw err
-            //res.status(200).json(result)
-    })
+            SocketIOEventEmitter.emit('incommingCall', result)
+            res.status(200).json({})
+    })	
 
-	/*Workshop.findOne({'phone': req.query.number}, (err, workshop) => {
-        if (!err && workshop) {
-        	Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]}, (err, tickets) => {
-            	
-            	EventEmitter.emit('incommingCall', {
-            		'number': req.query.number,
-            		'workshop': workshop,
-            		'tickets': tickets
-            	})
-				res.status(200).json({})
-            })
-        }
-        else{
-        	EventEmitter.emit('incommingCall', data)
-			res.status(200).json({})
-        }
-	})*/	
-    
 })
 
 

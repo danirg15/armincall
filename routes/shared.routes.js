@@ -7,7 +7,6 @@ const DemoController      = require('../controllers/DemoController')
 const CallController      = require('../controllers/CallController')
 const TicketController    = require('../controllers/TicketController')
 
-
 router.get('/distributors', (req, res) => {
     res.json(data.distributors)
 });
@@ -24,7 +23,7 @@ router.get('/badges', (req, res) => {
             CallController.count({ 'isValidated': false }, callback)
         },
         pendingTickets: (callback) => {
-            Ticket.count({ 'completed': false }, callback)
+            TicketController.count({ 'completed': false }, callback)
         }
     },
     (err, results) => {

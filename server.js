@@ -62,21 +62,6 @@ SocketIOEventEmitter.bind({
 SocketIOEventEmitter.listen()
 
 
-
-// let User = require('./models/user')
-
-// let a = new User({
-// 	username: 'dani.rg156',
-// 	password: '123',
-// 	email: 'dasdsad',
-// 	name: 'dani'
-// })
-
-// a.save((err) => {
-// 	if (err) throw err
-// })
-
-
 //--------------------------------------------
 //		Runnn!
 //--------------------------------------------
