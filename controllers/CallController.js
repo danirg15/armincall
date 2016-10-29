@@ -2,7 +2,7 @@ const Call = require('../models/call')
 
 module.exports = {
     getAll: (options, callback) => {
-        Call.getAll(options, callback)
+        Call.find(options).populate('workshop').exec(callback)
     },
 
     getOne: (call_id, callback) => {
@@ -10,7 +10,7 @@ module.exports = {
     },
 
     store: (call, callback) => {
-        (new Call(call)).save(callback);
+        (new Call(call)).save(callback)
     }, 
 
     update: (call_id, fields, callback) => {

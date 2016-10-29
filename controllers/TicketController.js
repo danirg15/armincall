@@ -2,7 +2,7 @@ const Ticket = require('../models/ticket')
 
 module.exports = {
     getAll: (options, callback) => {
-        Ticket.find(options, callback)
+        Ticket.find(options).populate('workshop').exec(callback)
     },
 
     getOne: (ticket_id, callback) => {

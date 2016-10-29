@@ -63,7 +63,7 @@ export class LineChartComponent implements OnInit {
 
 
     ngOnInit() {
-        this.loadChartData(1)
+        this.loadChartData(6)
     }
 
     newChartData(e){

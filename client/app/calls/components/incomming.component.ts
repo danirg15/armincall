@@ -109,8 +109,6 @@ export class IncommingComponent implements OnInit, OnDestroy {
     constructor(private callService: CallService) { }
 
     ngOnInit() { 
-        //this.modal.open()
-
         this.connection = this.callService.getIncommingCalls()
                         .subscribe( incomming => {
                             this.modal.open()
@@ -127,9 +125,6 @@ export class IncommingComponent implements OnInit, OnDestroy {
     saveTicket(workshop, description){
         console.log(description)
         console.log(workshop)
-
-        
-
     }
 
 }

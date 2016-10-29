@@ -20,6 +20,10 @@
 	background-color: #fafafa;
 }
 
+.navbar-inverse {
+	background-color: #284f6f;
+}
+
 /*body {
   padding-top: 50px;
 }

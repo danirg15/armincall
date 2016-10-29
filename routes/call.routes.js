@@ -58,18 +58,18 @@ router.get('/calls/emit/incomming', /*validate(validator.incomming),*/ (req, res
         function (workshop, callback){
             if(workshop){
                 Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]}, (err, tickets) => {
-                    callback(err, {workshop, tickets})
+                    callback(err, {workshop, tickets, number: data.number})
                 })
             }
             else{
-                callback(null, null)
+                callback(null, {number: data.number})
             }
         }
 
     ], function (err, result) {
             if (err) throw err
             SocketIOEventEmitter.emit('incommingCall', result)
-            res.status(200).json({})
+            res.status(200).json(result)
     })	
 
 })

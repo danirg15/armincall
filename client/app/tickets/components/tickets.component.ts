@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TicketService } from '../services/ticket.service'
 
 @Component({
     template: `
@@ -43,7 +44,7 @@ import { Component, OnInit } from '@angular/core';
                     </td>
                     <td>{{ ticket.category }}</td>
                     <td>{{ ticket.description }}</td>
-                    <td>{{ ticket.created_at | diffForHumans }} add tooltip with date details</td>
+                    <td>{{ ticket.createdAt | diffForHumans }}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" [routerLink]="['/tickets', ticket._id]" >
                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -65,35 +66,12 @@ export class TicketsComponent implements OnInit {
     tickets: any[] = []
     selectedTickets: any[] = [] //should be Ticket Object
 
-    constructor() { 
-        
+    constructor(private ticketService: TicketService) { 
     }
 
     ngOnInit() { 
-
-        this.tickets.push({
-            _id: '99',
-            workshop: {
-                _id: '11111', 
-                name: 'Talleres Dani'
-            },
-            category: 'Category X',
-            description: 'lorem ipsum',
-            created_at: 'dating'
-        })
-
-        this.tickets.push({
-            _id: '99',
-            workshop: {
-                _id: '11111', 
-                name: 'Talleres Dani'
-            },
-            category: 'Category X',
-            description: 'lorem ipsum',
-            created_at: 'dating'
-        })
-
-        console.log(this.tickets)
+        this.ticketService.getPendingTickets()
+                          .subscribe( tickets => this.tickets = tickets )
     }
 
     select($event, call){

@@ -18,5 +18,9 @@ export class TicketService {
                         .map(res => res.json())
     }
 
+    getPendingTickets(){
+        return this.http.get(this.url+'?completed=false', {headers: this.headers})
+                        .map(res => res.json())
+    }
 
 }
