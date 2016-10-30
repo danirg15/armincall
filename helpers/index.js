@@ -1,8 +1,8 @@
 const moment = require('moment')
 
 
-
 function getLastsMonthsTag(n_months){
+	moment.locale('es')
 	const months = moment.monthsShort()
 	let tags = []
 	let currentMonth = moment().month()
