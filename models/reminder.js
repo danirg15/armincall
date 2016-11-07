@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const ReminderSchema = mongoose.Schema({
-		description: 	{ "type": String, "require": true },
-		date: 			{ "type": String, "require": true },
-		time: 			{ "type": String, "require": true }
+	description: 	{ "type": String, "require": true },
+	date: 			{ "type": String, "require": true },
+	time: 			{ "type": String, "require": true }
 });
 
 

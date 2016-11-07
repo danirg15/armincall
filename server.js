@@ -62,16 +62,65 @@ SocketIOEventEmitter.bind({
 SocketIOEventEmitter.listen()
 
 
+
+
+// function timeToSeconds(timeString){
+// 	let time = timeString.split(':')
+// 	let h = Number(time[0].substr(0, 2))
+// 	let m = Number(time[1].substr(0, 2))
+// 	let s = Number(time[2].substr(0, 2))
+
+// 	return h*60*60 + m*60 + s
+// }
+
+// function stringToDate(dateString){
+// 	let date = dateString.split('/')
+// 	return date[1]+'/'+date[0]+'/'+date[2]
+// }
+
+// var data = require('./data/callstats.json')
+// const Call = require('./models/call')
+
+// var i = 1
+// data.forEach(function(call){
+// 	let c = new Call({
+// 		callerNumber:  	call.Origen,    
+// 	    recieverNumber: 	call.Destino,
+// 	    date:    			stringToDate(call.Fecha)+' '+call.Hora,  
+// 	    durationInSeconds: 	timeToSeconds(call.Duracion),
+// 	    status:  			call.Estado,
+// 	    isValidated: 		true
+// 	})
+
+// 	//setTimeout(function(){
+// 		c.save(function(err){
+// 			if (err) throw err
+// 			console.log(i)
+// 			i++
+// 		})
+// 	//},500)
+
+// })
+
+
+
+
+
+
 //--------------------------------------------
 //		Runnn!
 //--------------------------------------------
 app.listen(process.env.APP_PORT || 3000, function(err) {
-	if (err) throw err;
-	console.log('Server running...');
-});
+	if (err) throw err
+	console.log('Server running...')
+})
 
 
 module.exports = app
+
+
+
+
 
 
 

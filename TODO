@@ -1,16 +1,15 @@
 Server
 1. Reminder middleware to send email notifications
 3. Mocha Test
-5. Ask moment.js for the days of the current month, for the chart of this month. 
 Use select of months
 8. Make donut chart
-9. mongo hidden
 10. Adjust token refresh time
 11. validators for routes with params & query params as filters
 12. Validate auth routes
 
 
 Client
+0. Linking tickets and calls
 1. Uptime monitor
 2. Each panel shows the remaining time for next event
 3. Auth guards

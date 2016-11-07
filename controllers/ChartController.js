@@ -1,34 +1,33 @@
-const helpers         = require('../helpers')
 const CallController  = require('../controllers/CallController')
+const moment = require('moment')
+moment.locale('es')
+
 
 module.exports = {
 
-    getCallsCountOfMonths: function(req, res){
-        let n_months = req.params.months || 1
-        let tags = helpers.getLastsMonthsTag(n_months)
+    getCallsByMonth: function(nMonths, callback){
+        let monthTags = moment.monthsShort()
 
-    		CallController.getCountOfMonths(n_months, function(err, docs){
-      			if (err) {
-                res.status(500).send(err)
+		CallController.getNumberOfCallsByMonth(nMonths, (err, data) => {
+            console.log(data)
+            if (err) {
+                callback(err, null)
             }
             else{
-              	let callsCount = docs[0].counts
-              	let zeroCounts = []
+                let result = {
+                    'tags': [],
+                    'count': []
+                }
 
-                //fill with zero the non-data months
-              	const c = tags.length - callsCount.length
-              	for (let i = 0; i < c; i++) {
-              		zeroCounts.push(0)
-              	}
-
-              	callsCount = zeroCounts.concat(callsCount)
-
-                res.status(200).json({
-                    'tags': tags,
-                    'counts': callsCount  
+                data.forEach((value) => {
+                    result.tags.push(monthTags[value._id.month-1])
+                    result.count.push(value.count)
                 })
-            }//else
-		    })
-	  }
+
+                callback(null, result)
+            }
+        })
+    }
+
 
 }

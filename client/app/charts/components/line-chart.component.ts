@@ -4,6 +4,7 @@ import { ChartService } from '../services/chart.service'
 @Component({
     selector: 'line-chart',
     template: `
+        
         <div class="text-center">
             <input type="radio" 
                    name="radio1" 
@@ -15,6 +16,7 @@ import { ChartService } from '../services/chart.service'
                    value="12" 
                    (change)="newChartData($event)"> Último anio &nbsp;
         </div>
+        
 
         <div style='display:block'>
             <canvas baseChart
@@ -75,7 +77,7 @@ export class LineChartComponent implements OnInit {
     loadChartData(n_months){
         this.chartService.getAll(n_months).subscribe( data => {
             this.lineChartLabels = data.tags
-            this.lineChartData[0].data = data.counts
+            this.lineChartData[0].data = data.count
         })
     }
 

@@ -4,8 +4,8 @@ const SocketIOEventEmitter = require('../events/SocketIOEventEmitter')
 
 
 const CallSchema = mongoose.Schema({
-	caller_number: 		{ "type": String, "require": true },
-	reciever_number:	{ "type": String, "require": true },
+	callerNumber: 		{ "type": String, "require": true },
+	recieverNumber:		{ "type": String, "require": true },
 	date: 				{ "type": Date, "require": true },
 	durationInSeconds:	{ "type": Number, "require": true },
 	status: 			{ "type": String, "require": true },
@@ -27,7 +27,7 @@ CallSchema.pre('save', function(next) {
 	let call = this	
 
 	//Try to identify to the caller
-	Workshop.findOne({ phone: call.caller_number }, function(err, workshop){
+	Workshop.findOne({ phone: call.callerNumber }, function(err, workshop){
 		if(!err && workshop) {
 			call.workshop = workshop._id
 			next()
@@ -48,8 +48,7 @@ CallSchema.post('save', function(doc) {
 			call.workshop = workshop
 
 		SocketIOEventEmitter.emit('newCall',call)
-	})		
-	
+	})			
 })
 
 
