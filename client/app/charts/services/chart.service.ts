@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ChartService {
     headers: Headers
-    url = "/api/charts/"
+    url = "/api/stats/calls/"
 
     constructor(private http: Http){
         this.headers = new Headers()
@@ -14,7 +14,7 @@ export class ChartService {
     }
 
     getAll(n_months){
-        return this.http.get(this.url + 'months/' + n_months, {headers: this.headers})
+        return this.http.get(this.url + n_months + '/months', {headers: this.headers})
                         .map(res => res.json())
     }
 

@@ -44,7 +44,7 @@ router.delete('/calls/:id', (req, res) => {
     })  
 })
 
-router.get('/calls/emit/incomming', /*validate(validator.incomming),*/ (req, res) => {
+router.get('/calls/emit/incomming', validate(validator.incomming), (req, res) => {
     let data = {
         'number': req.query.number
     }

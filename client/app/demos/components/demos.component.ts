@@ -16,7 +16,7 @@ import { DemoService } from '../services/demo.service'
                     <th>Contacto</th>
                     <th>Teléfono</th>
                     <th>Descripción</th>
-                    <th>Fecha</th>
+                    <th>Fecha/Hora</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -26,7 +26,10 @@ import { DemoService } from '../services/demo.service'
                     <td>{{demo.contact}}</td>
                     <td>{{demo.phone}}</td>
                     <td>{{demo.description}}</td>
-                    <td>{{demo.date}} {{demo.time}}</td>
+                    <td>
+                        {{demo.time}} {{demo.date}} 
+                        ({{demo.ISODate | diffForHumans}})
+                    </td>
                     <td>
                         <a class="btn btn-danger btn-sm" (click)="delete(demo)">
                             <i  class="fa fa-trash-o" aria-hidden="true"></i>

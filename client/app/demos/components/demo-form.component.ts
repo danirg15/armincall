@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import {BasicValidators} from '../../shared/validators/basicValidators'
 import {DemoService} from '../services/demo.service'
+import { SharedServices } from '../../shared/services/shared.service'
 import {Router} from '@angular/router';
 
 
@@ -9,11 +10,14 @@ import {Router} from '@angular/router';
     selector: 'demo-form',
     templateUrl: 'app/demos/templates/demo-form.template.html',
 })
-export class DemoFormComponent{
-
+export class DemoFormComponent implements OnInit {
+    distributors: any[]
     form: FormGroup
 
-    constructor(fb: FormBuilder, private demoService: DemoService, private router: Router) {
+    constructor(fb: FormBuilder, 
+                private sharedServices: SharedServices,
+                private demoService: DemoService, 
+                private router: Router) {
 
         this.form = fb.group({
             name:           ['', Validators.required],
@@ -25,6 +29,11 @@ export class DemoFormComponent{
             description:    ['']
         })
 
+    }
+
+    ngOnInit(){
+        this.sharedServices.getDistributors()
+                           .subscribe( distributors => this.distributors = distributors)
     }
 
     onSubmit(){

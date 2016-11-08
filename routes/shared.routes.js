@@ -1,6 +1,6 @@
-const router    = require('express').Router()
-const async     = require('async')
-const data      = require('../data/static_data.json')
+const router        = require('express').Router()
+const async         = require('async')
+const distributors  = require('../shared/distributors.json')
 
 const ReminderController  = require('../controllers/ReminderController')
 const DemoController      = require('../controllers/DemoController')
@@ -8,7 +8,7 @@ const CallController      = require('../controllers/CallController')
 const TicketController    = require('../controllers/TicketController')
 
 router.get('/distributors', (req, res) => {
-    res.json(data.distributors)
+    res.json(distributors)
 });
 
 router.get('/badges', (req, res) => {

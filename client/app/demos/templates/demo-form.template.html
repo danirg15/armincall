@@ -26,7 +26,9 @@
                 <div class="col-lg-10">
                     <select class="form-control" formControlName="distributor">
                         <option>Elegir</option>
-                        <option value="Test">Test</option>
+                        <option *ngFor="let distributor of distributors" value="{{distributor.code}}">
+                            {{distributor.name}}
+                        </option>
                     </select>
                     
                     <div *ngIf="form.controls.distributor.touched && form.controls.distributor.errors" >

@@ -15,6 +15,7 @@ import {Workshop} from '../workshop'
 export class WorkshopFormComponent implements OnInit { 
     form: FormGroup
     workshop = new Workshop()
+    title = 'Nuevo Taller'
 
     distributors: any[]
 
@@ -47,6 +48,7 @@ export class WorkshopFormComponent implements OnInit {
             if(id){
                 this.workshopService.getWorkshop(id)
                                     .subscribe(workshop => this.workshop = workshop)
+                this.title = 'Editar Taller'
             }
 
             this.sharedServices.getDistributors()
@@ -55,12 +57,23 @@ export class WorkshopFormComponent implements OnInit {
     }
 
     onSubmit(){
+        var id
         this.form.value.phone = this.form.value.phone.split(',')
 
-        this.workshopService.save(this.form.value)
-                            .subscribe( x => 
-                                this.router.navigate(['/dashboard'])
-                            )
+        this.route.params.subscribe( params => {
+            id = params['id']
+
+            if(id){
+                this.workshopService.updateWorkshop(id, this.form.value)
+                                    .subscribe(null, err => alert('Error al guardar'))
+            }
+            else{
+                this.workshopService.save(this.form.value)
+                .subscribe(null)
+            }
+
+            this.router.navigate(['/workshops'])
+        })       
     }
 
 

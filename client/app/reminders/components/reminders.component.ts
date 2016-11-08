@@ -14,17 +14,18 @@ import { ReminderService } from '../services/reminder.service'
             <thead>
                 <tr>
                     <th>Descripción</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
+                    <th>Fecha/Hora</th>
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let reminder of reminders">
                     <td>{{reminder.description}}</td>
-                    <td>{{reminder.date}}</td>
-                    <td>{{reminder.time}}</td>
-                    
+                    <td>
+                        {{reminder.time}} {{reminder.date}} 
+                        ({{reminder.ISODate | diffForHumans }})
+                    <td>
+            
                     <td>
                         <a class="btn btn-danger btn-sm" (click)="delete(reminder)">
                             <i  class="fa fa-trash-o" aria-hidden="true"></i>

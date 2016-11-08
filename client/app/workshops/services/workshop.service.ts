@@ -28,6 +28,13 @@ export class WorkshopService {
                         .map(res => res.json())
     }
 
+    updateWorkshop(id, data){
+        return this.http.put(this.url + id, 
+                            JSON.stringify(data), 
+                            {headers: this.headers})
+                        .map(res => res.json())
+    }
+
     search(keyword) {
         return this.http.get(this.url+'?q='+keyword, {headers: this.headers})
                         .map(res => res.json())

@@ -1,3 +1,6 @@
 {
-    "DB_URI": "mongodb://dani:dani@ds051635.mlab.com:51635/armincall"
+    //"DB_URI": "mongodb://dani:dani@ds051635.mlab.com:51635/armincall"
+
+    "DB_URI": "mongodb://localhost:27017/armincall"
 }
+

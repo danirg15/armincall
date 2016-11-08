@@ -46,7 +46,7 @@ WorkshopSchema.pre('save', function(next) {
 		}
 	})
 
-});
+})
 
 
 module.exports = mongoose.model('Workshop', WorkshopSchema);

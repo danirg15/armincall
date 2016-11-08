@@ -46,7 +46,7 @@ app.use('/api', require('./routes/reminder.routes'))
 app.use('/api', require('./routes/user.routes'))
 app.use('/api', require('./routes/workshop.routes'))
 app.use('/api', require('./routes/demo.routes'))
-app.use('/api', require('./routes/chart.routes'))
+app.use('/api', require('./routes/stats.routes'))
 app.use('/api', require('./routes/shared.routes'))
 
 
@@ -92,13 +92,11 @@ SocketIOEventEmitter.listen()
 // 	    isValidated: 		true
 // 	})
 
-// 	//setTimeout(function(){
-// 		c.save(function(err){
-// 			if (err) throw err
-// 			console.log(i)
-// 			i++
-// 		})
-// 	//},500)
+// 	c.save(function(err){
+// 		if (err) throw err
+// 		console.log(i)
+// 		i++
+// 	})
 
 // })
 
