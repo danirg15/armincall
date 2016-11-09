@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { RouterModule }  from '@angular/router'
+import { NgModule }                 from '@angular/core'
+import { CommonModule }             from '@angular/common'
+import { RouterModule }             from '@angular/router'
 
-import { NavBarComponent } from './components/nav-bar.component'
-import { NotFoundComponent } from './components/notfound.component'
-import { PanelComponent } from './components/panel.component'
+import { NavBarComponent }          from './components/nav-bar.component'
+import { NotFoundComponent }        from './components/notfound.component'
+import { PanelComponent }           from './components/panel.component'
 
-import { SharedServices } from './services/shared.service'
+import { SharedServices }           from './services/shared.service'
+import { HttpServices }             from './services/http.services'
 
-import { DiffForHumansPipe }  from './pipes/diffForHumans.pipe'
-import { DurationForHumansPipe } from './pipes/durationForHumans.pipe'
-import { ReplaceSubstringPipe } from './pipes/replaceSubstring.pipe'
+import { DiffForHumansPipe }        from './pipes/diffForHumans.pipe'
+import { DurationForHumansPipe }    from './pipes/durationForHumans.pipe'
+import { ReplaceSubstringPipe }     from './pipes/replaceSubstring.pipe'
 
-import { PopoverModule } from 'ng2-popover'
+import { PopoverModule }            from 'ng2-popover'
  
 @NgModule({
     imports: [
@@ -39,7 +40,7 @@ import { PopoverModule } from 'ng2-popover'
         ReplaceSubstringPipe,
 
     ],
-    providers:[SharedServices]
+    providers:[SharedServices, HttpServices]
 })
 export class SharedModule {
 

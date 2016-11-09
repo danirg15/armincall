@@ -15,7 +15,3 @@ export class AppComponent {
 }
 
 
-/*
-        https://github.com/brinkmanjg/ng2-typeahead
-*/
-

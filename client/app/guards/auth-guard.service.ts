@@ -9,6 +9,9 @@ export class AuthGuard implements CanActivate {
     }
 
     canActivate(){
+        localStorage.setItem('token', 'Hello World')
+        //localStorage.removeItem('token')
+        
         if(this.authService.isLoggedIn)
             return true
         

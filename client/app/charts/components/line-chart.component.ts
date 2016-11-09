@@ -14,7 +14,7 @@ import { ChartService } from '../services/chart.service'
             <input type="radio" 
                    name="radio1" 
                    value="12" 
-                   (change)="newChartData($event)"> Último anio &nbsp;
+                   (change)="newChartData($event)"> Último año &nbsp;
         </div>
         
 

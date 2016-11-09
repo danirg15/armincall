@@ -16,8 +16,15 @@ Client
 6. Tooltips
 7. Google maps
 
+See login form
+https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
+
 Total Llamadas
 Llamadas Hoy
+
+/*
+        https://github.com/brinkmanjg/ng2-typeahead
+*/
 
 //mocha https://www.codementor.io/nodejs/tutorial/unit-testing-nodejs-tdd-mocha-sinon
 //https://medium.com/defmethod-works/building-an-express-node-js-app-with-angular-2-and-the-twitter-api-4eebd06fecff#.uceqazhg7
