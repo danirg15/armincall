@@ -34,6 +34,9 @@ import {ActivatedRoute} from '@angular/router';
                         <a class="btn btn-primary btn-sm" [routerLink]="['/workshops', workshop._id]">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </a>
+                        <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/new', workshop._id]">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Abrir Incidencia
+                        </a>
                     </td>
                     
                 </tr>
