@@ -70,7 +70,7 @@ export class TicketsComponent implements OnInit {
     }
 
     ngOnInit() { 
-        this.ticketService.getPendingTickets()
+        this.ticketService.getPendingTickets(null)
                           .subscribe( tickets => this.tickets = tickets )
     }
 

@@ -18,8 +18,19 @@ export class TicketService {
                         .map(res => res.json())
     }
 
-    getPendingTickets(){
-        return this.http.get(this.url+'?completed=false', {headers: this.headers})
+    updateTicket(id, data) {
+        return this.http.put(this.url+id, JSON.stringify(data), {headers: this.headers})
+                        .map(res => res.json())
+    }
+
+    getPendingTickets(workshopId){
+        let url = this.url
+        if (workshopId) 
+            url += '?completed=false&workshop=' + workshopId
+        else
+            url += '?completed=false'
+        
+        return this.http.get(url, {headers: this.headers})
                         .map(res => res.json())
     }
 

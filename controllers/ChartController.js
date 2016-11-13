@@ -9,7 +9,6 @@ module.exports = {
         let monthTags = moment.monthsShort()
 
 		CallController.getNumberOfCallsByMonth(nMonths, (err, data) => {
-            console.log(data)
             if (err) {
                 callback(err, null)
             }

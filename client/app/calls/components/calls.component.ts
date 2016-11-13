@@ -6,14 +6,17 @@ import {CallService}        from '../services/call.service'
 })
 export class CallsComponent implements OnInit, OnDestroy {
     calls: any[] = []
-    selectedCalls: any[] = []
-    connection;
+    selectedCallIds: any[] = []
+    workshopIdOfSelectedCall
+    connection
     
     constructor(private callService: CallService) { 
-        
     }
 
     ngOnInit() { 
+        console.log(this.selectedCallIds)
+        console.log(this.workshopIdOfSelectedCall)
+
         this.callService.getPendingCalls()
                         .subscribe(calls => this.calls = calls)
 
@@ -27,13 +30,14 @@ export class CallsComponent implements OnInit, OnDestroy {
 
     select($event, call){
         if($event.target.checked){
-            this.selectedCalls.push(call)
+            this.selectedCallIds.push(call._id)
+            this.workshopIdOfSelectedCall = call.workshop._id
         }
         else{
-            var index = this.selectedCalls.indexOf(call)
-            this.selectedCalls.splice(index, 1)
+            var index = this.selectedCallIds.indexOf(call._id)
+            this.selectedCallIds.splice(index, 1)
         }
-        console.log(this.selectedCalls)
+        console.log(this.selectedCallIds)
     }
 
     discard(call){

@@ -2,7 +2,13 @@
     <h2>Llamadas</h2>
 </div>
 
-<button class="btn btn-primary btn-sm pull-right" [disabled]="true">Asociar Incidencia</button> <br><br>
+<button class="btn btn-primary btn-sm pull-right" 
+        [disabled]="selectedCallIds.length == 0"
+        (click)="test.show()">        
+        Asociar Incidencia
+</button> 
+
+<br><br>
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Llamadas Pendientes</a></li>
@@ -27,16 +33,18 @@
     <tbody>
         <tr *ngFor="let call of calls">
             <td>
-                <div class="checkbox">
+                <div class="checkbox" *ngIf="call.workshop">
                     <label>
                         <input type="checkbox" value="" (change)="select($event, call)" />
                     </label>
                 </div>
             </td>
             <td> 
-                <a [routerLink]="['/workshops', 111]"> 
-                    {{call.workshop?.name}} 
-                </a> 
+                <div *ngIf="call.workshop">
+                    <a [routerLink]="['/workshops', call.workshop._id]"> 
+                        {{call.workshop.name}} 
+                    </a>
+                </div>
             </td>
             <td>{{call.callerNumber}}</td>
             <td>{{call.recieverNumber}}</td>
@@ -52,5 +60,10 @@
     </tbody>
 </table> 
 
+
+<workshop-tickets #test
+    [call-ids]="selectedCallIds" 
+    [workshop-id]="workshopIdOfSelectedCall">
+</workshop-tickets>
 
 <incomming></incomming>
