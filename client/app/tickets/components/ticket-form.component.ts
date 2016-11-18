@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { BasicValidators } from '../../shared/validators/basicValidators'
 import { TicketService } from '../services/ticket.service'
+import { WorkshopService } from '../../workshops/services/workshop.service'
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Ticket } from '../ticket'
@@ -11,13 +12,14 @@ import { Ticket } from '../ticket'
     templateUrl: 'app/tickets/templates/ticket-form.template.html'
 })
 export class TicketFormComponent implements OnInit {
-    ticket = new Ticket()
-    workshop = { name: 'workshop name'}
+    ticket = new Ticket('', false)
+    workshop = { name: ''}
     title = 'Nueva Incidencia'
     form: FormGroup
 
     constructor(fb: FormBuilder, 
                 private ticketService: TicketService, 
+                private workshopService: WorkshopService,
                 private router: Router,
                 private route: ActivatedRoute,) { 
         this.form = fb.group({
@@ -28,7 +30,11 @@ export class TicketFormComponent implements OnInit {
     }
 
     ngOnInit(){
-
+        this.route.params.subscribe( params => {
+            this.workshopService
+                .getWorkshop(params['workshop_id'])
+                .subscribe(workshop => this.workshop = workshop) 
+        }) 
     }
 
     onSubmit(){

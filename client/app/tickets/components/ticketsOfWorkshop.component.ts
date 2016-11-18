@@ -78,15 +78,7 @@ export class TicketsOfWorkshopComponent {
             .subscribe( tickets => this.tickets = tickets )
         }
     }
-
-    // ngOnInit() { 
-    //     this.modal.open()
-    //     if(this.workshopId){
-    //         this.ticketService.getPendingTickets(this.workshopId)
-    //         .subscribe( tickets => this.tickets = tickets )
-    //     }
-    // }   
-
+    
     select($event){
         this.selectedTicketId = $event.target.value
     }

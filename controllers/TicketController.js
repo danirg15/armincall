@@ -1,4 +1,5 @@
 const Ticket = require('../models/ticket')
+const Call = require('../models/call')
 
 module.exports = {
     getAll: (options, callback) => {
@@ -15,6 +16,13 @@ module.exports = {
 
     update: (ticket_id, fields, callback) => {
         Ticket.findByIdAndUpdate(ticket_id, fields, callback)
+
+        if (fields.calls) {
+            Call.update(
+                    { _id: { $in: fields.calls } }, 
+                    { $set:{'isValidated': true} }, 
+                (err) => {})
+        }
     },
 
     destroy: (ticket_id, callback) => {

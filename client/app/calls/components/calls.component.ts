@@ -14,9 +14,6 @@ export class CallsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() { 
-        console.log(this.selectedCallIds)
-        console.log(this.workshopIdOfSelectedCall)
-
         this.callService.getPendingCalls()
                         .subscribe(calls => this.calls = calls)
 

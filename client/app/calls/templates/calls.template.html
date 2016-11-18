@@ -4,7 +4,7 @@
 
 <button class="btn btn-primary btn-sm pull-right" 
         [disabled]="selectedCallIds.length == 0"
-        (click)="test.show()">        
+        (click)="ticketsModal.show()">        
         Asociar Incidencia
 </button> 
 
@@ -61,7 +61,7 @@
 </table> 
 
 
-<workshop-tickets #test
+<workshop-tickets #ticketsModal
     [call-ids]="selectedCallIds" 
     [workshop-id]="workshopIdOfSelectedCall">
 </workshop-tickets>

@@ -9,6 +9,8 @@ import { TicketFormComponent } from './components/ticket-form.component'
 import { TicketsComponent } from './components/tickets.component'
 import { TicketsOfWorkshopComponent } from './components/ticketsOfWorkshop.component'
 
+import { WorkshopsModule } from '../workshops/workshops.module'
+
 import { TicketService } from './services/ticket.service'
 
 
@@ -19,7 +21,8 @@ import { TicketService } from './services/ticket.service'
         SharedModule,
         FormsModule,
         ReactiveFormsModule,
-        ModalModule
+        ModalModule,
+        WorkshopsModule
     ],
     declarations: [
         TicketsComponent,

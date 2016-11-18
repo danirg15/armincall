@@ -9,7 +9,7 @@ Use select of months
 
 
 Client
-0. Linking tickets and calls
+0. Linking calls to ticket -> done, Linking ticket to calls -> pending
 1. Uptime monitor
 2. Each panel shows the remaining time for next event
 3. Auth guards

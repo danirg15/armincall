@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Call = require('./call')
 
 const TicketSchema = mongoose.Schema({
 	workshop: 		{ "type": mongoose.Schema.Types.ObjectId, "ref": 'Workshop' },
@@ -11,5 +12,9 @@ const TicketSchema = mongoose.Schema({
 	timestamps: true
 }
 );
+
+
+
+
 
 module.exports = mongoose.model('Ticket', TicketSchema);
