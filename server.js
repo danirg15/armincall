@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 //--------------------------------------------
 //		Routing
 //--------------------------------------------
+app.use('/api/calls', require('./middleware/mindsnet'))
 
 app.use('/api', require('./routes/auth.routes'))
 app.use('/api', require('./routes/call.routes'))
@@ -48,6 +49,7 @@ app.use('/api', require('./routes/workshop.routes'))
 app.use('/api', require('./routes/demo.routes'))
 app.use('/api', require('./routes/stats.routes'))
 app.use('/api', require('./routes/shared.routes'))
+
 
 
 SocketIOEventEmitter.bind({

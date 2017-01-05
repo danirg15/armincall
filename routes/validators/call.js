@@ -4,8 +4,8 @@ module.exports = {
 
 	full: {
 		body: {
-		    callerNumber:      Joi.string().required(),
-		    recieverNumber:    Joi.string().required(),
+		    callerNumber:      	Joi.string().required(),
+		    recieverNumber:    	Joi.string().required(),
 		    date:               Joi.date().format('DD/MM/YYYY HH:mm:ss').required(),
 		    durationInSeconds:  Joi.number().integer().required(),
 		    status:             Joi.string().required(),
