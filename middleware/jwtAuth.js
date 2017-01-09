@@ -1,13 +1,12 @@
 const jwtAuth = require('../auth')
 
 module.exports = (req, res, next) => {
-    let header = req.headers.authorization
-
-    if (!header) {
+    let token = req.headers.authorization || req.body.token || req.query.token
+    
+    if (!token) {
         res.status(401).json({ 'error': 'No token provided' })
     }
     else{
-        let token = header.split(' ')[1]
         jwtAuth.verifyToken(token, (err, payload) => {
             if (err) {
                 res.status(401).json({ 'error': 'Unauthorized token' })
@@ -17,9 +16,9 @@ module.exports = (req, res, next) => {
                     if (err) 
                         next(err)
                     else if (newToken) 
-                        res.set('Authorization', 'Bearer ' + newToken)
+                        res.set('Authorization', newToken)
                     else
-                        res.set('Authorization', 'Bearer ' + token)
+                        res.set('Authorization', token)
                     
                     next()
                 })

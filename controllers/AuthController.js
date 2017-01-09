@@ -10,7 +10,13 @@ module.exports = {
 		}, (err, user) => {
 
 			if (!err && user && passwordHash.verify(password, user.password)){
-				auth.getNewToken({ 'user_id': user._id }, callback)
+				let exp = process.env.USER_TOKEN_LIFETIME || '1m'    
+		        let options = {
+		            'issuer': 'ArminCall',
+		            'expiresIn': exp
+		        }
+		        
+				auth.getNewToken(options, { 'user_id': user._id }, callback)
 			}
 			else{
 				callback(err, null)

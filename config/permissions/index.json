@@ -1,0 +1,6 @@
+{
+	"CALLS_GET": 		{ "bit": 0 },
+	"CALLS_POST": 		{ "bit": 1 },
+	"CALLS_PUT": 		{ "bit": 2 },
+	"CALLS_UPDATE": 	{ "bit": 3 }
+}

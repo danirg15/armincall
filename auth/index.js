@@ -4,13 +4,7 @@ let secret = process.env.APP_KEY || Date.now()
 
 let self = module.exports = {
 
-    getNewToken: (payload, callback) => {
-        let exp = process.env.USER_TOKEN_LIFETIME || '1m'    
-        let options = {
-            'issuer': 'ArminCall',
-            'expiresIn': exp
-        }
-
+    getNewToken: (options, payload, callback) => {
         jwt.sign({ 'body': payload }, secret, options, callback)
     },
 
