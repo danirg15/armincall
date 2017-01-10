@@ -1,7 +1,7 @@
 const Joi = require('joi');
  
 module.exports = {
-  query: {
+  body: {
     number:      Joi.string().required()
   }
 };

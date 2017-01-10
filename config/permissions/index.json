@@ -3,5 +3,5 @@
 	"CALLS_POST": 		{ "bit": 1 },
 	"CALLS_PUT": 		{ "bit": 2 },
 	"CALLS_UPDATE": 	{ "bit": 3 },
-	"CALLS_EMIT_INCOMMING_GET": { "bit": 4}
+	"CALLS_EMIT_INCOMMING_POST": { "bit": 4}
 }
