@@ -33,7 +33,7 @@ require('./database').connect(config.DB_URI)
 
 
 //Serve client app
-app.use(express.static(path.join(__dirname, 'client')));
+//app.use(express.static(path.join(__dirname, 'client')));
 
 
 //--------------------------------------------
@@ -41,8 +41,21 @@ app.use(express.static(path.join(__dirname, 'client')));
 //--------------------------------------------
 
 
+// require('./auth').getNewToken({
+// 	'issuer': 'ArminCall',
+// 	'audience': 'third-party'
+// }, {
+// 	"company": "MindsNet",
+//     "id": 1,
+//     "perms": "01001"
+// }, (err, token) => {
+// 	if (err) throw err
+// 	console.log(token)
+// })
+
+
 app.use('/api', require('./routes/auth.routes'))
-app.use('/api', perm, require('./routes/call.routes'))
+app.use('/api', [auth, perm], require('./routes/call.routes'))
 app.use('/api', auth, require('./routes/ticket.routes'))
 app.use('/api', auth, require('./routes/reminder.routes'))
 app.use('/api', auth, require('./routes/user.routes'))
@@ -72,12 +85,5 @@ app.listen(process.env.APP_PORT || 3000, function(err) {
 	console.log('Server running...')
 })
 
-
 module.exports = app
-
-
-
-
-
-
 
