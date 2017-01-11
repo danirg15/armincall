@@ -1,7 +1,8 @@
 {
-	"CALLS_GET": 		{ "bit": 0 },
-	"CALLS_POST": 		{ "bit": 1 },
-	"CALLS_PUT": 		{ "bit": 2 },
-	"CALLS_UPDATE": 	{ "bit": 3 },
-	"CALLS_EMIT_INCOMMING_POST": { "bit": 4}
+	"CALLS_ALL": 					{ "bit": 0 },
+	"CALLS_SHOW": 					{ "bit": 1 },
+	"CALLS_CREATE": 				{ "bit": 2 },
+	"CALLS_EDIT": 					{ "bit": 3 },
+	"CALLS_DELETE": 				{ "bit": 4 },
+	"CALLS_EMIT_INCOMMING": 		{ "bit": 5 }
 }

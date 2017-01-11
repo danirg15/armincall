@@ -11,7 +11,6 @@ const SocketIOEventEmitter = require('./events/SocketIOEventEmitter')
 const logger = require('morgan')
 const config = require('config')
 const auth = require('./middleware/jwtAuth')
-const perm = require('./middleware/permissions')
 
 //--------------------------------------------
 //		Middlewares
@@ -47,15 +46,16 @@ require('./database').connect(config.DB_URI)
 // }, {
 // 	"company": "MindsNet",
 //     "id": 1,
-//     "perms": "01001"
+//     "perms": "011110"
 // }, (err, token) => {
 // 	if (err) throw err
 // 	console.log(token)
 // })
 
 
+
 app.use('/api', require('./routes/auth.routes'))
-app.use('/api', [auth, perm], require('./routes/call.routes'))
+app.use('/api', auth, require('./routes/call.routes'))
 app.use('/api', auth, require('./routes/ticket.routes'))
 app.use('/api', auth, require('./routes/reminder.routes'))
 app.use('/api', auth, require('./routes/user.routes'))
