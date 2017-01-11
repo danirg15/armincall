@@ -7,6 +7,10 @@ Use select of months
 11. validators for routes with params & query params as filters
 12. Validate auth routes
 
+//Permissions
+every route has the middleware & in the route is passed the name of permission to be used,
+that way is removed the problem with linking routes with permission names
+
 
 Client
 0. Linking calls to ticket -> done, Linking ticket to calls -> pending
