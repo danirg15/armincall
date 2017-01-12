@@ -1,30 +1,28 @@
-import {Http, Headers} from '@angular/http'
-import {Injectable} from '@angular/core'
+import {HttpServices}   from '../../shared/services/http.services'
+import {Injectable}    from '@angular/core'
 import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class ReminderService {
-    headers: Headers
     url = "/api/reminders/"
 
-    constructor(private http: Http){
-        this.headers = new Headers()
-        this.headers.append("Content-Type", "application/json")
+    constructor(private http: HttpServices){
+        
     }
 
     save(reminder){
-        return this.http.post(this.url, JSON.stringify(reminder), {headers: this.headers})
+        return this.http.post(this.url, JSON.stringify(reminder))
                         .map(res => res.json())
     }
 
     getAll(){
-        return this.http.get(this.url, {headers: this.headers})
+        return this.http.get(this.url)
                         .map(res => res.json())
     }
 
     delete(reminder){
-        return this.http.delete(this.url+reminder._id, {headers: this.headers})
+        return this.http.delete(this.url+reminder._id)
                         .map(res => res.json())
     }
 

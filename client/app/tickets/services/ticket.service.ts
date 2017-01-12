@@ -1,25 +1,23 @@
-import {Http, Headers} from '@angular/http'
+import {HttpServices}   from '../../shared/services/http.services'
 import {Injectable} from '@angular/core'
 import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class TicketService {
-    headers: Headers
     url = "/api/tickets/"
 
-    constructor(private http: Http){
-        this.headers = new Headers()
-        this.headers.append("Content-Type", "application/json")
+    constructor(private http: HttpServices){
+       
     }
 
     save(ticket){
-        return this.http.post(this.url, JSON.stringify(ticket), {headers: this.headers})
+        return this.http.post(this.url, JSON.stringify(ticket))
                         .map(res => res.json())
     }
 
     updateTicket(id, data) {
-        return this.http.put(this.url+id, JSON.stringify(data), {headers: this.headers})
+        return this.http.put(this.url+id, JSON.stringify(data))
                         .map(res => res.json())
     }
 
@@ -30,7 +28,7 @@ export class TicketService {
         else
             url += '?completed=false'
         
-        return this.http.get(url, {headers: this.headers})
+        return this.http.get(url)
                         .map(res => res.json())
     }
 

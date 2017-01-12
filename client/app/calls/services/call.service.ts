@@ -1,4 +1,4 @@
-import {Http, Headers} from '@angular/http'
+import {HttpServices}   from '../../shared/services/http.services'
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
 
@@ -9,16 +9,14 @@ import * as io from 'socket.io-client';
 
 @Injectable()
 export class CallService {
-    headers: Headers
     url = '/api/calls'
 
-    constructor(private http: Http) { 
-        this.headers = new Headers()
-        this.headers.append("Content-Type", "application/json")
+    constructor(private http: HttpServices) { 
+        
     }
 
     getPendingCalls(){
-        return this.http.get(this.url+'?isValidated=false', {headers: this.headers})
+        return this.http.get(this.url+'?isValidated=false')
                         .map(res => res.json())
     }
 

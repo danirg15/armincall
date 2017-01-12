@@ -8,7 +8,7 @@ export class HttpServices {
     constructor(private http: Http){
         this.headers = new Headers()
         this.headers.append("Content-Type", "application/json")
-        this.headers.append("Authorization", "Bearer " + "mySuperSecureToken")
+        this.headers.append("Authorization", "mySuperSecureToken")
     }
 
     get(uri){

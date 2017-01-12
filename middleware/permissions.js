@@ -16,7 +16,7 @@ module.exports = (route_name) => {
 	return function(req, res, next) {
 		let payload = req.token_payload
 
-		if (!payload) {
+		/*if (!payload) {
 			res.status(401).json({ 'error': 'No token found for permissions' })
 		}
 		else if(!payload.body.perms){
@@ -27,7 +27,8 @@ module.exports = (route_name) => {
 		}
 		else {
 			next()
-		}
+		}*/
+		next()
 	}
 
 }

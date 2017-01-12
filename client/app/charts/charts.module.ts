@@ -7,11 +7,14 @@ import { LineChartComponent }       from './components/line-chart.component'
 import { ChartService } from './services/chart.service'
 
 import { ChartsModule as ngChartsModule} from 'ng2-charts/ng2-charts';
+import { SharedModule } from '../shared/shared.module'
+
 
 @NgModule({
     imports: [
         CommonModule,
-        ngChartsModule
+        ngChartsModule,
+        SharedModule
     ],
     declarations: [
         DoughnutChartComponent,
