@@ -1,15 +1,9 @@
 Server
 1. Reminder middleware to send email notifications
 3. Mocha Test
-Use select of months
 8. Make donut chart
-10. Adjust token refresh time
 11. validators for routes with params & query params as filters
 12. Validate auth routes
-
-//Permissions
-every route has the middleware & in the route is passed the name of permission to be used,
-that way is removed the problem with linking routes with permission names
 
 
 Client

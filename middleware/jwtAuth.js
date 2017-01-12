@@ -20,6 +20,7 @@ module.exports = (req, res, next) => {
                     else
                         res.set('Authorization', token)
                     
+                    delete req.query.token 
                     req.token_payload = payload
                     next()
                 })
