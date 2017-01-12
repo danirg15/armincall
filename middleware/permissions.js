@@ -4,7 +4,7 @@ function validatePermsOfRoute(route_name, p) {
 	let perm_level = p.split("")
 	let bit = ( perms[route_name] ) ? perms[route_name].bit : null
 
-	if (bit && perm_level[bit] === '1') {
+	if (bit != null && perm_level[bit] === '1') {
 		return true
 	}
 

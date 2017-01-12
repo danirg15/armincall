@@ -40,17 +40,17 @@ require('./database').connect(config.DB_URI)
 //--------------------------------------------
 
 
-// require('./auth').getNewToken({
-// 	'issuer': 'ArminCall',
-// 	'audience': 'third-party'
-// }, {
-// 	"company": "MindsNet",
-//     "id": 1,
-//     "perms": "011110"
-// }, (err, token) => {
-// 	if (err) throw err
-// 	console.log(token)
-// })
+require('./auth').getNewToken({
+	'issuer': 'ArminCall',
+	//'audience': 'third-party'
+}, {
+	//"company": "MindsNet",
+    "id": 1,
+    "perms": "111111"
+}, (err, token) => {
+	if (err) throw err
+	console.log(token)
+})
 
 
 
@@ -86,4 +86,3 @@ app.listen(process.env.APP_PORT || 3000, function(err) {
 })
 
 module.exports = app
-

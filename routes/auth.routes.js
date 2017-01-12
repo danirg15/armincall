@@ -3,7 +3,6 @@ const AuthController 	= require('../controllers/AuthController')
 const validate 			= require('express-validation');
 const validator 		= require('./validators');
 
-
 router.post('/auth/login', (req, res) => {
 	AuthController.login(req.body.username, req.body.password, (err, token) => {
 		if (token) {
