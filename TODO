@@ -10,7 +10,7 @@ Client
 0. Linking calls to ticket -> done, Linking ticket to calls -> pending
 1. Uptime monitor
 2. Each panel shows the remaining time for next event
-3. Auth guards
+3. Auth guards, http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial
 6. Tooltips
 7. Google maps
 
