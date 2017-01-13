@@ -2,34 +2,23 @@ const User = require('../models/user')
 
 module.exports = {
 
-    getAll: function(req, res){
-        User.find({}, function(err, calls){
-            if (err) res.status(400).send(err)
-            else res.status(200).json(calls)
-        })
+    getAll: (callback) => {
+        User.find({}, callback)
     },
 
-    getOne: function(req, res){
-        User.findById(req.params.id, function(err, call){
-            if (err) res.status(400).send(err)
-            else res.status(200).json(call)
-        })
+    getOne: (callback) => {
+        User.findById(req.params.id, callback)
     },
 
-    store: function(req, res){
-        let user = new User(req.body)
-
-        user.save(function(err){
-            if (err) res.status(400).send(err)
-            else res.status(200).json({})
-        });
+    store: (user, callback) => {
+        (new User(user)).save(callback)
     }, 
 
-    update: function(req, res){
+    update: (req, res) => {
         
     },
 
-    destroy: function(req, res){
+    destroy: (req, res) => {
         
     }
 

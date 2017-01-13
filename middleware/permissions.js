@@ -22,6 +22,7 @@ module.exports = (route_name) => {
 		else if(!payload.body.perms){
 			res.status(401).json({ 'error': 'No permissions found in token' })
 		}
+		//If token is of user, do not check for perms, it's just for third party
 		else if (!validatePermsOfRoute(route_name, payload.body.perms)) {
 			res.status(401).json({ 'error': 'Inssuficient permissions for the requested action' })
 		}

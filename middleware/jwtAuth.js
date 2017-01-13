@@ -12,19 +12,24 @@ module.exports = (req, res, next) => {
                 res.status(401).json({ 'error': 'Unauthorized token' })
             }
             else{
-                jwtAuth.refreshToken(payload, (err, newToken) => {
-                    if (err) 
-                        next(err)
-                    else if (newToken) 
-                        res.set('Authorization', newToken)
-                    else
-                        res.set('Authorization', token)
-                    
-                    delete req.query.token 
-                    req.token_payload = payload
-                    next()
-                })
+                delete req.query.token 
+                req.token_payload = payload
+                next()
             }
+            // else{
+            //     jwtAuth.refreshToken(payload, (err, newToken) => {
+            //         if (err) 
+            //             next(err)
+            //         else if (newToken) 
+            //             res.set('Authorization', newToken)
+            //         else
+            //             res.set('Authorization', token)
+                    
+            //         delete req.query.token 
+            //         req.token_payload = payload
+            //         next()
+            //     })
+            // }
         })
     }
 }
