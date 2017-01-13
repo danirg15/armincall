@@ -1,4 +1,4 @@
-import {HttpServices}   from '../../shared/services/http.services'
+import { HttpServices }   from '../../shared/services/http.services'
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
 
@@ -62,7 +62,7 @@ export class CallService {
 
 
     updateCall(call){
-        return this.http.put(this.url+'/'+call._id , JSON.stringify(call), {headers: this.headers})
+        return this.http.put(this.url+'/'+call._id , call)
                         .map(res => res.json())
     }
 

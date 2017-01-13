@@ -12,7 +12,7 @@ export class WorkshopService {
     }
 
     save(workshop){
-        return this.http.post(this.url, JSON.stringify(workshop))
+        return this.http.post(this.url, workshop)
                         .map(res => res.json())
     }
 
@@ -26,8 +26,8 @@ export class WorkshopService {
                         .map(res => res.json())
     }
 
-    updateWorkshop(id, data){
-        return this.http.put(this.url + id, JSON.stringify(data))
+    updateWorkshop(id, workshop){
+        return this.http.put(this.url + id, workshop)
                         .map(res => res.json())
     }
 

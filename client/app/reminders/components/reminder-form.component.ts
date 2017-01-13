@@ -21,7 +21,8 @@ export class ReminderFormComponent {
     }
 
     onSubmit(){
-        //console.log(this.form.value)
+        console.log(this.form.value)
+        console.log(JSON.stringify(this.form.value))
 
         this.reminderService.save(this.form.value)
                             .subscribe(x =>

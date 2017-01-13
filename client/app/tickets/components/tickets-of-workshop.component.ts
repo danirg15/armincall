@@ -42,7 +42,7 @@ import { TicketService } from '../services/ticket.service'
                                             </label>
                                         </div>
                                     </td>
-                                    <td>{{ticket.createdAt}}</td>
+                                    <td>{{ticket.createdAt | diffForHumans}}</td>
                                     <td>{{ticket.description}}</td>
                                 </tr>
                             </tbody>

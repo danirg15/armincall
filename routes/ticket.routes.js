@@ -19,7 +19,6 @@ router.get('/tickets/:id', (req, res) => {
 }) 
 
 router.post('/tickets', validate(validator.ticket.full), (req, res) => {
-	console.log(req.body)
 	TicketController.store(req.body, (err) => {
 		if (err) res.status(500).json(err)
         else res.status(201).json({})

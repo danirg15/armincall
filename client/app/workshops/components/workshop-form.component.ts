@@ -69,7 +69,7 @@ export class WorkshopFormComponent implements OnInit {
             }
             else{
                 this.workshopService.save(this.form.value)
-                .subscribe(null)
+                                    .subscribe(null)
             }
 
             this.router.navigate(['/workshops'])

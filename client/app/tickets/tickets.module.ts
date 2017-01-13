@@ -7,7 +7,7 @@ import { ModalModule }   from 'ng2-modal'
 
 import { TicketFormComponent } from './components/ticket-form.component'
 import { TicketsComponent } from './components/tickets.component'
-import { TicketsOfWorkshopComponent } from './components/ticketsOfWorkshop.component'
+import { TicketsOfWorkshopComponent } from './components/tickets-of-workshop.component'
 
 import { WorkshopsModule } from '../workshops/workshops.module'
 

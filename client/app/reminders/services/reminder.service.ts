@@ -12,7 +12,7 @@ export class ReminderService {
     }
 
     save(reminder){
-        return this.http.post(this.url, JSON.stringify(reminder))
+        return this.http.post(this.url, reminder)
                         .map(res => res.json())
     }
 

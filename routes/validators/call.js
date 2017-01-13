@@ -26,7 +26,7 @@ module.exports = {
 		body: {
 		    callerNumber:      Joi.string().optional(),
 		    recieverNumber:    Joi.string().optional(),
-		    date:               Joi.date().format('DD/MM/YYYY HH:mm:ss').optional(),
+		    date:               Joi.date().iso().optional(),
 		    durationInSeconds:  Joi.number().integer().optional(),
 		    status:             Joi.string().optional(),
 		    workshop:           Joi.string().hex().length(24).optional()

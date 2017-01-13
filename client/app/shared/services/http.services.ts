@@ -19,6 +19,10 @@ export class HttpServices {
         return this.http.post(uri, JSON.stringify(data), {headers: this.headers})
     }
 
+    put(uri, data){
+        return this.http.put(uri, JSON.stringify(data), {headers: this.headers})
+    }
+
     delete(uri){
         return this.http.delete(uri, {headers: this.headers})
     }

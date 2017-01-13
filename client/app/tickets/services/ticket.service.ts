@@ -12,12 +12,12 @@ export class TicketService {
     }
 
     save(ticket){
-        return this.http.post(this.url, JSON.stringify(ticket))
+        return this.http.post(this.url, ticket)
                         .map(res => res.json())
     }
 
-    updateTicket(id, data) {
-        return this.http.put(this.url+id, JSON.stringify(data))
+    updateTicket(id, ticket) {
+        return this.http.put(this.url+id, ticket)
                         .map(res => res.json())
     }
 
