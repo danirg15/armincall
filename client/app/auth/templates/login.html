@@ -23,7 +23,7 @@
     <h1 class="title">Login</h1>
 
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="input-container" [class.has-error]="form.controls.username.touched && form.controls.username.errors">
           <input type="text" formControlName="username"/>
           <label for="Username">Username</label>

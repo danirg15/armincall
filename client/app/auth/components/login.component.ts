@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     ngOnInit() { }
 
     onSubmit() {
-        console.log(this.form.value)
 
         this.http.login(this.form.value.username, this.form.value.password)
 
