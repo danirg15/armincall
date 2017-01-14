@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand">AMS</a>
+      <a class="navbar-brand">ARMIN Call</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -30,22 +30,22 @@
           
           <ul class="dropdown-menu" role="menu">
             <li >
-              <a routerLink="calls">Llamadas 
+              <a routerLink="/calls">Llamadas 
                 <span class="badge">{{badges.pendingCalls}}</span>
               </a>
             </li>
             <li>
-              <a routerLink="tickets">Incidencias 
+              <a routerLink="/tickets">Incidencias 
                 <span class="badge">{{badges.pendingTickets}}</span>
               </a>
             </li>
             <li>
-              <a routerLink="demos">Demos 
+              <a routerLink="/demos">Demos 
                 <span class="badge">{{badges.pendingDemos}}</span>
               </a>
             </li>
             <li>
-              <a routerLink="reminders">Reminders 
+              <a routerLink="/reminders">Reminders 
                 <span class="badge">{{badges.pendingReminders}}</span>
               </a>
             </li>
@@ -65,7 +65,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a (click)="logout()"> 
+          <a style="cursor: pointer" (click)="logout()"> 
             <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión
           </a>
         </li>

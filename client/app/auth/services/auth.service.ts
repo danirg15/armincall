@@ -18,8 +18,8 @@ export class AuthService {
         this.http.post(this.uri, {'username': username, 'password': password})
                  .subscribe(res => {
 
-                     if(res.status === 200 && res.json().token) {
-                         localStorage.setItem('token', res.json().token)
+                     if(res.token) {
+                         localStorage.setItem('token', res.token)
                          this.router.navigate(['/dashboard'])
                      }
                      else {

@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>Material Login Form</title>
- 
- 
-      <!--<link rel="stylesheet" href="css/style.css">-->
 
-  
-</head>
-
-<body>
-  
 <!-- Mixins-->
 <!-- Pen Title-->
 <div class="pen-title">
-  <h1>Material Login Form</h1><span>Pen <i class='fa fa-code'></i> by <a href='http://andytran.me'>Andy Tran</a></span>
+  <h1>ARMIN Call</h1><span>Made <i class='fa fa-code'></i> by <a href=''>Daniel Ramírez</a></span>
 </div>
 <div class="container">
   <div class="card"></div>
@@ -26,12 +13,12 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="input-container" [class.has-error]="form.controls.username.touched && form.controls.username.errors">
           <input type="text" formControlName="username"/>
-          <label for="Username">Username</label>
+          <label for="Username">Usuario</label>
           <div class="bar"></div>
       </div>
       <div class="input-container" [class.has-error]="form.controls.password.touched && form.controls.password.errors">
           <input type="password" formControlName="password"/>
-          <label for="Password">Password</label>
+          <label for="Password">Contraseña</label>
           <div class="bar"></div>
       </div>
       <div class="button-container">
@@ -44,7 +31,3 @@
   </div>
 
 </div>
-
-
-</body>
-</html>
