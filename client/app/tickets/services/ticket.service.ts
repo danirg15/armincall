@@ -13,12 +13,10 @@ export class TicketService {
 
     save(ticket){
         return this.http.post(this.url, ticket)
-                        .map(res => res.json())
     }
 
     updateTicket(id, ticket) {
         return this.http.put(this.url+id, ticket)
-                        .map(res => res.json())
     }
 
     getPendingTickets(workshopId){
@@ -29,7 +27,6 @@ export class TicketService {
             url += '?completed=false'
         
         return this.http.get(url)
-                        .map(res => res.json())
     }
 
 }

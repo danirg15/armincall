@@ -13,7 +13,6 @@ export class ChartService {
 
     getAll(n_months){
         return this.http.get(this.url + n_months + '/months')
-                        .map(res => res.json())
     }
 
 }

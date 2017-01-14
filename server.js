@@ -34,7 +34,6 @@ require('./database').connect(config.DB_URI)
 //Serve client app
 app.use(express.static(path.join(__dirname, 'client')));
 
-
 //--------------------------------------------
 //		Routing
 //--------------------------------------------
@@ -64,6 +63,11 @@ app.use('/api', auth, require('./routes/demo.routes'))
 app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
 
+
+app.get('*', (req, res) => {
+	console.log('get * ')
+	res.sendFile(path.join(__dirname, '/client/index.html'))
+})
 
 
 SocketIOEventEmitter.bind({

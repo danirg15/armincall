@@ -12,17 +12,14 @@ export class DemoService {
 
     save(demo){
         return this.http.post(this.url, demo)
-                        .map(res => res.json())
     }
 
     getAll(){
         return this.http.get(this.url)
-                        .map(res => res.json())
     }
 
     delete(demo){
         return this.http.delete(this.url+demo._id)
-                        .map(res => res.json())    
     }
 
 

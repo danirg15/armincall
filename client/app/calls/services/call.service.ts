@@ -1,8 +1,6 @@
 import { HttpServices }   from '../../shared/services/http.services'
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
-
-//import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 
@@ -63,7 +61,6 @@ export class CallService {
 
     updateCall(call){
         return this.http.put(this.url+'/'+call._id , call)
-                        .map(res => res.json())
     }
 
 }

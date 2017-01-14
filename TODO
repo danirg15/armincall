@@ -17,6 +17,15 @@ update: (ticket_id, fields, callback) => {
     },
 
 
+    return this.http.get(url)
+                        .map(res => { 
+                            return res.json()
+                        }).catch(error => {
+                            console.log(error)
+                            return Observable.throw(new Error(error.status));
+                        })
+
+
 Client
 0. Linking calls to ticket -> done, Linking ticket to calls -> pending
 1. Uptime monitor

@@ -18,13 +18,13 @@ import {AuthGuard}              from './guards/auth-guard.service'
 export const routing = RouterModule.forRoot([ //const helps to avoid accidently modifications from other parts of the app
     
     { 
-        path: 'login',           
-        component: LoginComponent
+        path: '',  
+        redirectTo: 'login', 
+        pathMatch: 'full'
     },
     { 
-        path: '',  
-        redirectTo: 'dashboard', 
-        pathMatch: 'full'
+        path: 'login',           
+        component: LoginComponent
     },
     { 
         path: 'dashboard',           
