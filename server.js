@@ -55,14 +55,14 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 
 app.use('/api', require('./routes/auth.routes'))
-app.use('/api', require('./routes/call.routes'))
-app.use('/api', require('./routes/ticket.routes'))
-app.use('/api', require('./routes/reminder.routes'))
-app.use('/api', require('./routes/user.routes'))
-app.use('/api', require('./routes/workshop.routes'))
-app.use('/api', require('./routes/demo.routes'))
-app.use('/api', require('./routes/stats.routes'))
-app.use('/api', require('./routes/shared.routes'))
+app.use('/api', auth, require('./routes/call.routes'))
+app.use('/api', auth, require('./routes/ticket.routes'))
+app.use('/api', auth, require('./routes/reminder.routes'))
+app.use('/api', auth, require('./routes/user.routes'))
+app.use('/api', auth, require('./routes/workshop.routes'))
+app.use('/api', auth, require('./routes/demo.routes'))
+app.use('/api', auth, require('./routes/stats.routes'))
+app.use('/api', auth, require('./routes/shared.routes'))
 
 
 

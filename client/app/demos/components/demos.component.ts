@@ -3,6 +3,10 @@ import { DemoService } from '../services/demo.service'
 
 @Component({
     template: `
+        <nav-bar></nav-bar>
+
+        <div class="container">
+
         <div class="page-header">
             <h2>Demos</h2>
         </div>
@@ -38,6 +42,8 @@ import { DemoService } from '../services/demo.service'
                 </tr>
             </tbody>
         </table> 
+
+        </div>
 
     `
 })

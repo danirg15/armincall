@@ -46,7 +46,9 @@ export class CallsComponent implements OnInit, OnDestroy {
 
         var c = call
         c.isValidated = true
-        c.workshop = c.workshop._id
+
+        if(c.workshop) 
+            c.workshop = c.workshop._id
 
         this.callService.updateCall(c)
                         .subscribe(null, err => {

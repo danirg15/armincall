@@ -5,7 +5,7 @@ import { TicketService } from '../services/ticket.service'
     selector: 'workshop-tickets',
     template: `
         <modal #ticketsModal 
-                title="tickets"
+                title="Incidencias"
                 modalClass="modal-lg"
                 [hideCloseButton]="false"
                 [closeOnEscape]="true"

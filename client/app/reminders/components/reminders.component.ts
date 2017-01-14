@@ -4,6 +4,10 @@ import { ReminderService } from '../services/reminder.service'
 @Component({
    
     template: `
+        <nav-bar></nav-bar>
+
+        <div class="container">
+
         <div class="page-header">
             <h2>Recordatorios</h2>
         </div>
@@ -35,6 +39,8 @@ import { ReminderService } from '../services/reminder.service'
                 </tr>
             </tbody>
         </table> 
+
+        </div>
     `
 })
 export class RemindersComponent implements OnInit {

@@ -21,7 +21,7 @@ module.exports = {
             Call.update(
                     { _id: { $in: fields.calls } }, 
                     { $set:{'isValidated': true} }, 
-                (err) => {})
+            (err) => {})
         }
     },
 

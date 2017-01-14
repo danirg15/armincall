@@ -1,117 +1,122 @@
-<br><br>
+<nav-bar></nav-bar>
 
-<div class="well">
+<div class="container">
 
-  <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <fieldset>
-      <legend>{{title}}</legend>
+  <br><br>
 
-      <div class="row">
+  <div class="well">
 
-        <div class="col-md-5">
-          <div class="form-group" [class.has-error]="form.controls.name.touched && form.controls.name.errors">
-            <label for="inputName" class="col-lg-3 control-label">* Razón Social</label>
-            <div class="col-lg-9">
-              <input [(ngModel)]="workshop.name" type="text" class="form-control" formControlName="name" placeholder="Razón Social">
+    <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <fieldset>
+        <legend>{{title}}</legend>
 
-              <div *ngIf="form.controls.name.touched && form.controls.name.errors" >
-                  <small class="text-danger" *ngIf="form.controls.name.errors.required">
-                      El campo Razón Social es obligatorio.
-                  </small>
-              </div>
+        <div class="row">
 
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="inputCIF" class="col-lg-3 control-label">CIF</label>
-            <div class="col-lg-9">
-              <input [(ngModel)]="workshop.cif" type="text" class="form-control" formControlName="cif" placeholder="CIF">
-            </div>
-          </div>
-
-          <div formGroupName="address">
-            <div class="form-group">
-              <label for="inputDireccion" class="col-lg-3 control-label">Dirección</label>
+          <div class="col-md-5">
+            <div class="form-group" [class.has-error]="form.controls.name.touched && form.controls.name.errors">
+              <label for="inputName" class="col-lg-3 control-label">* Razón Social</label>
               <div class="col-lg-9">
-                <input [(ngModel)]="workshop.address.description" type="text" class="form-control" formControlName="description" placeholder="Dirección">
+                <input [(ngModel)]="workshop.name" type="text" class="form-control" formControlName="name" placeholder="Razón Social">
+
+                <div *ngIf="form.controls.name.touched && form.controls.name.errors" >
+                    <small class="text-danger" *ngIf="form.controls.name.errors.required">
+                        El campo Razón Social es obligatorio.
+                    </small>
+                </div>
+
               </div>
             </div>
-          </div>
 
-          <div class="form-group" [class.has-error]="form.controls.distributor.touched && form.controls.distributor.errors">
-            <label for="selectDistribuidor" class="col-lg-3 control-label">* Distribuidor</label>
-            <div class="col-lg-9">
-              <select [(ngModel)]="workshop.distributor" class="form-control" formControlName="distributor">
-                <option>Elegir</option>
-                <option *ngFor="let distributor of distributors" value="{{distributor.code}}">
-                    {{distributor.name}}
-                </option>
-              </select>
-              
-              <div *ngIf="form.controls.distributor.touched && form.controls.distributor.errors" >
-                  <small class="text-danger" *ngIf="form.controls.distributor.errors.required">
-                      El campo Distribudor es obligatorio.
-                  </small>
+            <div class="form-group">
+              <label for="inputCIF" class="col-lg-3 control-label">CIF</label>
+              <div class="col-lg-9">
+                <input [(ngModel)]="workshop.cif" type="text" class="form-control" formControlName="cif" placeholder="CIF">
               </div>
             </div>
-          </div>
 
-        </div><!--col-->
-
-        <div class="col-md-offset-1 col-md-5">
-          <div class="form-group">
-            <label for="inputContact" class="col-lg-3 control-label">Contacto</label>
-            <div class="col-lg-9">
-              <input [(ngModel)]="workshop.contact" type="text" class="form-control" formControlName="contact" placeholder="Persona de Contacto">
-            </div>
-          </div>
-
-          <div class="form-group" [class.has-error]="form.controls.email.touched && form.controls.email.errors">
-            <label for="inputEmail" class="col-lg-3 control-label">Email</label>
-            <div class="col-lg-9">
-              <input [(ngModel)]="workshop.email" type="text" class="form-control" formControlName="email" placeholder="Email">
-              
-              <div *ngIf="form.controls.email.touched && form.controls.email.errors">
-                  <small class="text-danger" *ngIf="form.controls.email.errors.email">
-                      El email es inválido.
-                  </small>
+            <div formGroupName="address">
+              <div class="form-group">
+                <label for="inputDireccion" class="col-lg-3 control-label">Dirección</label>
+                <div class="col-lg-9">
+                  <input [(ngModel)]="workshop.address.description" type="text" class="form-control" formControlName="description" placeholder="Dirección">
+                </div>
               </div>
-              
             </div>
-          </div>
-          <div class="form-group" [class.has-error]="form.controls.phone.touched && form.controls.phone.errors">
-            <label for="inputTelefono" class="col-lg-3 control-label">* Teléfonos</label>
-            <div class="col-lg-9">
-              <input [(ngModel)]="workshop.phone" type="text" class="form-control" formControlName="phone" placeholder="Teléfono">
-              <span class="help-block">*Separar teléfonos por comas.</span>
 
-              <div *ngIf="form.controls.phone.touched && form.controls.phone.errors" >
-                  <small class="text-danger" *ngIf="form.controls.phone.errors.required">
-                      El campo Telefono es obligatorio.
-                  </small>
-                  <br>
-                  <small class="text-danger" *ngIf="form.controls.phone.errors.phone">
-                      Los teléfonos deben estar separados por comas.
-                  </small>
+            <div class="form-group" [class.has-error]="form.controls.distributor.touched && form.controls.distributor.errors">
+              <label for="selectDistribuidor" class="col-lg-3 control-label">* Distribuidor</label>
+              <div class="col-lg-9">
+                <select [(ngModel)]="workshop.distributor" class="form-control" formControlName="distributor">
+                  <option>Elegir</option>
+                  <option *ngFor="let distributor of distributors" value="{{distributor.code}}">
+                      {{distributor.name}}
+                  </option>
+                </select>
+                
+                <div *ngIf="form.controls.distributor.touched && form.controls.distributor.errors" >
+                    <small class="text-danger" *ngIf="form.controls.distributor.errors.required">
+                        El campo Distribudor es obligatorio.
+                    </small>
+                </div>
               </div>
-
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="col-lg-9 col-lg-offset-3">
-              <button type="reset" class="btn btn-default" routerLink="/workshops" >Cancelar</button>
-              <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Guardar</button>
+          </div><!--col-->
+
+          <div class="col-md-offset-1 col-md-5">
+            <div class="form-group">
+              <label for="inputContact" class="col-lg-3 control-label">Contacto</label>
+              <div class="col-lg-9">
+                <input [(ngModel)]="workshop.contact" type="text" class="form-control" formControlName="contact" placeholder="Persona de Contacto">
+              </div>
             </div>
-          </div>
 
-        </div><!--col-->
+            <div class="form-group" [class.has-error]="form.controls.email.touched && form.controls.email.errors">
+              <label for="inputEmail" class="col-lg-3 control-label">* Email</label>
+              <div class="col-lg-9">
+                <input [(ngModel)]="workshop.email" type="text" class="form-control" formControlName="email" placeholder="Email">
+                
+                <div *ngIf="form.controls.email.touched && form.controls.email.errors">
+                    <small class="text-danger" *ngIf="form.controls.email.errors.email">
+                        El email es inválido.
+                    </small>
+                </div>
+                
+              </div>
+            </div>
+            <div class="form-group" [class.has-error]="form.controls.phone.touched && form.controls.phone.errors">
+              <label for="inputTelefono" class="col-lg-3 control-label">* Teléfonos</label>
+              <div class="col-lg-9">
+                <input [(ngModel)]="workshop.phone" type="text" class="form-control" formControlName="phone" placeholder="Teléfono">
+                <span class="help-block">*Separar teléfonos por comas.</span>
 
-      </div><!--row-->
-      
-    </fieldset>
-  </form>
+                <div *ngIf="form.controls.phone.touched && form.controls.phone.errors" >
+                    <small class="text-danger" *ngIf="form.controls.phone.errors.required">
+                        El campo Telefono es obligatorio.
+                    </small>
+                    <br>
+                    <small class="text-danger" *ngIf="form.controls.phone.errors.phone">
+                        Los teléfonos deben estar separados por comas.
+                    </small>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-9 col-lg-offset-3">
+                <button type="reset" class="btn btn-default" routerLink="/workshops" >Cancelar</button>
+                <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+
+          </div><!--col-->
+
+        </div><!--row-->
+        
+      </fieldset>
+    </form>
+
+  </div>
 
 </div>
-

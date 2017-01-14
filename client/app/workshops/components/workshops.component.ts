@@ -6,6 +6,10 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
     template: `
+        <nav-bar></nav-bar>
+
+        <div class="container">
+
         <div class="page-header">
             <h2>Talleres</h2>
         </div>
@@ -43,6 +47,7 @@ import {ActivatedRoute} from '@angular/router';
             </tbody>
         </table> 
         
+        </div>
     `
 })
 export class WorkshopsComponent implements OnInit {

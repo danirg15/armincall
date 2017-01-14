@@ -3,6 +3,10 @@ import { TicketService } from '../services/ticket.service'
 
 @Component({
     template: `
+        <nav-bar></nav-bar>
+
+        <div class="container" >
+
         <div class="page-header">
             <h2>Incidencias</h2>
         </div>
@@ -58,6 +62,7 @@ import { TicketService } from '../services/ticket.service'
             </tbody>
         </table> 
         
+        </div>
     
     `,
 })

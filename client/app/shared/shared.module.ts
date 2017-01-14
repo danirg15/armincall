@@ -8,6 +8,7 @@ import { PanelComponent }           from './components/panel.component'
 
 import { SharedServices }           from './services/shared.service'
 import { HttpServices }             from './services/http.services'
+import { AuthService }              from '../auth/services/auth.service'
 
 import { DiffForHumansPipe }        from './pipes/diffForHumans.pipe'
 import { DurationForHumansPipe }    from './pipes/durationForHumans.pipe'
@@ -40,7 +41,7 @@ import { PopoverModule }            from 'ng2-popover'
         ReplaceSubstringPipe,
 
     ],
-    providers:[SharedServices, HttpServices]
+    providers:[SharedServices, HttpServices, AuthService]
 })
 export class SharedModule {
 

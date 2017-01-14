@@ -1,13 +1,17 @@
 import { Injectable }   from '@angular/core'
 import { HttpServices } from '../../shared/services/http.services' 
+import { Router } from '@angular/router'
 
 @Injectable()
 export class AuthService {
-    isLoggedIn = true
     uri = '/api/auth/login'
 
-    constructor(private http: HttpServices) {
+    constructor(private http: HttpServices, private router: Router) {
 
+    }
+
+    isLoggedIn = function() {
+        return localStorage.getItem('token') ? true : false
     }
 
     login(username, password) {
@@ -16,17 +20,20 @@ export class AuthService {
 
                      if(res.status === 200 && res.json().token) {
                          localStorage.setItem('token', res.json().token)
-                         this.isLoggedIn = true
+                         this.router.navigate(['/dashboard'])
+                     }
+                     else {
+                         alert('Usuario no autorizado!')
                      }
                               
                  }, err => {
+                     alert('Ha ocurrido un error al autenticarse. '  + err)
                      console.log(err)
                  })
     }
 
     logout() {
         localStorage.removeItem('token')
-        this.isLoggedIn = false
     }
 
 }

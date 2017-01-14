@@ -8,7 +8,6 @@ export class HttpServices {
     constructor(private http: Http){
         this.headers = new Headers()
         this.headers.append("Content-Type", "application/json")
-        console.log(localStorage.getItem('token'))
         this.headers.append("Authorization", localStorage.getItem('token'))
     }
 

@@ -5,6 +5,17 @@ Server
 11. validators for routes with params & query params as filters
 12. Validate auth routes
 
+update: (ticket_id, fields, callback) => {
+        Ticket.findByIdAndUpdate(ticket_id, fields, callback)
+
+        if (fields.calls) {
+            Call.update(//just one is being updated
+                    { _id: { $in: fields.calls } }, 
+                    { $set:{'isValidated': true} }, 
+            (err) => {})
+        }
+    },
+
 
 Client
 0. Linking calls to ticket -> done, Linking ticket to calls -> pending
