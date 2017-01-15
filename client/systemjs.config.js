@@ -27,7 +27,7 @@
     
       ///////
       'ng2-charts': 				       'npm:ng2-charts',
-      'socket.io-client':          'npm:socket.io-client/socket.io.js',
+      'socket.io-client':          'npm:socket.io-client/dist/socket.io.js',
       'moment':                    'npm:moment',
       'ng2-popover':               'npm:ng2-popover',
       'ng2-modal':                 'npm:ng2-modal'

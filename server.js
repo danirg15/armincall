@@ -30,6 +30,9 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
 require('./database').connect(config.DB_URI)
 
 
+
+
+
 //--------------------------------------------
 //		Routing
 //--------------------------------------------
@@ -55,7 +58,6 @@ app.use('/api', auth, require('./routes/workshop.routes'))
 app.use('/api', auth, require('./routes/demo.routes'))
 app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
-
 
 
 //Serve client app
