@@ -19,7 +19,7 @@ export const routing = RouterModule.forRoot([ //const helps to avoid accidently 
     
     { 
         path: '',  
-        redirectTo: 'login', 
+        redirectTo: 'dashboard', 
         pathMatch: 'full'
     },
     { 

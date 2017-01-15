@@ -14,22 +14,19 @@ export class AuthService {
         return localStorage.getItem('token') ? true : false
     }
 
-    login(username, password) {
+    login(username, password, cb) {
         this.http.post(this.uri, {'username': username, 'password': password})
-                 .subscribe(res => {
-
-                     if(res.token) {
-                         localStorage.setItem('token', res.token)
-                         this.router.navigate(['/dashboard'])
-                     }
-                     else {
-                         alert('Usuario no autorizado!')
-                     }
-                              
-                 }, err => {
-                     alert('Ha ocurrido un error al autenticarse. '  + err)
-                     console.log(err)
-                 })
+                .subscribe(res => {
+                    if(res.token) {
+                        localStorage.setItem('token', res.token)
+                        this.router.navigate(['/dashboard'])
+                    }
+                    else {
+                        cb('Ha ocurrido un error al autenticarse.')
+                    }                              
+                }, err => {
+                    cb('Usuario o contraseña incorrectos!')
+                })
     }
 
     logout() {

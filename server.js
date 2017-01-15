@@ -30,14 +30,9 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
 require('./database').connect(config.DB_URI)
 
 
-
-//Serve client app
-app.use(express.static(path.join(__dirname, 'client')));
-
 //--------------------------------------------
 //		Routing
 //--------------------------------------------
-
 
 // require('./auth').getNewToken({
 // 	'issuer': 'ArminCall',
@@ -51,8 +46,6 @@ app.use(express.static(path.join(__dirname, 'client')));
 // 	console.log(token)
 // })
 
-
-
 app.use('/api', require('./routes/auth.routes'))
 app.use('/api', auth, require('./routes/call.routes'))
 app.use('/api', auth, require('./routes/ticket.routes'))
@@ -64,8 +57,11 @@ app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
 
 
+
+//Serve client app
+app.use(express.static(path.join(__dirname, 'client')));
+
 app.get('*', (req, res) => {
-	console.log('get * ')
 	res.sendFile(path.join(__dirname, '/client/index.html'))
 })
 

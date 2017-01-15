@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 import { AuthService } from '../services/auth.service'
 
+
+
 @Component({
     selector: 'login',
     templateUrl: 'app/auth/templates/login.html',
@@ -10,8 +12,9 @@ import { AuthService } from '../services/auth.service'
 })
 export class LoginComponent implements OnInit {
     form: FormGroup
+    message = ''
 
-    constructor(fb: FormBuilder, private http: AuthService) {
+    constructor(fb: FormBuilder, private authService: AuthService) {
         this.form = fb.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
@@ -21,8 +24,10 @@ export class LoginComponent implements OnInit {
     ngOnInit() { }
 
     onSubmit() {
-
-        this.http.login(this.form.value.username, this.form.value.password)
-
+        if(this.form.valid){
+            this.authService.login(this.form.value.username, this.form.value.password, (msg) => {
+                this.message = msg
+            })
+        }
     }
 }
