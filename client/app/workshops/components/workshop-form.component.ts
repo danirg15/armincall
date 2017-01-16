@@ -74,6 +74,7 @@ export class WorkshopFormComponent implements OnInit {
 
             this.router.navigate(['/workshops'])
         })       
+
     }
 
 

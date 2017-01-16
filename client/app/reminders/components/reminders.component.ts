@@ -25,6 +25,7 @@ import { ReminderService } from '../services/reminder.service'
             <tbody>
                 <tr *ngFor="let reminder of reminders">
                     <td>{{reminder.description}}</td>
+                    
                     <td>
                         {{reminder.time}} {{reminder.date}} 
                         ({{reminder.ISODate | diffForHumans }})
@@ -35,7 +36,6 @@ import { ReminderService } from '../services/reminder.service'
                             <i  class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </td>
-                    
                 </tr>
             </tbody>
         </table> 

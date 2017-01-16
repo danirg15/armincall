@@ -9,6 +9,10 @@ export class HttpServices {
     headers: Headers
 
     constructor(private http: Http, private router: Router){
+        
+    }
+
+    private buildHeaders() {
         this.headers = new Headers()
         this.headers.append("Content-Type", "application/json")
         this.headers.append("Authorization", localStorage.getItem('token'))
@@ -22,6 +26,7 @@ export class HttpServices {
     }
 
     get(uri){
+        this.buildHeaders()
         return this.http.get(uri, {headers: this.headers})
                         .map(res => res.json())
                         .catch(err => {
@@ -30,6 +35,7 @@ export class HttpServices {
     }
 
     post(uri, data){
+        this.buildHeaders()
         return this.http.post(uri, JSON.stringify(data), {headers: this.headers})
                         .map(res => res.json())
                         .catch(err => {
@@ -38,6 +44,7 @@ export class HttpServices {
     }
 
     put(uri, data){
+        this.buildHeaders()
         return this.http.put(uri, JSON.stringify(data), {headers: this.headers})
                         .map(res => res.json())
                         .catch(err => {
@@ -46,6 +53,7 @@ export class HttpServices {
     }
 
     delete(uri){
+        this.buildHeaders()
         return this.http.delete(uri, {headers: this.headers})
                         .map(res => res.json())
                         .catch(err => {
