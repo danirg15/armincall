@@ -31,7 +31,7 @@ import { ReminderService } from '../services/reminder.service'
                     <td>{{reminder.description}}</td>
                     
                     <td>
-                        {{reminder.time}} {{reminder.date}} 
+                        {{reminder.ISODate | humanizeDate}} 
                         ({{reminder.ISODate | diffForHumans }})
                     </td>
             

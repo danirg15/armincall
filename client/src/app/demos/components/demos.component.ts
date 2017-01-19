@@ -35,8 +35,8 @@ import { DemoService } from '../services/demo.service'
                     <td>{{demo.phone}}</td>
                     <td>{{demo.description}}</td>
                     <td>
-                        {{demo.time}} {{demo.date}} 
-                        ({{demo.ISODate | diffForHumans}})
+                        {{ demo.ISODate | humanizeDate }}
+                        ({{ demo.ISODate | diffForHumans }})
                     </td>
                     <td>
                         <a class="btn btn-danger btn-sm" (click)="delete(demo)">

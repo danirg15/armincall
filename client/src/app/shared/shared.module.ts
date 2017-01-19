@@ -13,6 +13,8 @@ import { AuthService }              from '../auth/services/auth.service'
 import { DiffForHumansPipe }        from './pipes/diffForHumans.pipe'
 import { DurationForHumansPipe }    from './pipes/durationForHumans.pipe'
 import { ReplaceSubstringPipe }     from './pipes/replaceSubstring.pipe'
+import { HumanizeDatePipe }         from './pipes/humanizeDate.pipe'
+
 
 import { PopoverModule }            from 'ng2-popover'
  
@@ -29,7 +31,8 @@ import { PopoverModule }            from 'ng2-popover'
 
         DiffForHumansPipe,
         DurationForHumansPipe,
-        ReplaceSubstringPipe
+        ReplaceSubstringPipe,
+        HumanizeDatePipe
     ],
     exports: [
         NavBarComponent, 
@@ -39,6 +42,7 @@ import { PopoverModule }            from 'ng2-popover'
         DiffForHumansPipe,
         DurationForHumansPipe,
         ReplaceSubstringPipe,
+        HumanizeDatePipe
 
     ],
     providers:[SharedServices, HttpServices, AuthService]
