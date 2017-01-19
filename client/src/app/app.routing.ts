@@ -12,6 +12,7 @@ import {DemoFormComponent}      from './demos/components/demo-form.component'
 import {RemindersComponent}     from './reminders/components/reminders.component'
 import {ReminderFormComponent}  from './reminders/components/reminder-form.component'
 import {NotFoundComponent}      from './shared/components/notfound.component'
+import { InfoBoardComponent } from './info-board/info-board.component';
 
 import {AuthGuard}              from './guards/auth-guard.service'
 
@@ -24,6 +25,11 @@ export const routing = RouterModule.forRoot([ //const helps to avoid accidently 
     { 
         path: 'login',           
         component: LoginComponent
+    },
+    { 
+        path: 'info-board',           
+        component: InfoBoardComponent,
+        canActivate: [AuthGuard]
     },
     { 
         path: 'dashboard',           

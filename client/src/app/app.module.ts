@@ -14,6 +14,7 @@ import { WorkshopsModule }  from './workshops/workshops.module'
 import { AuthModule }       from './auth/auth.module'
 import { DashboardModule }  from './dashboard/dashboard.module'
 import { routing }          from './app.routing';
+import { InfoBoardComponent } from './info-board/info-board.component';
 
 
 @NgModule({
@@ -32,9 +33,10 @@ import { routing }          from './app.routing';
     WorkshopsModule,
     DashboardModule,
     AuthModule
+    
   ],
   declarations: [ 
-    AppComponent
+    AppComponent,InfoBoardComponent
   ],
   bootstrap:    [ AppComponent ]
 })

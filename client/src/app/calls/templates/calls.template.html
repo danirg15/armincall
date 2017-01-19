@@ -15,8 +15,12 @@
     <br><br>
 
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Llamadas Pendientes</a></li>
-        <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Historial</a></li>
+        <li class="active" (click)="loadPendingCalls()">
+            <a data-toggle="tab" aria-expanded="true">Llamadas Pendientes</a>
+        </li>
+        <li class="" (click)="loadHistoryCalls()">
+            <a data-toggle="tab" aria-expanded="false">Historial</a>
+        </li>
     </ul>
 
     <br><br>
@@ -24,19 +28,19 @@
     <table class="table table-striped table-hover ">
         <thead>
             <tr>
-                <th></th>
+                <th [hidden]="discarButtonHidden"></th>
                 <th>Taller</th>
                 <th>Emisor</th>
                 <th>Receptor</th>
                 <th>Fecha/Hora</th>
                 <th>Duración</th>
                 <th>Estado</th>
-                <th>Acción</th>
+                <th [hidden]="discarButtonHidden">Acción</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let call of calls">
-                <td>
+                <td [hidden]="discarButtonHidden">
                     <div class="checkbox" *ngIf="call.workshop">
                         <label>
                             <input type="checkbox" value="" (change)="select($event, call)" />
@@ -55,7 +59,7 @@
                 <td>{{call.date | diffForHumans}}</td>
                 <td>{{call.durationInSeconds | durationForHumans}}</td>
                 <td>{{call.status}}</td>
-                <td>
+                <td [hidden]="discarButtonHidden">
                     <a class="btn btn-warning btn-sm" (click)="discard(call)">
                         Descartar
                     </a>

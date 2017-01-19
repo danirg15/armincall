@@ -1,44 +1,21 @@
-Server
-1. Reminder middleware to send email notifications
-3. Mocha Test
-8. Make donut chart
-11. validators for routes with params & query params as filters
-12. Validate auth routes
+1. Create a component to add some info, like desviations codes, etc. Use the info tooltip
+2. Check the modules stuff, the info-board component is not a module
+3. Arreglar nav-bar, para reusabilidad
+4. Check ports and code of socket.io
 
-update: (ticket_id, fields, callback) => {
-        Ticket.findByIdAndUpdate(ticket_id, fields, callback)
+REFACTOR!!!!
 
-        if (fields.calls) {
-            Call.update(//just one is being updated
-                    { _id: { $in: fields.calls } }, 
-                    { $set:{'isValidated': true} }, 
-            (err) => {})
-        }
-    },
-
-
-    return this.http.get(url)
-                        .map(res => { 
-                            return res.json()
-                        }).catch(error => {
-                            console.log(error)
-                            return Observable.throw(new Error(error.status));
-                        })
+5. Reminder middleware to send email notifications
+6. Mocha Test
+7. Make donut chart
+8. Uptime monitor
+9. Each panel shows the remaining time for next event
+10. Google maps
+11.Total Llamadas
+12.Llamadas Hoy
+13. Area to issue tokens and accounts
 
 
-Client
-0. Linking calls to ticket -> done, Linking ticket to calls -> pending
-1. Uptime monitor
-2. Each panel shows the remaining time for next event
-3. Auth guards, http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial
-6. Tooltips
-7. Google maps
-
-See login form
-https://auth0.com/blog/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/
-
-Total Llamadas
-Llamadas Hoy
 
 /*
         https://github.com/brinkmanjg/ng2-typeahead

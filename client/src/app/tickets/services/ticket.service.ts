@@ -29,4 +29,8 @@ export class TicketService {
         return this.http.get(url)
     }
 
+    getAll() {
+        return this.http.get(this.url)
+    }
+
 }

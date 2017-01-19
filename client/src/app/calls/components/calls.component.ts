@@ -9,13 +9,13 @@ export class CallsComponent implements OnInit, OnDestroy {
     selectedCallIds: any[] = []
     workshopIdOfSelectedCall
     connection
+    discarButtonHidden = false
     
     constructor(private callService: CallService) { 
     }
 
     ngOnInit() { 
-        this.callService.getPendingCalls()
-                        .subscribe(calls => this.calls = calls)
+        this.loadPendingCalls()    
 
         this.connection = this.callService.getNewCalls()
                               .subscribe(newCall => this.calls.push(newCall))
@@ -24,6 +24,20 @@ export class CallsComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.connection.unsubscribe()
     }
+
+    loadHistoryCalls() {
+        this.discarButtonHidden = true
+        this.callService.getAll()
+                            .subscribe(calls => this.calls = calls)
+    }
+
+    loadPendingCalls() {
+        this.discarButtonHidden = false
+        this.callService.getPendingCalls()
+                            .subscribe(calls => this.calls = calls)
+    }
+
+
 
     select($event, call){
         if($event.target.checked){
@@ -34,7 +48,6 @@ export class CallsComponent implements OnInit, OnDestroy {
             var index = this.selectedCallIds.indexOf(call._id)
             this.selectedCallIds.splice(index, 1)
         }
-        console.log(this.selectedCallIds)
     }
 
     discard(call){

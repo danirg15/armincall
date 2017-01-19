@@ -16,6 +16,10 @@ export class CallService {
         return this.http.get(this.url+'?isValidated=false')
     }
 
+    getAll() {
+        return this.http.get(this.url)
+    }
+
     getNewCalls() {
         var socket = null
         var url = 'http://localhost:5000/events/calls/new'

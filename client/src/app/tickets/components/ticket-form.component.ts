@@ -25,7 +25,6 @@ export class TicketFormComponent implements OnInit {
         this.form = fb.group({
             description: ['', Validators.required],
             completed: ['', Validators.required]
-            // time: ['', Validators.compose([Validators.required, BasicValidators.time])]
         })
     }
 

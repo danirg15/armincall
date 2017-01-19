@@ -3,63 +3,7 @@ import { TicketService } from '../services/ticket.service'
 
 @Component({
     selector: 'workshop-tickets',
-    template: `
-        <modal #ticketsModal 
-                title="Incidencias"
-                modalClass="modal-lg"
-                [hideCloseButton]="false"
-                [closeOnEscape]="true"
-                [closeOnOutsideClick]="true"
-        >
-
-            <modal-header>
-                <h2 class="text-center">
-                    <small></small>
-                </h2>
-                
-            </modal-header>
-
-            <modal-content>
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Incidencias Activas</h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-striped table-hover ">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Fecha/Hora</th>
-                                    <th>Descripción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let ticket of tickets">
-                                    <td>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="radio" name="radio" value="{{ticket._id}}" (change)="select($event)" />
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>{{ticket.createdAt | diffForHumans}}</td>
-                                    <td>{{ticket.description}}</td>
-                                </tr>
-                            </tbody>
-                        </table> 
-                    </div>
-                </div>
-
-            </modal-content>
-
-            <modal-footer>
-                <button class="btn btn-default" (click)="ticketsModal.close()">Cancelar</button>
-                <button class="btn btn-primary" [disabled]="selectedTicketId == null" (click)="link()">Link</button>
-            </modal-footer>
-
-        </modal>
-    
-    `
+    templateUrl: '../templates/tickets-of-workshop.template.html'
 })
 export class TicketsOfWorkshopComponent {
     @ViewChild('ticketsModal') modal
@@ -67,8 +11,11 @@ export class TicketsOfWorkshopComponent {
     @Input('call-ids') callIds: any[] = []
     tickets: any[] = []
     selectedTicketId = null
+    ticketMarkedAsCompleted = false
+    descriptionOfNewTicket = ""
 
     constructor(private ticketService: TicketService) { 
+    
     }
 
     show() {
@@ -84,12 +31,30 @@ export class TicketsOfWorkshopComponent {
     }
 
     link(){
-        this.ticketService.updateTicket(this.selectedTicketId, {
-            'workshop': this.workshopId,
-            'calls': this.callIds,
-            'completed': true 
-        }).subscribe( x => {
-            console.log(x)
-        })
+        if(this.selectedTicketId != null && this.descriptionOfNewTicket == '') {
+            this.ticketService.updateTicket(this.selectedTicketId, {
+                'workshop':     this.workshopId,
+                'calls':        this.callIds,
+                'completed':    this.ticketMarkedAsCompleted 
+            }).subscribe( x => {
+                console.log("by id")
+                this.modal.close()
+            })
+        }
+        else if(this.selectedTicketId == null && this.descriptionOfNewTicket != '') {
+            this.ticketService.save({
+                'workshop':     this.workshopId,
+                'calls':        this.callIds,
+                'completed':    this.ticketMarkedAsCompleted,
+                'description':  this.descriptionOfNewTicket
+            }).subscribe( x => {
+                console.log("by descrip")
+                this.modal.close()
+            })
+        }
+        else {
+            alert('Something went wrong!')
+            return    
+        }
     }
 }
