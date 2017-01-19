@@ -1,0 +1,65 @@
+<nav-bar></nav-bar>
+
+<div class="container">
+
+        <br>  
+
+        <panel  routerLink="/calls" 
+                [title]="'Llamadas'" 
+                [counter]="badges.pendingCalls" 
+                [panel-color]="'#e84c3d'"
+                [fa-icon]="'fa fa-phone fa-4x'"  
+        >
+        </panel>
+
+        <panel  routerLink="/tickets" 
+                [title]="'Incidencias'" 
+                [counter]="badges.pendingTickets" 
+                [panel-color]="'#f39c11'"
+                [fa-icon]="'fa fa-exclamation-triangle fa-4x'"
+        >
+        </panel>
+
+        <panel  routerLink="/demos" 
+                [title]="'Demos'" 
+                [counter]="badges.pendingDemos" 
+                [panel-color]="'#1395fd'"
+                [fa-icon]="'fa fa-desktop fa-4x'"
+        >
+        </panel>
+
+        <panel  routerLink="/reminders" 
+                [title]="'Recordatorios'" 
+                [counter]="badges.pendingReminders" 
+                [panel-color]="'#1abc9c'"
+                [fa-icon]="'fa fa-bell fa-4x'"  
+        >
+        </panel>
+
+
+        <!--<div class="row">
+                <div class="col-md-12">
+                        <div class="well pull-right">
+                                <h6>Estado de sistemas</h6>
+                                <i title="Activo" class="fa fa-square fa-1x" aria-hidden="true" style="color:#19a719;"></i>&nbsp; <small>ARMIN</small>
+                                <i title="Inactivo" class="fa fa-square fa-1x" aria-hidden="true" style="color:#e42e2e;"></i>&nbsp; <small>ARMIN GEST</small>
+                        </div>
+                </div>
+        </div>-->
+
+        <p>&nbsp;</p>
+
+        <div class="row">
+                <div class="col-md-6">
+                        <div class="well">
+                                <line-chart></line-chart>
+                        </div>
+                </div>
+                <div class="col-md-6">
+                        <div class="well">
+                                <doughnut-chart></doughnut-chart>
+                        </div>
+                </div>
+        </div> 
+
+</div>
