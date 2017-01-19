@@ -53,14 +53,13 @@
 
         </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" #f>
+      <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control"  #search placeholder="Taller..." (change)="test($event)" >
+          <input type="text" class="form-control"  #search placeholder="Taller..." >
         </div>
         
-        <button (click)="test(search)" class="btn btn-default" [routerLink]="['/workshops', {q: search.value}]">Buscar</button>
+        <button type="button" (click)="find(search.value)" class="btn btn-default" >Buscar</button>
 
-        
         <i class="fa fa-info-circle" style="color:white; margin-left:15px;"></i>   
       </form>
       <ul class="nav navbar-nav navbar-right">

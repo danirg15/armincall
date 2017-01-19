@@ -12,7 +12,11 @@ import { ReminderService } from '../services/reminder.service'
             <h2>Recordatorios</h2>
         </div>
 
-        <a routerLink="/reminders/new" class="btn btn-primary btn-sm pull-right">Nuevo Recordatorio</a><br><br>
+        <a routerLink="/reminders/new" class="btn btn-primary btn-sm pull-right">
+            <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Recordatorio
+        </a>
+        
+        <br><br>
 
         <table class="table table-striped table-hover ">
             <thead>
@@ -29,7 +33,7 @@ import { ReminderService } from '../services/reminder.service'
                     <td>
                         {{reminder.time}} {{reminder.date}} 
                         ({{reminder.ISODate | diffForHumans }})
-                    <td>
+                    </td>
             
                     <td>
                         <a class="btn btn-danger btn-sm" (click)="delete(reminder)">

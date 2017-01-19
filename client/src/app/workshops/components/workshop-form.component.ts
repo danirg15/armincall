@@ -56,9 +56,9 @@ export class WorkshopFormComponent implements OnInit {
         })    
     }
 
-    onSubmit(){
-        var id
-        this.form.value.phone = this.form.value.phone.split(',')
+    onSubmit($event){
+        var id        
+        this.form.value.phone = this.form.value.phone.toString().split(',')
 
         this.route.params.subscribe( params => {
             id = params['id']
@@ -75,6 +75,7 @@ export class WorkshopFormComponent implements OnInit {
             this.router.navigate(['/workshops'])
         })       
 
+        $event.preventDefault()
     }
 
 

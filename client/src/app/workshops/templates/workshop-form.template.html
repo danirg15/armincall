@@ -6,7 +6,7 @@
 
   <div class="well">
 
-    <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit($event)">
       <fieldset>
         <legend>{{title}}</legend>
 

@@ -11,7 +11,11 @@ import { DemoService } from '../services/demo.service'
             <h2>Demos</h2>
         </div>
 
-        <a routerLink="/demos/new" class="btn btn-primary btn-sm pull-right">Nueva Demo</a> <br><br>
+        <a routerLink="/demos/new" class="btn btn-primary btn-sm pull-right">
+            <i class="fa fa-plus" aria-hidden="true"></i> Nueva Demo
+        </a> 
+        
+        <br><br>
 
         <table class="table table-striped table-hover ">
             <thead>

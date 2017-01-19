@@ -9,7 +9,6 @@ import { AuthGuard }        from '../guards/auth-guard.service'
 
 import { SharedModule }     from '../shared/shared.module'
 
-
 @NgModule({
     imports: [
         SharedModule,

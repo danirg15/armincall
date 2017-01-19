@@ -32,8 +32,8 @@ export class NavBarComponent implements OnInit{
         this.router.navigate(['/login'])
     }
    
-    test(e){
-        console.log(e)
+    find(keyword){
+        this.router.navigate(['/workshops', {'q': keyword}])
     }
 
 }
