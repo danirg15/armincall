@@ -7,6 +7,7 @@ import { ModalModule }      from 'ng2-modal'
 
 import { TicketFormComponent }          from './components/ticket-form.component'
 import { TicketsComponent }             from './components/tickets.component'
+import { TicketDetailComponent }        from './components/ticket-detail.component'
 import { TicketsOfWorkshopComponent }   from './components/tickets-of-workshop.component'
 
 import { WorkshopsModule }  from '../workshops/workshops.module'
@@ -25,11 +26,10 @@ import { TicketService }    from './services/ticket.service'
     declarations: [
         TicketsComponent,
         TicketFormComponent,
-        TicketsOfWorkshopComponent
+        TicketsOfWorkshopComponent,
+        TicketDetailComponent
     ],
     exports: [
-        TicketsComponent,
-        TicketFormComponent,
         TicketsOfWorkshopComponent
     ],
     providers: [

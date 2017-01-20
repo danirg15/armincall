@@ -10,7 +10,8 @@ const DemoSchema = mongoose.Schema({
 	description:	{"type": String},
 	date: 			{"type": String, "require": true},
 	time: 			{"type": String, "require": true},
-	ISODate: 		{"type": Date, 	 "require": true}
+	ISODate: 		{"type": Date, 	 "require": true},
+	completed: 		{"type": Boolean, "default": false}
 })
 
 

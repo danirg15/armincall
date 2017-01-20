@@ -1,17 +1,18 @@
 import { Router, RouterModule } from '@angular/router'
 
-import {LoginComponent}         from './auth/components/login.component'
-import {DashboardComponent}     from './dashboard/components/dashboard.component'
-import {CallsComponent}         from './calls/components/calls.component'
-import {TicketsComponent}       from './tickets/components/tickets.component'
-import {TicketFormComponent}    from './tickets/components/ticket-form.component'
-import {WorkshopsComponent}     from './workshops/components/workshops.component'
-import {WorkshopFormComponent}  from './workshops/components/workshop-form.component' 
-import {DemosComponent}         from './demos/components/demos.component'
-import {DemoFormComponent}      from './demos/components/demo-form.component'
-import {RemindersComponent}     from './reminders/components/reminders.component'
-import {ReminderFormComponent}  from './reminders/components/reminder-form.component'
-import {NotFoundComponent}      from './shared/components/notfound.component'
+import { LoginComponent }         from './auth/components/login.component'
+import { DashboardComponent }     from './dashboard/components/dashboard.component'
+import { CallsComponent }         from './calls/components/calls.component'
+import { TicketsComponent }       from './tickets/components/tickets.component'
+import { TicketFormComponent }    from './tickets/components/ticket-form.component'
+import { TicketDetailComponent }  from './tickets/components/ticket-detail.component'
+import { WorkshopsComponent }     from './workshops/components/workshops.component'
+import { WorkshopFormComponent }  from './workshops/components/workshop-form.component' 
+import { DemosComponent }         from './demos/components/demos.component'
+import { DemoFormComponent }      from './demos/components/demo-form.component'
+import { RemindersComponent }     from './reminders/components/reminders.component'
+import { ReminderFormComponent }  from './reminders/components/reminder-form.component'
+import { NotFoundComponent }      from './shared/components/notfound.component'
 import { InfoBoardComponent }   from './info-board/info-board.component';
 
 import {AuthGuard}              from './guards/auth-guard.service'
@@ -59,6 +60,11 @@ export const routing = RouterModule.forRoot([ //const helps to avoid accidently 
     { 
         path: 'tickets',             
         component: TicketsComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+        path: 'tickets/:id',             
+        component: TicketDetailComponent,
         canActivate: [AuthGuard]
     },
     { 

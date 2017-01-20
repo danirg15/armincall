@@ -22,7 +22,7 @@ export class TicketsComponent implements OnInit {
                           .subscribe( tickets => this.tickets = tickets )
     }
 
-    loadHistoryTickets() {
+    loadTicketsHistory() {
         this.discardButtonHidden = true
         this.ticketService.getAll()
                           .subscribe( tickets => this.tickets = tickets )

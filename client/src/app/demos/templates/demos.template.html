@@ -10,6 +10,15 @@
     <i class="fa fa-plus" aria-hidden="true"></i> Nueva Demo
 </a> 
 
+<ul class="nav nav-tabs">
+    <li class="active" (click)="loadPendingDemos()">
+        <a  data-toggle="tab" aria-expanded="true">Demos Pendientes</a>
+    </li>
+    <li class="" (click)="loadDemosHistory()">
+        <a  data-toggle="tab" aria-expanded="false">Historial</a>
+    </li>
+</ul>
+
 <br><br>
 
 <table class="table table-striped table-hover ">
@@ -20,7 +29,7 @@
             <th>Teléfono</th>
             <th>Descripción</th>
             <th>Fecha/Hora</th>
-            <th>Acción</th>
+            <th [hidden]="discardButtonHidden">Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -34,9 +43,11 @@
                 ({{ demo.ISODate | diffForHumans }})
             </td>
             <td>
-                <a class="btn btn-danger btn-sm" (click)="delete(demo)">
-                    <i  class="fa fa-trash-o" aria-hidden="true"></i>
-                </a>
+                <span [hidden]="discardButtonHidden">
+                    <a class="btn btn-danger btn-sm" (click)="delete(demo)">
+                        <i  class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </span>
             </td>
         </tr>
     </tbody>

@@ -1,13 +1,13 @@
-1. Add a number to the ticket history with the num of calls attached & give access to them
-2. Add a reference to the ticket of a given calll
+1. give access to calls from ticket
 3. Save ticket from the incomming call modal
-4. Handle the time showing the modal of incomming call
 5. Create an specific url to validate calls instead of do it inside ticketsController
-6. Make tickets lupa
-7. History demos 
+8. If the incomming number is not recognize, add a button to redirecto to new workshop-form
+and passing the number as param filling up the field, and ready to complete all the remanining fields
+9. IncommingCall modal should be available anywhere
 
 ////////
 
+4. Try Hapi.js
 5. Reminder middleware to send email notifications
 6. Mocha Test
 7. Make donut chart
@@ -18,6 +18,8 @@
 12.Llamadas Hoy
 13. Area to issue tokens and accounts
 3. Arreglar nav-bar, para reusabilidad
+9. Order by, calls, tickets, demos, reminders...
+10. Tickets category
 
 REFACTOR!!!!
 

@@ -13,14 +13,16 @@ export class DemoService {
         return this.http.post(this.url, demo)
     }
 
+    getPendingDemos(){
+        return this.http.get(this.url+'?completed=false')
+    }
+
     getAll(){
         return this.http.get(this.url)
     }
 
-    delete(demo){
-        return this.http.delete(this.url+demo._id)
+    markDemoAsCompleted(demo){
+        return this.http.put(this.url+demo._id, {'completed': true})
     }
-
-
 
 }

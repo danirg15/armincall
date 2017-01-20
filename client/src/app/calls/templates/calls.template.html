@@ -56,7 +56,7 @@
                 </td>
                 <td>{{call.callerNumber}}</td>
                 <td>{{call.recieverNumber}}</td>
-                <td>{{call.date | diffForHumans}}</td>
+                <td>{{call.createdAt | humanizeDate}} ({{call.date | diffForHumans}})</td>
                 <td>{{call.durationInSeconds | durationForHumans}}</td>
                 <td>{{call.status}}</td>
                 <td [hidden]="discarButtonHidden">

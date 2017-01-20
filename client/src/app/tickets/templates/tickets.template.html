@@ -12,7 +12,7 @@
     <li class="active" (click)="loadPendingTickets()">
         <a  data-toggle="tab" aria-expanded="true">Incidencias Pendientes</a>
     </li>
-    <li class="" (click)="loadHistoryTickets()">
+    <li class="" (click)="loadTicketsHistory()">
         <a  data-toggle="tab" aria-expanded="false">Historial</a>
     </li>
 </ul>
@@ -46,7 +46,7 @@
             </td>
             <td>{{ ticket.category }}</td>
             <td>{{ ticket.description }}</td>
-            <td>{{ ticket.createdAt | diffForHumans }}</td>
+            <td>{{ ticket.createdAt | humanizeDate }} ({{ ticket.createdAt | diffForHumans }})</td>
             <td>
                 <a class="btn btn-primary btn-sm" [routerLink]="['/tickets', ticket._id]" >
                     <i class="fa fa-search" aria-hidden="true"></i>
