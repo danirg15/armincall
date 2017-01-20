@@ -8,7 +8,7 @@ export class CallsComponent implements OnInit, OnDestroy {
     calls: any[] = []
     selectedCallIds: any[] = []
     workshopIdOfSelectedCall
-    connection
+    eventsConnection
     discarButtonHidden = false
     
     constructor(private callService: CallService) { 
@@ -16,13 +16,12 @@ export class CallsComponent implements OnInit, OnDestroy {
 
     ngOnInit() { 
         this.loadPendingCalls()    
-
-        this.connection = this.callService.getNewCalls()
+        this.eventsConnection = this.callService.getNewCalls()
                               .subscribe(newCall => this.calls.push(newCall))
     }
     
     ngOnDestroy() {
-        this.connection.unsubscribe()
+        this.eventsConnection.unsubscribe()
     }
 
     loadHistoryCalls() {

@@ -1,8 +1,8 @@
 import {Http, Headers}  from '@angular/http'
 import {Injectable}     from '@angular/core'
-import {Router} from '@angular/router'
+import {Router}         from '@angular/router'
 import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Rx'
+import {Observable}     from 'rxjs/Rx'
 
 @Injectable()
 export class HttpServices {

@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit}      from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {BasicValidators} from '../../shared/validators/basicValidators'
-import {WorkshopService} from '../services/workshop.service'
-import {SharedServices} from '../../shared/services/shared.service'
-import {Workshop} from '../workshop'
+import {BasicValidators}    from '../../shared/validators/basicValidators'
+import {WorkshopService}    from '../services/workshop.service'
+import {SharedServices}     from '../../shared/services/shared.service'
+import {Workshop}           from '../workshop'
 
 
 @Component({

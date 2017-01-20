@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core'
-import {Router} from '@angular/router';
-import {SharedServices} from '../services/shared.service'
-import { AuthService } from '../../auth/services/auth.service'
+import {Router}             from '@angular/router';
+import {SharedServices}     from '../services/shared.service'
+import { AuthService }      from '../../auth/services/auth.service'
 
 @Component({
     selector: 'nav-bar',

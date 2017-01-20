@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }        from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { BasicValidators } from '../../shared/validators/basicValidators'
-import { DemoService } from '../services/demo.service'
-import { SharedServices } from '../../shared/services/shared.service'
-import { Router } from '@angular/router';
+import { BasicValidators }          from '../../shared/validators/basicValidators'
+import { DemoService }              from '../services/demo.service'
+import { SharedServices }           from '../../shared/services/shared.service'
+import { Router }                   from '@angular/router';
 
 
 @Component({

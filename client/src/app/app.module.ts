@@ -24,7 +24,6 @@ import { InfoBoardComponent } from './info-board/info-board.component';
     HttpModule,
     RouterModule,
     routing,
-
     CallsModule,
     DemosModule,
     RemindersModule,
@@ -33,7 +32,6 @@ import { InfoBoardComponent } from './info-board/info-board.component';
     WorkshopsModule,
     DashboardModule,
     AuthModule
-    
   ],
   declarations: [ 
     AppComponent,InfoBoardComponent

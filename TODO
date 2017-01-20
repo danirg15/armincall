@@ -1,8 +1,9 @@
-1. Create a component to add some info, like desviations codes, etc. Use the info tooltip
-2. Check the modules stuff, the info-board component is not a module
 3. Arreglar nav-bar, para reusabilidad
 4. Check ports and code of socket.io
-
+5. Add a number to the ticket history with the num of calls attached & give access to them
+6. Add a reference to the ticket of a given calll
+7. Save ticket from the incomming call modal
+8. Handle the time showing the modal of incomming call
 REFACTOR!!!!
 
 5. Reminder middleware to send email notifications

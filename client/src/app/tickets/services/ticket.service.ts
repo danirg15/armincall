@@ -1,7 +1,5 @@
 import {HttpServices}   from '../../shared/services/http.services'
-import {Injectable} from '@angular/core'
-import 'rxjs/add/operator/map';
-
+import {Injectable}     from '@angular/core'
 
 @Injectable()
 export class TicketService {

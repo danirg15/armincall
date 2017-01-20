@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }        from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { BasicValidators } from '../../shared/validators/basicValidators'
-import { TicketService } from '../services/ticket.service'
-import { WorkshopService } from '../../workshops/services/workshop.service'
-import { Router, ActivatedRoute } from '@angular/router';
-
-import { Ticket } from '../ticket'
+import { BasicValidators }          from '../../shared/validators/basicValidators'
+import { TicketService }            from '../services/ticket.service'
+import { WorkshopService }          from '../../workshops/services/workshop.service'
+import { Router, ActivatedRoute }   from '@angular/router';
+import { Ticket }                   from '../ticket'
 
 @Component({
     selector: 'ticket-form',

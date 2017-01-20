@@ -1,56 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ReminderService } from '../services/reminder.service'
+import { Component, OnInit }    from '@angular/core';
+import { ReminderService }      from '../services/reminder.service'
 
 @Component({
-   
-    template: `
-        <nav-bar></nav-bar>
-
-        <div class="container">
-
-        <div class="page-header">
-            <h2>Recordatorios</h2>
-        </div>
-
-        <a routerLink="/reminders/new" class="btn btn-primary btn-sm pull-right">
-            <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Recordatorio
-        </a>
-        
-        <br><br>
-
-        <table class="table table-striped table-hover ">
-            <thead>
-                <tr>
-                    <th>Descripción</th>
-                    <th>Fecha/Hora</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let reminder of reminders">
-                    <td>{{reminder.description}}</td>
-                    
-                    <td>
-                        {{reminder.ISODate | humanizeDate}} 
-                        ({{reminder.ISODate | diffForHumans }})
-                    </td>
-            
-                    <td>
-                        <a class="btn btn-danger btn-sm" (click)="delete(reminder)">
-                            <i  class="fa fa-trash-o" aria-hidden="true"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table> 
-
-        </div>
-    `
+    templateUrl: '../templates/reminders.template.html'
 })
 export class RemindersComponent implements OnInit {
     reminders: any[]
 
-    
     constructor(private reminderService: ReminderService) { 
 
     }
@@ -73,7 +29,6 @@ export class RemindersComponent implements OnInit {
                                 alert('Error al eliminar')
                                 this.reminders.splice(i, 0, reminder)   
                             })
-        
     }
 
 

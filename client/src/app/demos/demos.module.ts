@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { SharedModule } from '../shared/shared.module'
+import { NgModule }             from '@angular/core'
+import { CommonModule }         from '@angular/common'
+import { SharedModule }         from '../shared/shared.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { RouterModule } from '@angular/router'
+import { RouterModule }         from '@angular/router'
 
-import { DemosComponent } from './components/demos.component'
-import { DemoFormComponent } from './components/demo-form.component'
+import { DemosComponent }       from './components/demos.component'
+import { DemoFormComponent }    from './components/demo-form.component'
 
-import { DemoService } from './services/demo.service'
+import { DemoService }          from './services/demo.service'
 
 
 @NgModule({
