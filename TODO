@@ -1,10 +1,12 @@
-3. Arreglar nav-bar, para reusabilidad
-4. Check ports and code of socket.io
-5. Add a number to the ticket history with the num of calls attached & give access to them
-6. Add a reference to the ticket of a given calll
-7. Save ticket from the incomming call modal
-8. Handle the time showing the modal of incomming call
-REFACTOR!!!!
+1. Add a number to the ticket history with the num of calls attached & give access to them
+2. Add a reference to the ticket of a given calll
+3. Save ticket from the incomming call modal
+4. Handle the time showing the modal of incomming call
+5. Create an specific url to validate calls instead of do it inside ticketsController
+6. Make tickets lupa
+7. History demos 
+
+////////
 
 5. Reminder middleware to send email notifications
 6. Mocha Test
@@ -15,7 +17,9 @@ REFACTOR!!!!
 11.Total Llamadas
 12.Llamadas Hoy
 13. Area to issue tokens and accounts
+3. Arreglar nav-bar, para reusabilidad
 
+REFACTOR!!!!
 
 
 /*

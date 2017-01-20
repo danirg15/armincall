@@ -3,7 +3,10 @@ const Call = require('../models/call')
 
 module.exports = {
     getAll: (options, callback) => {
-        Ticket.find(options).populate('workshop').exec(callback)
+        Ticket.find(options)
+              .populate('workshop')
+              .populate('calls')
+              .exec(callback)
     },
 
     getOne: (ticket_id, callback) => {

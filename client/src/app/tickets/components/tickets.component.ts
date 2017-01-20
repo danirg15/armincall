@@ -5,7 +5,6 @@ import { TicketService } from '../services/ticket.service'
     templateUrl: '../templates/tickets.template.html'
 })
 export class TicketsComponent implements OnInit {
-    // linkingAllowed = false
     tickets: any[] = []
     selectedTickets: any[] = []
     discardButtonHidden = false
@@ -38,13 +37,6 @@ export class TicketsComponent implements OnInit {
             this.selectedTickets.splice(index, 1)
         }
     }
-
-    // checkLinking() {
-    //     if(this.selectedTickets.length > 0)
-    //         this.linkingAllowed = true
-    //     else
-    //         this.linkingAllowed = false
-    // }
 
     setAsCompleted(ticket){
         if(!confirm('¿Estas seguro que deseas resolver esta incidencia?')) 

@@ -36,23 +36,31 @@
                 <a [routerLink]="['/workshops', ticket.workshop._id]"> 
                     {{ ticket.workshop.name }} 
                 </a> 
+                &nbsp;
+                <span class="label label-info" 
+                      style="font-size: 1.1rem"
+                      *ngIf="ticket.calls.length > 0">
+                    <i class="fa fa-volume-control-phone" aria-hidden="true"></i> 
+                    {{ ticket.calls.length }}
+                </span>
             </td>
             <td>{{ ticket.category }}</td>
             <td>{{ ticket.description }}</td>
             <td>{{ ticket.createdAt | diffForHumans }}</td>
             <td>
-                <div>
-                    <a class="btn btn-primary btn-sm" [routerLink]="['/tickets', ticket._id]" >
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </a>
-                </div>
+                <a class="btn btn-primary btn-sm" [routerLink]="['/tickets', ticket._id]" >
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+                
                 &nbsp;
-                <div [hidden]="discardButtonHidden">
+
+                <span [hidden]="discardButtonHidden">
                     <a  class="btn btn-warning btn-sm" 
                         (click)="setAsCompleted(ticket)">
                         Descartar
                     </a>
-                </div>
+                </span>
+
             </td>
         </tr>
     </tbody>
