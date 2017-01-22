@@ -40,10 +40,10 @@ export class WorkshopFormComponent implements OnInit {
     }
 
     ngOnInit(){
-        var id
-        
+        this.workshop.phone = this.route.snapshot.params['number']
+
         this.route.params.subscribe( params => {
-            id = params['id']
+            let id = params['id']
 
             if(id){
                 this.workshopService.getWorkshop(id)

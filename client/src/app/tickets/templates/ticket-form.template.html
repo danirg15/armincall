@@ -8,11 +8,20 @@
 
     <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
       <fieldset>
-        <legend>{{title}} <b>{{workshop.name}}</b></legend>
+        <legend>{{title}}</legend>
 
         <div class="row">
 
           <div class="col-md-12">
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Taller</label>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" readonly 
+                    value="{{workshop.name}}">
+                </div>
+            </div>
+
             <div class="form-group" [class.has-error]="form.controls.description.touched && form.controls.description.errors">
               <label for="inputName" class="col-lg-3 control-label">* Descripción</label>
               <div class="col-lg-9">

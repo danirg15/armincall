@@ -32,13 +32,22 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Distribuidor:</label>
                     <div class="col-lg-9">
-                        <input type="text" class="form-control" readonly value="Ramirez">
+                        <input type="text" class="form-control" readonly 
+                        value="{{incommingCall.workshop?.distributor}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Dirección:</label>
                     <div class="col-lg-9">
-                        <input type="text" class="form-control" readonly value="Ramirez">
+                        <input type="text" class="form-control" readonly 
+                        value="{{incommingCall.workshop?.address?.description}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Licencia:</label>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control" readonly 
+                        value="ARMIN PRO, ARMIN GEST (fake)">
                     </div>
                 </div>
             </form>
@@ -46,14 +55,16 @@
 
         <div class="col-md-offset-2 col-md-5">  
             <div *ngIf="incommingCall.workshop">
-                <div class="form-group">
-                    <label><u>Nueva Incidencia</u></label>
-                    <textarea #description class="form-control" rows="3"></textarea>
-                </div>
-                <button class="btn btn-primary btn-sm"
-                            (click)="saveTicket(incommingCall.workshop, description.value)">
-                            Guardar
-                </button>      
+                <a class="btn btn-primary btn-sm"
+                   [routerLink]="['/tickets/new', incommingCall.workshop._id]">
+                   Abrir incidencia
+                </a> 
+            </div>
+            <div *ngIf="!incommingCall.workshop">
+                <a class="btn btn-primary btn-sm"
+                   [routerLink]="['/workshops/new', {'number': incommingCall.number}]">
+                   Crear taller
+                </a> 
             </div>
         </div>
 

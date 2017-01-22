@@ -13,6 +13,7 @@ export class IncommingComponent implements OnInit, OnDestroy {
     constructor(private callService: CallService) { }
 
     ngOnInit() { 
+
         this.eventsConnection = this.callService.getIncommingCalls()
                         .subscribe( incomming => {
                             this.modal.open()
@@ -24,9 +25,9 @@ export class IncommingComponent implements OnInit, OnDestroy {
         this.eventsConnection.unsubscribe()
     }
 
-    saveTicket(workshop, description){
-        console.log(description)
-        console.log(workshop)
-    }
+    // saveTicket(workshop, description){
+    //     console.log(description)
+    //     console.log(workshop)
+    // }
 
 }

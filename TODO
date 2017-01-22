@@ -1,11 +1,7 @@
-3. Save ticket from the incomming call modal, add just a button to redirect to ticket form
-5. Create an specific url to validate calls instead of do it inside ticketsController
-8. If the incomming number is not recognize, add a button to redirecto to new workshop-form
-and passing the number as param filling up the field, and ready to complete all the remanining fields
-9. IncommingCall modal should be available anywhere
-10. InfoBoard: Add licence details, prices, sms's, emails, etc
-11. When a ticket is completed, save the date
-12. Add a coloured phone icon to calls depending on the status
+1. Create an specific url to validate calls instead of do it inside ticketsController
+2. IncommingCall modal should be available anywhere
+3. InfoBoard: Add licence details, prices, sms's, emails, etc
+4. When a ticket is completed, save the date
 ////////
 
 SSL/HTTPS

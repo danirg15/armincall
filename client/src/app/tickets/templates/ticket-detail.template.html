@@ -12,7 +12,7 @@
                     <label for="" class="col-sm-2 control-label"><strong>Taller</strong></label>
                     <div class="col-sm-10">
                         <span class="form-control">
-                            <a routerLink="/workshops/{{ticket.workshop._id}}">
+                            <a [routerLink]="['/workshops', ticket.workshop._id]">
                                 {{ ticket.workshop.name }}
                             </a>
                         </span>
@@ -83,7 +83,41 @@
                         <td>{{call.recieverNumber}}</td>
                         <td>{{call.createdAt | humanizeDate}} ({{call.date | diffForHumans}})</td>
                         <td>{{call.durationInSeconds | durationForHumans}}</td>
-                        <td>{{call.status}}</td>
+                        <td>
+                        
+                            <div *ngIf="call.status == 'Respondida'">
+                                <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
+                                    <i class="fa fa-phone-square fa-2x" 
+                                    style="color:green"
+                                    aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                            <div *ngIf="call.status == 'No Respondida'">
+                                <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
+                                    <i class="fa fa-phone-square fa-2x" 
+                                    style="color:red"
+                                    aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                            <div *ngIf="call.status == 'Ocupada'">
+                                <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
+                                    <i class="fa fa-phone-square fa-2x" 
+                                    style="color:#ff9800"
+                                    aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                            <div *ngIf="call.status == 'Fallada'">
+                                <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
+                                    <i class="fa fa-phone-square fa-2x" 
+                                    style="color:grey"
+                                    aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                        </td>
                     </tr>
                 </tbody>
             </table> 
