@@ -10,7 +10,10 @@ module.exports = {
     },
 
     getOne: (ticket_id, callback) => {
-        Ticket.findById(ticket_id, callback)
+        Ticket.findById(ticket_id)
+              .populate('workshop')
+              .populate('calls')
+              .exec(callback)
     },
 
     store: (ticket, callback) => {

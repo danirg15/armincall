@@ -31,4 +31,8 @@ export class TicketService {
         return this.http.get(this.url)
     }
 
+    getOne(id) {
+        return this.http.get(this.url+'/'+id)
+    }
+
 }

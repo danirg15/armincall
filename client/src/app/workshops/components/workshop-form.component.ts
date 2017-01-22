@@ -56,12 +56,11 @@ export class WorkshopFormComponent implements OnInit {
         })    
     }
 
-    onSubmit($event){
-        var id        
+    onSubmit($event){      
         this.form.value.phone = this.form.value.phone.toString().split(',')
 
         this.route.params.subscribe( params => {
-            id = params['id']
+            let id = params['id']
 
             if(id){
                 this.workshopService.updateWorkshop(id, this.form.value)
