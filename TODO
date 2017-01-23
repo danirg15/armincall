@@ -3,6 +3,11 @@
 3. InfoBoard: Add licence details, prices, sms's, emails, etc
 ////////
 
+iptables -I INPUT 1 -i eth0 -p tcp --dport 5000 -j ACCEPT
+
+nginx: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04
+
+
 SSL/HTTPS
 4. Try Hapi.js https://scotch.io/tutorials/making-a-restful-api-with-hapi-js?utm_content=buffer49fca&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 5. Reminder middleware to send email notifications
