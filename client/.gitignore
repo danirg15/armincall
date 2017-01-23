@@ -3,4 +3,3 @@ node_modules/
 *.js.map
 !systemjs.config.js
 .vscode
-dist/
