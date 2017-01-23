@@ -17,7 +17,7 @@ import { CallService }          from './services/call.service'
         TicketsModule
     ],
     declarations: [CallsComponent, IncommingComponent],
-    exports: [CallsComponent],
+    exports: [CallsComponent, IncommingComponent],
     providers: [CallService]
 })
 export class CallsModule {

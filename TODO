@@ -5,6 +5,8 @@
 
 iptables -I INPUT 1 -i eth0 -p tcp --dport 5000 -j ACCEPT
 
+sudo service nginx restart
+
 nginx: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04
 
 
