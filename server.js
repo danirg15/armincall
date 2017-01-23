@@ -50,12 +50,21 @@ app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
 
 
-//Serve client app
-app.use(express.static(path.join(__dirname, 'client/dist')));
-
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, '/client/dist/index.html'))
+app.get('/socket.io/socket.io.js', (req, res) => {
+	res.sendFile(path.join(__dirname,'./node_modules/socket.io-client/socket.io.js'))
 })
+
+app.get('/test', (req, res) => {
+	res.sendFile(path.join(__dirname, './test.html'))
+})
+
+
+//Serve client app
+// app.use(express.static(path.join(__dirname, 'client/dist')));
+
+// app.get('*', (req, res) => {
+// 	res.sendFile(path.join(__dirname, '/client/dist/index.html'))
+// })
 
 
 SocketIOEventEmitter.bind({
