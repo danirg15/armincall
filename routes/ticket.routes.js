@@ -26,7 +26,6 @@ router.post('/tickets', validate(validator.ticket.full), (req, res) => {
 })
 
 router.put('/tickets/:id', validate(validator.ticket.optional), (req, res) => {
-	console.log(req.body)
 	TicketController.update(req.params.id, req.body, (err) => {
 		if (err) res.status(500).json(err)
         else res.status(200).json({})

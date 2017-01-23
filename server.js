@@ -37,17 +37,7 @@ require('./database').connect(config.DB_URI)
 //		Routing
 //--------------------------------------------
 
-// require('./auth').getNewToken({
-// 	'issuer': 'ArminCall',
-// 	//'audience': 'third-party'
-// }, {
-// 	//"company": "MindsNet",
-//     "id": 1,
-//     "perms": "111111"
-// }, (err, token) => {
-// 	if (err) throw err
-// 	console.log(token)
-// })
+
 
 app.use('/api', require('./routes/auth.routes'))
 app.use('/api', auth, require('./routes/call.routes'))
@@ -78,6 +68,40 @@ SocketIOEventEmitter.bind({
 })
 
 SocketIOEventEmitter.listen()
+
+
+
+// function stringToSec(str) {
+// 	let s = str.split(':')
+// 	let hou = Number(s[0].slice(0, -1))
+// 	let min = Number(s[1].slice(0, -1))
+// 	let sec = Number(s[2].slice(0, -1))
+
+// 	return hou*60*60 + min*60 + sec
+// }
+
+// const Call = require('./models/call')
+// const test = require('./database/calls.json')
+// const moment = require('moment')
+
+// test.forEach( (t) => {
+// 	let a = new Call({
+// 		'callerNumber': t.Origen,
+// 		'recieverNumber': t.Destino,
+// 		'date': moment(t.Fecha + ' ' + t.Hora, 'DD/MM/YYYY HH:mm:ss').toISOString(),
+// 		'durationInSeconds': stringToSec(t.Duracion),
+// 		'status': t.Estado,
+// 		'isValidated': true
+// 	})
+
+// 	a.save(err => {
+// 			console.log(a)
+// 	})
+	
+// })
+
+
+
 
 //--------------------------------------------
 //		Runnn!

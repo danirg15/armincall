@@ -1,11 +1,10 @@
-1. Create an specific url to validate calls instead of do it inside ticketsController
+1. Reprocess calls to asign wokrshop to unidentified call
 2. IncommingCall modal should be available anywhere
 3. InfoBoard: Add licence details, prices, sms's, emails, etc
-4. When a ticket is completed, save the date
 ////////
 
 SSL/HTTPS
-4. Try Hapi.js
+4. Try Hapi.js https://scotch.io/tutorials/making-a-restful-api-with-hapi-js?utm_content=buffer49fca&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 5. Reminder middleware to send email notifications
 6. Mocha Test
 7. Make donut chart

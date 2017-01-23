@@ -10,6 +10,7 @@ export class CallService implements OnInit{
     eventsBaseURL = environment.socketIOBaseEndpoint
 
     constructor(private http: HttpServices) { 
+        console.log(this.eventsBaseURL)
     }
 
     ngOnInit() {

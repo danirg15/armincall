@@ -50,7 +50,12 @@
                     <label for="" class="col-sm-2 control-label"><strong>Resuelta</strong></label>
                     <div class="col-sm-10">
                         <span class="form-control">
-                            {{ ticket.completed ? 'Si' : 'No' }} (poner fecha de resuelta)
+                            {{ ticket.completed ? 'Si' : 'No' }} 
+                            
+                            <span *ngIf="ticket.completed" >
+                                ({{ ticket.updatedAt | humanizeDate }})
+                            </span>
+                            
                         </span>
                     </div>
                 </div>

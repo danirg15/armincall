@@ -12,7 +12,8 @@ const Ticket            = require('../models/ticket')
 const checkPermsForRoute = require('../middleware/permissions')
 
 router.get('/calls', checkPermsForRoute('CALLS_ALL'), (req, res) => {
-    CallController.getAll(req.query, (err, calls) => {
+    let limit = req.query.limit || 100
+    CallController.getAll(req.query, limit, (err, calls) => {
         if (err) res.status(500).json(err)
         else res.status(200).json(calls)
     })

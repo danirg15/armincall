@@ -1,8 +1,10 @@
 const Call = require('../models/call')
 
 module.exports = {
-    getAll: (options, callback) => {
-        Call.find(options).populate('workshop').exec(callback)
+    getAll: (options, limit, callback) => {
+        Call.find(options)
+            .limit(limit)
+            .populate('workshop').exec(callback)
     },
 
     getOne: (call_id, callback) => {
@@ -27,7 +29,7 @@ module.exports = {
 
     getNumberOfCallsByMonth: (nMonths, callback) => {
         let pipeline = [
-            // Get only records created in the last 30 days
+            // Get only records created in the last 31 days
             {$match:{
                   "date":{$gt: new Date (Date.now() - 1000*60*60*24*31*nMonths)}
             }}, 
