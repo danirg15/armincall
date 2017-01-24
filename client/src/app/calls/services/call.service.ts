@@ -1,23 +1,16 @@
 import { HttpServices }         from '../../shared/services/http.services'
-import { Injectable, OnInit }   from '@angular/core';
-import { Observable }           from 'rxjs/Observable';
-import * as io                  from 'socket.io-client';
-import { environment }          from '../../../environments/environment';
+import { Injectable }           from '@angular/core';
+import { SharedServices }       from '../../shared/services/shared.service'
 
 @Injectable()
-export class CallService implements OnInit{
+export class CallService{
     url = '/api/calls'
-    eventsBaseURL = environment.socketIOBaseEndpoint
 
-    constructor(private http: HttpServices) { 
-        console.log(this.eventsBaseURL)
+    constructor(private http: HttpServices,
+                private sharedServices: SharedServices) { 
+
     }
 
-    ngOnInit() {
-        if(!environment.socketIOBaseEndpoint) {
-            console.log("Endpoint for events not found, the application won't react to events.")
-        }
-    }
 
     getPendingCalls(){
         return this.http.get(this.url+'?isValidated=false')
@@ -32,26 +25,15 @@ export class CallService implements OnInit{
     }
 
     getNewCalls() {
-        const url = this.eventsBaseURL + '/events/calls/new'
-        return this.createSocketObservable(url, 'newCall')
+        const url = '/events/calls/new'
+        return this.sharedServices.createSocketObservable(url, 'newCall')
     }
 
     getIncommingCalls(){
-        const url = this.eventsBaseURL + '/events/calls/incomming'
-        return this.createSocketObservable(url, 'incommingCall')
+        const url = '/events/calls/incomming'
+        return this.sharedServices.createSocketObservable(url, 'incommingCall')
     }
 
 
-    createSocketObservable(endpoint, event) {
-        let socket = null
-        let observable = new Observable(observer => {
-            socket = io(endpoint);
-            socket.on(event, (data) => {
-                observer.next(data)  
-            })
-            return () => socket.disconnect()
-        }) 
 
-        return observable
-    }
 }

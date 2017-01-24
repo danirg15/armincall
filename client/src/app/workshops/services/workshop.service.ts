@@ -30,5 +30,8 @@ export class WorkshopService {
         return this.http.get(this.url+'?q='+keyword)
     }
 
+    matchCallsWithWorkshops() {
+        return this.http.get('/api/calls/recalculate-workshop')
+    }
 
 }

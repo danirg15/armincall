@@ -1,9 +1,11 @@
 const Call = require('../models/call')
+const Workshop = require('../models/workshop')
 
-module.exports = {
-    getAll: (options, limit, callback) => {
+let self = module.exports = {
+    getAll: (options, callback) => {
         Call.find(options)
-            .limit(limit)
+            //.limit(limit || 100)
+            .sort({date: 'desc'})
             .populate('workshop').exec(callback)
     },
 
@@ -25,6 +27,21 @@ module.exports = {
 
     count: (options, callback) => {
         Call.count(options, callback)
+    },
+
+
+    asignWorkshopToCall: (call, callback) => {
+        Workshop.findOne({ 'phone': call.callerNumber }, function(err, workshop){
+            if(!err && workshop) {
+                self.update(call._id, { $set:{'workshop': workshop._id} }, (err) => {
+                    if(err) throw err
+                })
+                callback(workshop._id)
+            }
+            else {
+                callback(null)
+            }
+        })
     },
 
     getNumberOfCallsByMonth: (nMonths, callback) => {

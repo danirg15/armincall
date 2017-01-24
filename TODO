@@ -1,6 +1,8 @@
 1. Reprocess calls to asign wokrshop to unidentified call
 2. IncommingCall modal should be available anywhere
 3. InfoBoard: Add licence details, prices, sms's, emails, etc
+4. Am i using the minified version of all assets?
+5. Tooltip broken
 ////////
 
 iptables -I INPUT 1 -i eth0 -p tcp --dport 5000 -j ACCEPT

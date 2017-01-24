@@ -26,17 +26,11 @@ const CallSchema = mongoose.Schema({
 CallSchema.pre('save', function(next) {
 	let call = this	
 
-	//Try to identify to the caller
-	Workshop.findOne({ phone: call.callerNumber }, function(err, workshop){
-		if(!err && workshop) {
-			call.workshop = workshop._id
-			next()
-		}
-		else{
-			next(err)
-		}
+	require('../controllers/CallController').asignWorkshopToCall(call, (x) => {
+		if(x != null) call.workshop = x
+		next()
 	})
-	
+
 })
 
 
@@ -44,9 +38,9 @@ CallSchema.post('save', function(doc) {
 	let call = doc
 
 	Workshop.findOne({ _id: call.workshop }, function(err, workshop){		
-		if(!err && workshop)
+		if(!err && workshop){
 			call.workshop = workshop
-
+		}
 		SocketIOEventEmitter.emit('newCall',call)
 	})			
 })

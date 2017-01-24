@@ -1,10 +1,12 @@
-import { Component, OnInit }    from '@angular/core';
+import { Component, OnInit, OnDestroy }    from '@angular/core';
 import { SharedServices }       from '../../shared/services/shared.service'
 
 @Component({
     templateUrl: '../templates/dashboard.template.html'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
+    eventsConnection
+
     badges = {
         pendingCalls: 0,
         pendingTickets: 0,
@@ -18,5 +20,17 @@ export class DashboardComponent implements OnInit {
     ngOnInit(){
         this.sharedServices.getBadges()
                            .subscribe(badges => this.badges = badges)
+
+        
+        this.eventsConnection =  this.sharedServices
+                                .createSocketObservable('/events/calls/incomming', 'incommingCall')
+                                .subscribe(x => {
+                                    this.badges.pendingCalls++
+                                })
+        
+    }
+
+    ngOnDestroy() {
+        this.eventsConnection.unsubscribe()
     }
 }

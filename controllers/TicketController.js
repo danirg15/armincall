@@ -4,6 +4,7 @@ const Call = require('../models/call')
 module.exports = {
     getAll: (options, callback) => {
         Ticket.find(options)
+              .sort({createdAt: 'desc'})
               .populate('workshop')
               .populate('calls')
               .exec(callback)

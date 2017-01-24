@@ -11,20 +11,38 @@ const Ticket            = require('../models/ticket')
 
 const checkPermsForRoute = require('../middleware/permissions')
 
-router.get('/calls', checkPermsForRoute('CALLS_ALL'), (req, res) => {
-    let limit = req.query.limit || 100
-    CallController.getAll(req.query, limit, (err, calls) => {
+router.get('/calls', checkPermsForRoute('CALLS_ALL'), (req, res) => { 
+    CallController.getAll(req.query, (err, calls) => {
         if (err) res.status(500).json(err)
         else res.status(200).json(calls)
     })
 })
     
+router.get('/calls/recalculate-workshop', (req, res) => {
+    CallController.getAll({
+        'isValidated':false, 
+        'workshop': { $exists: false }
+    }, (err, calls) => {
+        if (err) res.status(500).json(err)
+
+        calls.forEach((call) => {
+            CallController.asignWorkshopToCall(call, (x) => {
+               //console.log(x)
+            })
+        })
+    
+        res.status(200).json({})
+    })
+})
+
 router.get('/calls/:id', checkPermsForRoute('CALLS_SHOW'), (req, res) => {
     CallController.getOne(req.params.id, (err, call) => {
         if (err) res.status(500).json(err)
         else res.status(200).json(call)
     })
 })
+
+
 
 router.post('/calls', 
         [

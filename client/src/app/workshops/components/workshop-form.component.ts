@@ -75,8 +75,11 @@ export class WorkshopFormComponent implements OnInit {
         })       
 
         $event.preventDefault()
+        this.workshopService.matchCallsWithWorkshops().subscribe()
     }
 
+
+    
 
 
 
