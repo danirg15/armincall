@@ -1,8 +1,8 @@
-1. Reprocess calls to asign wokrshop to unidentified call
-2. IncommingCall modal should be available anywhere
 3. InfoBoard: Add licence details, prices, sms's, emails, etc
 4. Am i using the minified version of all assets?
-5. Tooltip broken
+1. Tickets category tree
+
+
 ////////
 
 iptables -I INPUT 1 -i eth0 -p tcp --dport 5000 -j ACCEPT
@@ -13,6 +13,7 @@ nginx: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-
 
 
 SSL/HTTPS
+2. IncommingCall modal should be available anywhere
 4. Try Hapi.js https://scotch.io/tutorials/making-a-restful-api-with-hapi-js?utm_content=buffer49fca&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 5. Reminder middleware to send email notifications
 6. Mocha Test

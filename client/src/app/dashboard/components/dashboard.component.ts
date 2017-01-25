@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
         
         this.eventsConnection =  this.sharedServices
-                                .createSocketObservable('/events/calls/incomming', 'incommingCall')
+                                .createSocketObservable('/events/calls/new', 'newCall')
                                 .subscribe(x => {
                                     this.badges.pendingCalls++
                                 })

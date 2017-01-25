@@ -3,18 +3,16 @@
                 modalClass="modal-lg"
                 [hideCloseButton]="false"
                 [closeOnEscape]="true"
-                [closeOnOutsideClick]="true"
-        >
+                [closeOnOutsideClick]="true">
 
 <modal-header>
     <h2 class="text-center" *ngIf="incommingCall.workshop">
-        {{incommingCall.workshop?.name}}
+        {{incommingCall.workshop.name}}
         <small>{{incommingCall.number}}</small>
     </h2>
     <h2 class="text-center" *ngIf="!incommingCall.workshop">
         {{incommingCall.number}}
     </h2>
-
 </modal-header>
 
 <modal-content>

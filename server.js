@@ -11,6 +11,8 @@ const SocketIOEventEmitter = require('./events/SocketIOEventEmitter')
 const logger = require('morgan')
 const config = require('config')
 const auth = require('./middleware/jwtAuth')
+require('moment-timezone').tz.setDefault(process.env.APP_TIME_ZONE || 'Europe/Madrid');
+
 
 //--------------------------------------------
 //		Middlewares
@@ -31,14 +33,9 @@ require('./database').connect(config.DB_URI)
 
 
 
-
-
 //--------------------------------------------
 //		Routing
 //--------------------------------------------
-
-
-
 app.use('/api', require('./routes/auth.routes'))
 app.use('/api', auth, require('./routes/call.routes'))
 app.use('/api', auth, require('./routes/ticket.routes'))
@@ -48,19 +45,6 @@ app.use('/api', auth, require('./routes/workshop.routes'))
 app.use('/api', auth, require('./routes/demo.routes'))
 app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
-
-
-// app.get('/socket.io/socket.io.js', (req, res) => {
-// 	res.sendFile(path.join(__dirname,'./node_modules/socket.io-client/dist/socket.io.js'))
-// })
-
-// app.get('/socket.io/socket.io.js.map', (req, res) => {
-// 	res.sendFile(path.join(__dirname,'./node_modules/socket.io-client/dist/socket.io.js.map'))
-// })
-
-// app.get('/test', (req, res) => {
-// 	res.sendFile(path.join(__dirname, './test.html'))
-// })
 
 
 //Serve client app
@@ -112,8 +96,6 @@ SocketIOEventEmitter.listen()
 // 	})
 	
 // })
-
-
 
 
 //--------------------------------------------

@@ -18,16 +18,16 @@ export class IncommingComponent implements OnInit, OnDestroy {
                         .subscribe( incomming => {
                             this.modal.open()
                             this.incommingCall = incomming
+
+                            setTimeout(()=>{
+                                this.modal.close()
+                            }, 60*1000)
+
                         })
     }
 
     ngOnDestroy(){
         this.eventsConnection.unsubscribe()
     }
-
-    // saveTicket(workshop, description){
-    //     console.log(description)
-    //     console.log(workshop)
-    // }
 
 }

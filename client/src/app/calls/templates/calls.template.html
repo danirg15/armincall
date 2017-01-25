@@ -59,8 +59,10 @@
                 <td>{{call.date | humanizeDate}} ({{call.date | diffForHumans}})</td>
                 <td>{{call.durationInSeconds | durationForHumans}}</td>
                 <td>
+
+                    {{call.status}}
                     
-                    <div *ngIf="call.status == 'Respondida'">
+                    <!--<div *ngIf="call.status == 'Respondida'">
                         <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
                             <i class="fa fa-phone-square fa-2x" 
                             style="color:green"
@@ -90,7 +92,7 @@
                             style="color:grey"
                             aria-hidden="true"></i>
                         </a>
-                    </div>
+                    </div>-->
                     
                 </td>
                 <td [hidden]="discarButtonHidden">
