@@ -3,7 +3,7 @@ import {Injectable}     from '@angular/core'
 
 @Injectable()
 export class TicketService {
-    url = "/api/tickets/"
+    url = "/api/tickets"
 
     constructor(private http: HttpServices){
        
@@ -14,7 +14,7 @@ export class TicketService {
     }
 
     updateTicket(id, ticket) {
-        return this.http.put(this.url+id, ticket)
+        return this.http.put(this.url+'/'+id, ticket)
     }
 
     getPendingTickets(workshopId){

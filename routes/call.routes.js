@@ -104,7 +104,7 @@ router.post('/calls/emit/incomming',
 
     ], function (err, result) {
             if (err) throw err
-                console.log('incomming call routes')
+                res.status(500).json({})
             SocketIOEventEmitter.emit('incommingCall', result)
             res.status(200).json({})
     })	

@@ -26,8 +26,6 @@ const CallSchema = mongoose.Schema({
 CallSchema.pre('save', function(next) {
 	let call = this	
 
-	console.log(call)
-
 	require('../controllers/CallController').asignWorkshopToCall(call, (x) => {
 		if(x != null) call.workshop = x
 		next()

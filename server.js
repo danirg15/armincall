@@ -26,6 +26,10 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
     app.use(logger('dev'))
 }
 
+//Serve client app
+app.use(express.static(path.join(__dirname, 'client/dist')));
+
+
 //--------------------------------------------
 //		DB connection
 //--------------------------------------------
@@ -47,8 +51,6 @@ app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
 
 
-//Serve client app
-app.use(express.static(path.join(__dirname, 'client/dist')));
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '/client/dist/index.html'))
