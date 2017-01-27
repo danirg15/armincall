@@ -35,16 +35,22 @@ WorkshopSchema.index({ "phone": 1 });
 
 WorkshopSchema.pre('save', function(next) {
 	let workshop = this
-		
-	MapHelpers.geocode(this.address.description, function(err, location){
-		if(err) {
-			next(err)
-		}
-		else {
-			workshop.address.location = location
-			next()
-		}
-	})
+	
+	if(this.address.description) {
+		MapHelpers.geocode(this.address.description, function(err, location){
+			if(err) {
+				next(err)
+			}
+			else {
+				workshop.address.location = location
+				next()
+			}
+		})
+	}
+	else {
+		next()
+	}
+	
 
 })
 

@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  socketIOBaseEndpoint: 'https://localhost:3000'
+  socketIOBaseEndpoint: 'http://localhost:3000'
 };

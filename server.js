@@ -2,7 +2,6 @@
 //		App Modules
 //--------------------------------------------
 const http =			require('http')
-const https =			require('https')
 const express = 		require('express')
 const app 	= 			express()
 const bodyParser = 		require('body-parser')
@@ -31,15 +30,11 @@ app.use(session({ secret: 'secrets', resave: false, saveUninitialized: false }))
 //		Configuration
 //--------------------------------------------
 const port = process.env.PORT || 3000
-// let privkey_path = process.env.SSL_CERT_PATH
-// let cert_path = process.env.SSL_KEY_PATH
 
 moment_tz.tz.setDefault(process.env.APP_TIME_ZONE || 'Europe/Madrid');
 
 if(config.util.getEnv('NODE_ENV') !== 'test') {
     app.use(logger('dev'))
- //    privkey_path = 'keys/privkey.pem'
-	// cert_path = 'keys/cert.pem'
 }
 
 
@@ -74,44 +69,11 @@ app.get('*', (req, res) => {
 })
 
 
-// function stringToSec(str) {
-// 	let s = str.split(':')
-// 	let hou = Number(s[0].slice(0, -1))
-// 	let min = Number(s[1].slice(0, -1))
-// 	let sec = Number(s[2].slice(0, -1))
-
-// 	return hou*60*60 + min*60 + sec
-// }
-
-// const Call = require('./models/call')
-// const test = require('./database/calls.json')
-// const moment = require('moment')
-
-// test.forEach( (t) => {
-// 	let a = new Call({
-// 		'callerNumber': t.Origen,
-// 		'recieverNumber': t.Destino,
-// 		'date': moment(t.Fecha + ' ' + t.Hora, 'DD/MM/YYYY HH:mm:ss').toISOString(),
-// 		'durationInSeconds': stringToSec(t.Duracion),
-// 		'status': t.Estado,
-// 		'isValidated': true
-// 	})
-
-// 	a.save(err => {
-// 			console.log(a)
-// 	})
-	
-// })
 
 
 //--------------------------------------------
 //		Runnn!
 //--------------------------------------------
-// const server = https.createServer({
-// 	'key': fs.readFileSync(privkey_path, 'utf8'),
-// 	'cert': fs.readFileSync(cert_path, 'utf8')
-// }, app)
-
 const server = http.createServer(app)
 
 SocketIOEventEmitter.init(server)

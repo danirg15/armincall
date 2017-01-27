@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  socketIOBaseEndpoint: 'https://armincall.com'
+  socketIOBaseEndpoint: 'http://armincall.com'
 };

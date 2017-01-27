@@ -37,3 +37,67 @@ REFACTOR!!!!
 //mocha https://www.codementor.io/nodejs/tutorial/unit-testing-nodejs-tdd-mocha-sinon
 //https://medium.com/defmethod-works/building-an-express-node-js-app-with-angular-2-and-the-twitter-api-4eebd06fecff#.uceqazhg7
 //https://getmdl.io/templates/index.html
+
+
+
+
+function stringToSec(str) {
+	let s = str.split(':')
+	let hou = Number(s[0].slice(0, -1))
+	let min = Number(s[1].slice(0, -1))
+	let sec = Number(s[2].slice(0, -1))
+
+	return hou*60*60 + min*60 + sec
+}
+
+const Call = require('./models/call')
+const test = require('./database/calls.json')
+const moment = require('moment')
+
+test.forEach( (t) => {
+	let a = new Call({
+		'callerNumber': t.Origen,
+		'recieverNumber': t.Destino,
+		'date': moment(t.Fecha + ' ' + t.Hora, 'DD/MM/YYYY HH:mm:ss').toISOString(),
+		'durationInSeconds': stringToSec(t.Duracion),
+		'status': t.Estado,
+		'isValidated': true
+	})
+
+	a.save(err => {
+			console.log(a)
+	})
+	
+})
+
+
+// const Workshop = require('./models/workshop')
+// const test = require('./database/workshops.json')
+// test.forEach( (t) => {
+
+// 	let w = {
+// 		"name": t.nombre_taller,
+// 		"cif": t.cif,
+// 		"contact": '',
+// 		"distributor": t.nombre,
+// 		"email": t.email,
+// 		"phone": []
+// 	}
+
+// 	if(t.telefono != ''){
+// 		w.phone.push(t.telefono)
+// 	}
+
+// 	if(t.telefono2 != ''){
+// 		w.phone.push(t.telefono2)
+// 	}
+
+
+// 	(new Workshop(w)).save(err => {
+// 		if (err) throw err
+// 		console.log(w)
+// 	})
+	
+// })
+
+
