@@ -1,6 +1,7 @@
 //--------------------------------------------
 //		App Modules
 //--------------------------------------------
+const http =			require('http')
 const https =			require('https')
 const express = 		require('express')
 const app 	= 			express()
@@ -106,10 +107,12 @@ app.get('*', (req, res) => {
 //--------------------------------------------
 //		Runnn!
 //--------------------------------------------
-const server = https.createServer({
-	'key': fs.readFileSync(privkey_path, 'utf8'),
-	'cert': fs.readFileSync(cert_path, 'utf8')
-}, app)
+// const server = https.createServer({
+// 	'key': fs.readFileSync(privkey_path, 'utf8'),
+// 	'cert': fs.readFileSync(cert_path, 'utf8')
+// }, app)
+
+const server = http.createServer(app)
 
 SocketIOEventEmitter.init(server)
 
