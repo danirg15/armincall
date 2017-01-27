@@ -59,8 +59,8 @@
                     <span *ngIf="call.callerNumber != '917376582'">{{call.callerNumber}}</span>
                 </td>
                 <td>
-                    <span *ngIf="call.recieverNumber == '0101'">ARMIN</span>
-                    <span *ngIf="call.recieverNumber != '0101'">{{call.recieverNumber}}</span>
+                    <span *ngIf="call.recieverNumber == '917376582'">ARMIN</span>
+                    <span *ngIf="call.recieverNumber != '917376582'">{{call.recieverNumber}}</span>
                 </td>
                 <td>{{call.date | humanizeDate}} ({{call.date | diffForHumans}})</td>
                 <td>{{call.durationInSeconds | durationForHumans}}</td>

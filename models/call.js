@@ -26,6 +26,15 @@ const CallSchema = mongoose.Schema({
 CallSchema.pre('save', function(next) {
 	let call = this	
 
+	if (call.callerNumber == process.env.APP_PHONE_NUMBER) {
+		//trim first char because outgoint calls has '9' at the begining
+		call.recieverNumber = call.recieverNumber.substring(1);
+	}
+
+	if (call.recieverNumber == '101') {
+		call.recieverNumber = process.env.APP_PHONE_NUMBER
+	}
+
 	require('../controllers/CallController').asignWorkshopToCall(call, (x) => {
 		if(x != null) call.workshop = x
 		next()

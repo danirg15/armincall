@@ -4,7 +4,7 @@ const Workshop = require('../models/workshop')
 let self = module.exports = {
     getAll: (options, callback) => {
         Call.find(options)
-            //.limit(limit || 100)
+            .limit(400)
             .sort({date: 'desc'})
             .populate('workshop').exec(callback)
     },
@@ -31,7 +31,10 @@ let self = module.exports = {
 
 
     asignWorkshopToCall: (call, callback) => {
-        Workshop.findOne({ 'phone': call.callerNumber }, function(err, workshop){
+        let armin_phone = process.env.APP_PHONE_NUMBER
+        let phone = (armin_phone == call.callerNumber) ? call.recieverNumber : call.callerNumber
+
+        Workshop.findOne({ 'phone': phone }, function(err, workshop){
             if(!err && workshop) {
                 self.update(call._id, { $set:{'workshop': workshop._id} }, (err) => {
                     if(err) throw err
