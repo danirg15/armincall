@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://armincall.com",
-    "secure": false
+    "target": "https://armincall.com",
+    "secure": true
   }
 }

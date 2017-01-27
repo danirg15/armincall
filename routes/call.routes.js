@@ -103,10 +103,13 @@ router.post('/calls/emit/incomming',
         }
 
     ], function (err, result) {
-            if (err) throw err
+            if (err) {
                 res.status(500).json({})
-            SocketIOEventEmitter.emit('incommingCall', result)
-            res.status(200).json({})
+            }
+            else{
+                SocketIOEventEmitter.emit('incommingCall', result)
+                res.status(200).json({})
+            }
     })	
 
 })

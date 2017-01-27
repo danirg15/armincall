@@ -1,7 +1,10 @@
-const io = require('socket.io')();
+let io = null
 let clients = []
 
 module.exports = {
+	init: function(server){
+		io = require('socket.io')(server);
+	},
 
 	bind: function(subscriber){
 		io.of(subscriber.uri).on('connection', function(socket){
@@ -25,10 +28,6 @@ module.exports = {
 			 	client.socket.emit(event, data)
 			}			
 		})
-	},
-
-	listen: function(){
-		io.listen(process.env.SOCKET_IO_PORT || 5000);
 	}
 
 }

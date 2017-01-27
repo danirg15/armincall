@@ -1499,7 +1499,7 @@ var WorkshopsModule = (function () {
 // The list of which env maps to which file can be found in `angular-cli.json`.
 var environment = {
     production: false,
-    socketIOBaseEndpoint: 'http://localhost:5000'
+    socketIOBaseEndpoint: 'https://localhost:3000'
 };
 //# sourceMappingURL=/Users/dani/Projects/ArminCall/client/src/environment.js.map
 
