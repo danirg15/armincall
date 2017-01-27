@@ -31,15 +31,15 @@ app.use(session({ secret: 'secrets', resave: false, saveUninitialized: false }))
 //		Configuration
 //--------------------------------------------
 const port = process.env.PORT || 3000
-let privkey_path = process.env.SSL_CERT_PATH
-let cert_path = process.env.SSL_KEY_PATH
+// let privkey_path = process.env.SSL_CERT_PATH
+// let cert_path = process.env.SSL_KEY_PATH
 
 moment_tz.tz.setDefault(process.env.APP_TIME_ZONE || 'Europe/Madrid');
 
 if(config.util.getEnv('NODE_ENV') !== 'test') {
     app.use(logger('dev'))
-    privkey_path = 'keys/privkey.pem'
-	cert_path = 'keys/cert.pem'
+ //    privkey_path = 'keys/privkey.pem'
+	// cert_path = 'keys/cert.pem'
 }
 
 
@@ -107,12 +107,12 @@ app.get('*', (req, res) => {
 //--------------------------------------------
 //		Runnn!
 //--------------------------------------------
-const server = https.createServer({
-	'key': fs.readFileSync(privkey_path, 'utf8'),
-	'cert': fs.readFileSync(cert_path, 'utf8')
-}, app)
+// const server = https.createServer({
+// 	'key': fs.readFileSync(privkey_path, 'utf8'),
+// 	'cert': fs.readFileSync(cert_path, 'utf8')
+// }, app)
 
-// const server = http.createServer(app)
+const server = http.createServer(app)
 
 SocketIOEventEmitter.init(server)
 
