@@ -1,6 +1,6 @@
 3. InfoBoard: Add licence details, prices, sms's, emails, etc
 1. Tickets category tree
-4. Load workshops
+4. Show phones like: 999  777  888
 
 ////////
 export LC_ALL=C
