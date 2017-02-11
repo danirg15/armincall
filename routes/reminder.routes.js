@@ -18,14 +18,14 @@ router.get('/reminders/:id', (req, res) => {
 	})	
 })
 
-router.post('/reminders', validate(validator.reminder), (req, res) => {
+router.post('/reminders', validate(validator.reminder.full), (req, res) => {
 	ReminderController.store(req.body, (err) => {
 		if (err) res.status(500).json(err)
         else res.status(201).json({})
 	})	
 })
 
-router.put('/reminders/:id', validate(validator.reminder), (req, res) => {
+router.put('/reminders/:id', validate(validator.reminder.full), (req, res) => {
 	ReminderController.update(req.params.id, req.body, (err) => {
 		if (err) res.status(500).json(err)
         else res.status(200).json({})

@@ -3,7 +3,7 @@ const Joi = require('joi');
 module.exports = {
     full: {
         body: {
-            name:           Joi.string().required(),
+            workshop_name:  Joi.string().required(),
             distributor:    Joi.string().required(),
             licence:        Joi.string().optional(),
             contact:        Joi.string().optional(),
@@ -17,7 +17,7 @@ module.exports = {
 
     optional: {
         body: {
-            name:           Joi.string().optional(),
+            workshop_name:  Joi.string().optional(),
             distributor:    Joi.string().optional(),
             licence:        Joi.string().optional(),
             contact:        Joi.string().optional(),

@@ -18,14 +18,14 @@ router.get('/demos/:id', (req, res) => {
 	})
 })
 
-router.post('/demos', validate(validator.demo), (req, res) => {	
+router.post('/demos', validate(validator.demo.full), (req, res) => {	
 	DemoController.store(req.body, (err) =>{
 		if (err) res.status(500).json(err)
         else res.status(201).json({})
 	})
 })
 
-router.put('/demos/:id', validate(validator.demo), (req, res) => {
+router.put('/demos/:id', validate(validator.demo.optional), (req, res) => {
 	DemoController.update(req.params.id, req.body, (err) => {
 		if (err) res.status(500).json(err)
         else res.status(200).json({})

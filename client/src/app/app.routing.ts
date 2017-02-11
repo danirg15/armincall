@@ -83,6 +83,11 @@ export const routing = RouterModule.forRoot([ //const helps to avoid accidently 
         canActivate: [AuthGuard]
     },
     { 
+        path: 'demos/new/:demo_id',           
+        component: DemoFormComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
         path: 'reminders',           
         component: RemindersComponent,
         canActivate: [AuthGuard]

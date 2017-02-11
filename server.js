@@ -14,7 +14,6 @@ const config = 			require('config')
 const auth = 			require('./middleware/jwtAuth')
 const moment_tz = 		require('moment-timezone')
 const helmet = 			require('helmet')
-const fs = 				require('fs')
 
 
 //--------------------------------------------
@@ -59,6 +58,7 @@ app.use('/api', auth, require('./routes/reminder.routes'))
 app.use('/api', auth, require('./routes/user.routes'))
 app.use('/api', auth, require('./routes/workshop.routes'))
 app.use('/api', auth, require('./routes/demo.routes'))
+app.use('/api', auth, require('./routes/category.routes'))
 app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
 

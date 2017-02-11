@@ -7,6 +7,7 @@ module.exports.reminder = require('./reminder')
 module.exports.ticket = require('./ticket')
 module.exports.workshop = require('./workshop')
 module.exports.demo = require('./demo')
+module.exports.category = require('./category')
 module.exports.incomming = require('./incomming')
 
 

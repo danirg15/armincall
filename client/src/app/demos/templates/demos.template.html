@@ -28,6 +28,7 @@
             <th>Contacto</th>
             <th>Teléfono</th>
             <th>Descripción</th>
+            <th>Comentarios</th>
             <th>Fecha/Hora</th>
             <th [hidden]="discardButtonHidden">Acción</th>
         </tr>
@@ -38,11 +39,17 @@
             <td>{{demo.contact}}</td>
             <td>{{demo.phone}}</td>
             <td>{{demo.description}}</td>
+            <td>{{demo.comments}}</td>
             <td>
                 {{ demo.ISODate | humanizeDate }}
                 ({{ demo.ISODate | diffForHumans }})
             </td>
             <td>
+                <span [hidden]="discardButtonHidden">
+                    <a class="btn btn-warning btn-sm" [routerLink]="['/demos/new', demo._id]">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                </span>
                 <span [hidden]="discardButtonHidden">
                     <a class="btn btn-danger btn-sm" (click)="delete(demo)">
                         <i  class="fa fa-trash-o" aria-hidden="true"></i>

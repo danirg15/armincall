@@ -17,6 +17,14 @@ export class DemoService {
         return this.http.get(this.url+'?completed=false')
     }
 
+    getDemo(id){
+        return this.http.get(this.url+id)
+    }
+
+    updateDemo(id, demo) {
+        return this.http.put(this.url+id, demo)
+    }
+
     getAll(){
         return this.http.get(this.url)
     }

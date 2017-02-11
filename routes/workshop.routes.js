@@ -18,14 +18,14 @@ router.get('/workshops/:id', (req, res) => {
 	})	
 })
 
-router.post('/workshops', validate(validator.workshop), (req, res) => {
+router.post('/workshops', validate(validator.workshop.full), (req, res) => {
 	WorkshopController.store(req.body, (err) => {
 		if (err) res.status(500).json(err)
         else res.status(201).json({})
 	})	
 })
 
-router.put('/workshops/:id', validate(validator.workshop), (req, res) => {
+router.put('/workshops/:id', validate(validator.workshop.full), (req, res) => {
 	WorkshopController.update(req.params.id, req.body, (err) => {
 		if (err) res.status(500).json(err)
         else res.status(200).json({})

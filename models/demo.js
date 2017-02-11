@@ -2,7 +2,7 @@ const mongoose 	= require('mongoose');
 const moment 	= require('moment')
 
 const DemoSchema = mongoose.Schema({
-	name: 			{"type": String, "require": true},
+	workshop_name: 			{"type": String, "require": true},
 	distributor: 	{"type": String, "require": true},
 	licence: 		{"type": String},
 	contact: 		{"type": String},
@@ -10,6 +10,7 @@ const DemoSchema = mongoose.Schema({
 	description:	{"type": String},
 	date: 			{"type": String, "require": true},
 	time: 			{"type": String, "require": true},
+	comments: 		{"type": String},
 	ISODate: 		{"type": Date, 	 "require": true},
 	completed: 		{"type": Boolean, "default": false}
 })
@@ -18,7 +19,6 @@ const DemoSchema = mongoose.Schema({
 //--------------------------------------------
 //		Middlewares
 //--------------------------------------------
-
 
 DemoSchema.pre('save', function(next) {
 	let isoDate = moment(this.date + this.time, "DD/MM/YYYY HH:mm").toDate()
