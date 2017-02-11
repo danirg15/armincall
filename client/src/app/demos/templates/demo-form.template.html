@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <label for="inputTelefono" class="col-lg-2 control-label">Teléfono</label>
                     <div class="col-lg-10">
-                        <input [(ngModel)]="demo.phone" type="text" class="form-control" formControlName="phone">
+                        <input [(ngModel)]="demo.phone" type="tel" class="form-control" formControlName="phone">
                     </div>
                 </div>
 
@@ -78,7 +78,7 @@
                 <div class="form-group" [class.has-error]="form.controls.time.touched && form.controls.time.errors">
                     <label for="inputHora" class="col-lg-2 control-label">*Hora</label>
                     <div class="col-lg-10">
-                        <input [(ngModel)]="demo.time" type="text" class="form-control" formControlName="time">
+                        <input [(ngModel)]="demo.time" type="time" class="form-control" formControlName="time">
 
                         <div *ngIf="form.controls.time.touched && form.controls.time.errors" >
                             <small class="text-danger" *ngIf="form.controls.time.errors.required">

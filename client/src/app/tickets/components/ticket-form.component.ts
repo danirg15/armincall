@@ -6,6 +6,8 @@ import { WorkshopService }          from '../../workshops/services/workshop.serv
 import { Router, ActivatedRoute }   from '@angular/router';
 import { Ticket }                   from '../ticket'
 
+import { CategoryService }          from '../../categories/services/category.service'
+
 @Component({
     selector: 'ticket-form',
     templateUrl: '../templates/ticket-form.template.html'
@@ -13,17 +15,20 @@ import { Ticket }                   from '../ticket'
 export class TicketFormComponent implements OnInit {
     ticket = new Ticket('', false)
     workshop = { name: ''}
-    title = 'Nueva Incidencia'
     form: FormGroup
+    categories = []
 
     constructor(fb: FormBuilder, 
                 private ticketService: TicketService, 
+                private categoryService: CategoryService,
                 private workshopService: WorkshopService,
                 private router: Router,
-                private route: ActivatedRoute,) { 
+                private route: ActivatedRoute) { 
+
         this.form = fb.group({
             description: ['', Validators.required],
-            completed: ['', Validators.required]
+            category:    ['', Validators.required],
+            completed:   ['', Validators.required]
         })
     }
 
@@ -33,6 +38,9 @@ export class TicketFormComponent implements OnInit {
                 .getWorkshop(params['workshop_id'])
                 .subscribe(workshop => this.workshop = workshop) 
         }) 
+
+        this.categoryService.getAll()
+                            .subscribe(categories => this.categories = categories)
     }
 
     onSubmit(){

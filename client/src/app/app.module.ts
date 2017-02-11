@@ -13,9 +13,11 @@ import { TicketsModule }    from './tickets/tickets.module'
 import { WorkshopsModule }  from './workshops/workshops.module'
 import { AuthModule }       from './auth/auth.module'
 import { DashboardModule }  from './dashboard/dashboard.module'
-import { routing }          from './app.routing';
+import { CategoriesModule } from './categories/categories.module'
+
 import { InfoBoardComponent } from './info-board/info-board.component';
 
+import { routing }          from './app.routing';
 
 @NgModule({
   imports:  [ 
@@ -31,6 +33,7 @@ import { InfoBoardComponent } from './info-board/info-board.component';
     TicketsModule,
     WorkshopsModule,
     DashboardModule,
+    CategoriesModule,
     AuthModule
   ],
   declarations: [ 

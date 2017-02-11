@@ -16,7 +16,7 @@ import { DemoService }          from './services/demo.service'
         FormsModule,
         RouterModule,
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
     ],
     declarations: [
         DemosComponent, 

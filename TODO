@@ -1,6 +1,4 @@
-1. Add commentary field to demos before remove
-2. Tickets category tree
-3. Show phones like: 999  777  888
+2. Tickets category CRUD, and input in incomming form
 
 ////////
 export LC_ALL=C

@@ -74,7 +74,7 @@
             <div class="form-group" [class.has-error]="form.controls.email.touched && form.controls.email.errors">
               <label for="inputEmail" class="col-lg-3 control-label">* Email</label>
               <div class="col-lg-9">
-                <input [(ngModel)]="workshop.email" type="text" class="form-control" formControlName="email" placeholder="Email">
+                <input [(ngModel)]="workshop.email" type="email" class="form-control" formControlName="email" placeholder="Email">
                 
                 <div *ngIf="form.controls.email.touched && form.controls.email.errors">
                     <small class="text-danger" *ngIf="form.controls.email.errors.email">

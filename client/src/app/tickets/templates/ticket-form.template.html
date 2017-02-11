@@ -8,7 +8,7 @@
 
     <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
       <fieldset>
-        <legend>{{title}}</legend>
+        <legend>Nueva Incidencia</legend>
 
         <div class="row">
 
@@ -20,6 +20,17 @@
                     <input type="text" class="form-control" readonly 
                     value="{{workshop.name}}">
                 </div>
+            </div>
+
+            <div class="form-group">
+              <label for="select" class="col-lg-3 control-label">* Categoría</label>
+              <div class="col-lg-9">
+                <select [(ngModel)]="ticket.category" class="form-control" formControlName="category">
+                  <option *ngFor="let category of categories" value="{{category.name}}">
+                   {{category.name}}
+                  </option>
+                </select>
+              </div>
             </div>
 
             <div class="form-group" [class.has-error]="form.controls.description.touched && form.controls.description.errors">

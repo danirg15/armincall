@@ -56,11 +56,11 @@
                 </td>
                 <td>
                     <span *ngIf="call.callerNumber == '917376582'">ARMIN</span>
-                    <span *ngIf="call.callerNumber != '917376582'">{{call.callerNumber}}</span>
+                    <span *ngIf="call.callerNumber != '917376582'">{{call.callerNumber | formattedPhone}}</span>
                 </td>
                 <td>
                     <span *ngIf="call.recieverNumber == '917376582'">ARMIN</span>
-                    <span *ngIf="call.recieverNumber != '917376582'">{{call.recieverNumber}}</span>
+                    <span *ngIf="call.recieverNumber != '917376582'">{{call.recieverNumber | formattedPhone}}</span>
                 </td>
                 <td>{{call.date | humanizeDate}} ({{call.date | diffForHumans}})</td>
                 <td>{{call.durationInSeconds | durationForHumans}}</td>

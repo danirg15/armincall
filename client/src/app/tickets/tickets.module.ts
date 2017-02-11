@@ -11,6 +11,7 @@ import { TicketDetailComponent }        from './components/ticket-detail.compone
 import { TicketsOfWorkshopComponent }   from './components/tickets-of-workshop.component'
 
 import { WorkshopsModule }  from '../workshops/workshops.module'
+import { CategoriesModule }  from '../categories/categories.module'
 import { TicketService }    from './services/ticket.service'
 
 @NgModule({
@@ -21,7 +22,8 @@ import { TicketService }    from './services/ticket.service'
         FormsModule,
         ReactiveFormsModule,
         ModalModule,
-        WorkshopsModule
+        WorkshopsModule,
+        CategoriesModule
     ],
     declarations: [
         TicketsComponent,
