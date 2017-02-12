@@ -49,13 +49,16 @@
                 <span class="badge">{{badges.pendingReminders}}</span>
               </a>
             </li>
+            <li>
+              <a routerLink="/categories">Categorías</a>
+            </li>
           </ul>
 
         </li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control"  #search placeholder="Taller..." >
+          <input type="text" class="form-control"  #search placeholder="Taller, Tel., Distribuidor..." >
         </div>
         
         <button type="button" (click)="find(search.value)" class="btn btn-default" >Buscar</button>

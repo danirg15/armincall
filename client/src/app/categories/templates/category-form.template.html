@@ -1,0 +1,40 @@
+<nav-bar></nav-bar>
+
+<div class="container">
+
+    <br><br>
+
+    <div class="well">
+
+        <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <fieldset>
+
+                <legend>{{title}}</legend>
+
+                <div class="form-group" [class.has-error]="form.controls.name.touched && form.controls.name.errors">
+                    <label for="inputName" class="col-lg-2 control-label">*Nombre</label>
+                    <div class="col-lg-10">
+                        <input [(ngModel)]="category.name" type="text" class="form-control" formControlName="name">
+
+                        <div *ngIf="form.controls.name.touched && form.controls.name.errors" >
+                            <small class="text-danger" *ngIf="form.controls.name.errors.required">
+                                El campo Categoría es obligatorio.
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default" routerLink="/categories">Cancelar</button>
+                        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+</div>

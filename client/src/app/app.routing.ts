@@ -12,8 +12,10 @@ import { DemosComponent }         from './demos/components/demos.component'
 import { DemoFormComponent }      from './demos/components/demo-form.component'
 import { RemindersComponent }     from './reminders/components/reminders.component'
 import { ReminderFormComponent }  from './reminders/components/reminder-form.component'
+import { CategoriesComponent }    from './categories/components/categories.component'
+import { CategoryFormComponent }  from './categories/components/category-form.component'
 import { NotFoundComponent }      from './shared/components/notfound.component'
-import { InfoBoardComponent }   from './info-board/info-board.component';
+import { InfoBoardComponent }     from './info-board/info-board.component';
 
 import {AuthGuard}              from './guards/auth-guard.service'
 
@@ -95,6 +97,21 @@ export const routing = RouterModule.forRoot([ //const helps to avoid accidently 
     { 
         path: 'reminders/new',       
         component: ReminderFormComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+        path: 'categories',           
+        component: CategoriesComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+        path: 'categories/new',       
+        component: CategoryFormComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+        path: 'categories/new/:category_id',       
+        component: CategoryFormComponent,
         canActivate: [AuthGuard]
     },
     { 

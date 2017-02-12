@@ -2,9 +2,10 @@ import { NgModule }             from '@angular/core'
 import { CommonModule }         from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule }         from '@angular/router'
-
-//import { DemosComponent }       from './components/demos.component'
-//import { DemoFormComponent }    from './components/demo-form.component'
+import { SharedModule }         from '../shared/shared.module'
+ 
+import { CategoriesComponent }      from './components/categories.component'
+import { CategoryFormComponent }    from './components/category-form.component'
 
 import { CategoryService }          from './services/category.service'
 
@@ -15,12 +16,15 @@ import { CategoryService }          from './services/category.service'
         FormsModule,
         RouterModule,
         ReactiveFormsModule,
+        SharedModule
     ],
     declarations: [
-        
+        CategoriesComponent,
+        CategoryFormComponent
     ],
     exports: [
-       
+       CategoriesComponent,
+       CategoryFormComponent
     ],
     providers: [CategoryService]
 })
