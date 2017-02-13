@@ -26,7 +26,7 @@ export class TicketFormComponent implements OnInit {
                 private route: ActivatedRoute) { 
 
         this.form = fb.group({
-            description: ['', Validators.required],
+            description: [''],
             category:    ['', Validators.required],
             completed:   ['', Validators.required]
         })

@@ -17,7 +17,7 @@ router.get('/badges', (req, res) => {
             ReminderController.count({}, callback)
         },
         pendingDemos: (callback) => {
-            DemoController.count({}, callback)
+            DemoController.count({ 'completed': false }, callback)
         },
         pendingCalls: (callback) => {
             CallController.count({ 'isValidated': false }, callback)
