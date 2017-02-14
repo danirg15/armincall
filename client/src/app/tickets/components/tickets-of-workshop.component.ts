@@ -24,7 +24,8 @@ export class TicketsOfWorkshopComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.categoryService.getAll().subscribe(categories => this.categories = categories)
+        this.categoryService.getAll()
+                            .subscribe(categories => this.categories = categories)
     }
 
     show() {

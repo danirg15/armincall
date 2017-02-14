@@ -53,6 +53,7 @@
                     <label for="inputDescription" class="col-lg-2 control-label">Descripción</label>
                     <div class="col-lg-10">
                         <select class="form-control" (change)="categoryOfNewTicket = $event.target.value">
+                            <option value="" selected> - </option>
                             <option *ngFor="let category of categories" 
                                     value="{{category.name}}">
                                 {{category.name}}
