@@ -19,6 +19,14 @@ module.exports = {
 
     store: (ticket, callback) => {
         (new Ticket(ticket)).save(callback)
+
+        if (ticket.calls) {
+            Call.update(
+                    { _id: { $in: ticket.calls } }, 
+                    { $set:{'isValidated': true} }, 
+                    { 'multi': true},
+            (err) => {})
+        }
     }, 
 
     update: (ticket_id, fields, callback) => {

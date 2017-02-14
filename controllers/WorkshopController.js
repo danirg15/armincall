@@ -29,9 +29,8 @@ let self = module.exports = {
         Workshop.find({ $or: [
                             
                         {$text: {$search: keyword}}, 
-                        {phone: keyword},
-                        {distributor: keyword}
-
+                        {phone: keyword}
+                        
                      ]}).exec(callback)
     }
 

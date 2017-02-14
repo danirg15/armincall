@@ -28,7 +28,7 @@ export class TicketFormComponent implements OnInit {
         this.form = fb.group({
             description: [''],
             category:    ['', Validators.required],
-            completed:   ['', Validators.required]
+            completed:   ['']
         })
     }
 

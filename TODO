@@ -1,4 +1,9 @@
-2. Tickets category CRUD, and input in incomming form
+2. Tickets category in asociate ticket form
+3. When call is asociated should be discarded
+4. Link button
+5. Campo email en taller no obligatorio
+6. Search field for workshops
+
 
 ////////
 export LC_ALL=C
