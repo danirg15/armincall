@@ -50,7 +50,7 @@
             <br>
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label for="inputDescription" class="col-lg-2 control-label">Descripción</label>
+                    <label for="inputDescription" class="col-lg-2 control-label">Categoría</label>
                     <div class="col-lg-10">
                         <select class="form-control" (change)="categoryOfNewTicket = $event.target.value">
                             <option value="" selected> - </option>
@@ -90,7 +90,7 @@
 <modal-footer>
     <button class="btn btn-default" (click)="ticketsModal.close()">Cancelar</button>
     <button class="btn btn-primary" 
-            [disabled]="selectedTicketId == null &&  descriptionOfNewTicket ==''" 
+            [disabled]="selectedTicketId == null &&  categoryOfNewTicket ==''" 
             (click)="link()">
             Guardar
     </button>
