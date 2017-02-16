@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, OnInit } from '@angular/core';
 import { TicketService }    from '../services/ticket.service'
 import { CategoryService }  from '../../categories/services/category.service'
-
+import { Router } from '@angular/router'
 
 @Component({
     selector: 'workshop-tickets',
@@ -19,7 +19,8 @@ export class TicketsOfWorkshopComponent implements OnInit{
     categoryOfNewTicket = ""
 
     constructor(private ticketService: TicketService,
-                private categoryService: CategoryService) { 
+                private categoryService: CategoryService,
+                private router: Router) { 
     
     }
 
@@ -40,18 +41,20 @@ export class TicketsOfWorkshopComponent implements OnInit{
         this.selectedTicketId = $event.target.value
     }
 
+
     link(){
-        if(this.selectedTicketId != null && this.descriptionOfNewTicket == '') {
+        if(this.selectedTicketId != null && this.categoryOfNewTicket == '') {
             this.ticketService.updateTicket(this.selectedTicketId, {
                 'workshop':     this.workshopId,
                 'calls':        this.callIds,
                 'completed':    this.ticketMarkedAsCompleted 
             }).subscribe( x => {
-                console.log("by id")
+                //console.log("by id")
                 this.modal.close()
+                this.router.navigate(['/dashboard'])
             })
         }
-        else if(this.selectedTicketId == null && this.descriptionOfNewTicket != '') {
+        else if(this.selectedTicketId == null && this.categoryOfNewTicket != '') {
             this.ticketService.save({
                 'workshop':     this.workshopId,
                 'calls':        this.callIds,
@@ -59,13 +62,17 @@ export class TicketsOfWorkshopComponent implements OnInit{
                 'description':  this.descriptionOfNewTicket,
                 'category':     this.categoryOfNewTicket
             }).subscribe( x => {
-                console.log("by descrip")
+                //console.log("by descrip")
                 this.modal.close()
+                this.router.navigate(['/dashboard'])
             })
         }
         else {
             alert('error!')
             return    
         }
+
+        
+
     }
 }

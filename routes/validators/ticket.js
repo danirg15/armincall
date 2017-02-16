@@ -5,8 +5,8 @@ module.exports = {
 	full: {
 		  body: {
 		    workshop:       Joi.string().hex().length(24).required(),
-		    description:    Joi.string().optional(),
-		    category:       Joi.string().optional(),
+		    category:       Joi.string().required(),
+		    description:    Joi.string().allow('').optional(),
 		    calls:          Joi.array().items(Joi.string().hex().length(24).optional()),
 		    completed:      Joi.boolean().optional()    
 		  }

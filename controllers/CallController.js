@@ -66,8 +66,7 @@ let self = module.exports = {
 
             {$sort: { _id: 1 }},
 
-            {$limit: Number(nMonths)}
-
+            {$limit: Number(nMonths+1)}
         ]
 
         Call.aggregate().append(pipeline).exec(callback)

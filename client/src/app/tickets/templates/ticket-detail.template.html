@@ -84,11 +84,24 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let call of ticket.calls">
-                        <td>{{call.callerNumber | formattedPhone}}</td>
-                        <td>{{call.recieverNumber | formattedPhone}}</td>
+                        <td>
+                            <span *ngIf="call.callerNumber == '917376582'">ARMIN</span>
+                            <span *ngIf="call.callerNumber != '917376582'">{{call.callerNumber | formattedPhone}}</span>
+                        </td>
+                        <td>
+                            <span *ngIf="call.recieverNumber == '0102'">ARMIN</span>
+                            <span *ngIf="call.recieverNumber != '0102'">{{call.recieverNumber | formattedPhone}}</span>
+                        </td>
                         <td>{{call.createdAt | humanizeDate}} ({{call.date | diffForHumans}})</td>
                         <td>{{call.durationInSeconds | durationForHumans}}</td>
-                        <td>{{call.status}}</td>
+                        <td>
+                            <div [ngSwitch]="call.status">
+                                <span *ngSwitchCase="'Respondida'" style="color:green">Respondida</span>
+                                <span *ngSwitchCase="'Sin responder'" style="color:red">Sin Responder</span>
+                                <span *ngSwitchCase="'Ocupada'" style="color:#ff9800">Ocupada</span>
+                                <span *ngSwitchCase="'Fallada'" style="color:grey">Fallada</span>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table> 

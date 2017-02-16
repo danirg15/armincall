@@ -9,6 +9,14 @@ router.get('/stats/calls/:months/months', (req, res) => {
 	}) 
 })
 
+router.get('/stats/calls/count', (req, res) => {
+	
+})
+
+router.get('/stats/calls/avg_time', (req, res) => {
+	
+})
+
 	
 
 module.exports = router

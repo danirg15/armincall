@@ -3,7 +3,7 @@ Tiempo hablado hoy
 Duracion media
 donut chart
 total llamadas
-extenion 0102
+date picker
 
 ////////
 export LC_ALL=C
