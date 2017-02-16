@@ -38,7 +38,7 @@
               <div class="form-group">
                 <label for="inputDireccion" class="col-lg-3 control-label">Dirección</label>
                 <div class="col-lg-9">
-                  <input [(ngModel)]="workshop.address.description" type="text" class="form-control" formControlName="description" placeholder="Dirección">
+                  <input [(ngModel)]="workshop.address && workshop.address.description" type="text" class="form-control" formControlName="description" placeholder="Dirección">
                 </div>
               </div>
             </div>

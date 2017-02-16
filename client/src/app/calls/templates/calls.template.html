@@ -66,39 +66,12 @@
                 <td>{{call.durationInSeconds | durationForHumans}}</td>
                 <td>
 
-                    {{call.status}}
-                    
-                    <!--<div *ngIf="call.status == 'Respondida'">
-                        <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
-                            <i class="fa fa-phone-square fa-2x" 
-                            style="color:green"
-                            aria-hidden="true"></i>
-                        </a>
+                    <div [ngSwitch]="call.status">
+                        <span *ngSwitchCase="'Respondida'" style="color:green">Respondida</span>
+                        <span *ngSwitchCase="'No Respondida'" style="color:red">No Respondida</span>
+                        <span *ngSwitchCase="'Ocupada'" style="color:#ff9800">Ocupada</span>
+                        <span *ngSwitchCase="'Fallada'" style="color:grey">Fallada</span>
                     </div>
-
-                    <div *ngIf="call.status == 'No Respondida'">
-                        <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
-                            <i class="fa fa-phone-square fa-2x" 
-                            style="color:red"
-                            aria-hidden="true"></i>
-                        </a>
-                    </div>
-
-                    <div *ngIf="call.status == 'Ocupada'">
-                        <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
-                            <i class="fa fa-phone-square fa-2x" 
-                            style="color:#ff9800"
-                            aria-hidden="true"></i>
-                        </a>
-                    </div>
-
-                    <div *ngIf="call.status == 'Fallada'">
-                        <a data-toggle="tooltip" data-placement="right" title="{{call.status}}">
-                            <i class="fa fa-phone-square fa-2x" 
-                            style="color:grey"
-                            aria-hidden="true"></i>
-                        </a>
-                    </div>-->
                     
                 </td>
                 <td [hidden]="discarButtonHidden">
