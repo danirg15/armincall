@@ -37,8 +37,9 @@
                     {{ ticket.workshop.name }} 
                 </a> 
                 &nbsp;
-                <span class="label label-info" 
+                <span class="label label-primary" 
                       style="font-size: 1.1rem"
+                      title="Nº llamadas asociadas"
                       *ngIf="ticket.calls.length > 0">
                     <i class="fa fa-volume-control-phone" aria-hidden="true"></i> 
                     {{ ticket.calls.length }}
