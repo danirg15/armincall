@@ -2,7 +2,9 @@ const Demo = require('../models/demo')
 
 module.exports = {
     getAll: (options, callback) => {
-        Demo.find(options, callback)
+        Demo.find(options)
+            .sort({ISODate: 'desc'})
+            .exec(callback)
     },
 
     getOne: (demo_id, callback) => {

@@ -17,7 +17,7 @@ export class CallsComponent implements OnInit, OnDestroy {
     ngOnInit() { 
         this.loadPendingCalls()    
         this.eventsConnection = this.callService.getNewCalls()
-                              .subscribe(newCall => this.calls.push(newCall))
+                              .subscribe(newCall => this.calls.unshift(newCall))
     }
     
     ngOnDestroy() {

@@ -2,7 +2,9 @@ const Category = require('../models/category')
 
 module.exports = {
     getAll: (options, callback) => {
-        Category.find(options, callback)
+        Category.find(options)
+                .sort({name: 'asc'})
+                .exec(callback)
     },
 
     getOne: (category_id, callback) => {

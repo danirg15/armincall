@@ -2,7 +2,9 @@ const Reminder = require('../models/reminder')
 
 module.exports = {
     getAll: (options, callback) => {
-        Reminder.find(options, callback)
+        Reminder.find(options)
+                .sort({ISODate: 'desc'})
+                .exec(callback)
     },
 
     getOne: (reminder_id, callback) => {
