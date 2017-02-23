@@ -5,6 +5,9 @@ donut chart
 total llamadas
 date picker
 
+Categorias ordenadas alfabeticamente
+Si abres incidencia desde popup hay que asociarle la llamada que se responde
+
 ////////
 export LC_ALL=C
 iptables -I INPUT 1 -i eth0 -p tcp --dport 5000 -j ACCEPT
