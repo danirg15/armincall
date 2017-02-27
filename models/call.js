@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Workshop = require('./workshop')
-const SocketIOEventEmitter = require('../events/SocketIOEventEmitter')
+const SocketIOEventEmitter = require('../lib/SocketIOEventEmitter')
 
 
 const CallSchema = mongoose.Schema({

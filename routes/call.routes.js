@@ -2,16 +2,15 @@ const router            = require('express').Router()
 const validate          = require('express-validation');
 const async             = require('async')
 const validator         = require('./validators');
-const SocketIOEventEmitter      = require('../events/SocketIOEventEmitter')
+const SocketIOEventEmitter      = require('../lib/SocketIOEventEmitter')
 
 const CallController    = require('../controllers/CallController')
 const Workshop          = require('../models/workshop')
 const Ticket            = require('../models/ticket')
 
+//const checkPermsForRoute = require('../middleware/permissions')
 
-const checkPermsForRoute = require('../middleware/permissions')
-
-router.get('/calls', checkPermsForRoute('CALLS_ALL'), (req, res) => { 
+router.get('/calls', (req, res) => { 
     CallController.getAll(req.query, (err, calls) => {
         if (err) res.status(500).json(err)
         else res.status(200).json(calls)
@@ -23,19 +22,21 @@ router.get('/calls/recalculate-workshop', (req, res) => {
         'isValidated':false, 
         'workshop': { $exists: false }
     }, (err, calls) => {
-        if (err) res.status(500).json(err)
-
-        calls.forEach((call) => {
-            CallController.asignWorkshopToCall(call, (x) => {
-               //console.log(x)
+        if (err){ 
+            res.status(500).json(err)
+        }
+        else{ 
+            calls.forEach((call) => {
+                CallController.asignWorkshopToCall(call, (x) => {
+                   //console.log(x)
+                })
             })
-        })
-    
-        res.status(200).json({})
+            res.status(200).json({})
+        }
     })
 })
 
-router.get('/calls/:id', checkPermsForRoute('CALLS_SHOW'), (req, res) => {
+router.get('/calls/:id', (req, res) => {
     CallController.getOne(req.params.id, (err, call) => {
         if (err) res.status(500).json(err)
         else res.status(200).json(call)
@@ -44,42 +45,28 @@ router.get('/calls/:id', checkPermsForRoute('CALLS_SHOW'), (req, res) => {
 
 
 
-router.post('/calls', 
-        [
-            checkPermsForRoute('CALLS_CREATE'),
-            validate(validator.call.full)
-        ], (req, res) =>{
-    
+router.post('/calls', validate(validator.call.full), (req, res) =>{
     CallController.store(req.body, (err) => {
         if (err) res.status(500).json(err)
         else res.status(201).json({})
     })
 })
 
-router.put('/calls/:id', 
-            [
-                checkPermsForRoute('CALLS_EDIT'), 
-                validate(validator.call.optional)
-            ], (req, res) => {
-
+router.put('/calls/:id', validate(validator.call.optional), (req, res) => {
     CallController.update(req.params.id, req.body, (err) => {
         if (err) res.status(500).json(err)
         else res.status(200).json({})
     })
 })
 
-router.delete('/calls/:id', checkPermsForRoute('CALLS_DELETE'), (req, res) => {
+router.delete('/calls/:id', (req, res) => {
     CallController.destroy(req.params.id, (err) => {
         if (err) res.status(500).json(err)
         else res.status(200).json({})
     })  
 })
 
-router.post('/calls/emit/incomming', 
-            [
-                checkPermsForRoute('CALLS_EMIT_INCOMMING'), 
-                validate(validator.incomming)
-            ], (req, res) => {
+router.post('/calls/emit/incomming', (req, res) => {
     
     let data = {
         'number': req.body.number

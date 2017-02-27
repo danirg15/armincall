@@ -11,6 +11,7 @@
   "author": "dani",
   "license": "ISC",
   "dependencies": {
+    "algoliasearch": "^3.21.1",
     "async": "^1.5.2",
     "axios": "^0.15.3",
     "body-parser": "^1.14.2",

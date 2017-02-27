@@ -8,7 +8,7 @@ const bodyParser = 		require('body-parser')
 const session = 		require('express-session')
 const env = 			require('dotenv').config()
 const path = 			require('path')
-const SocketIOEventEmitter = require('./events/SocketIOEventEmitter')
+const SocketIOEventEmitter = require('./lib/SocketIOEventEmitter')
 const logger = 			require('morgan')
 const config = 			require('config')
 const auth = 			require('./middleware/jwtAuth')
@@ -92,6 +92,21 @@ server.listen(port, function(err) {
 	if (err) throw err
 	console.log('Server running on port: ' + port)
 })
+
+// const Workshop = require('./models/workshop')
+
+// Workshop.findOne({}, (err, workshop) => {
+// 	if (err) throw err
+	
+// 	var test = workshop
+
+	
+// 	delete test.email
+
+
+// 	console.log(test)
+
+// })
 
 
 // module.exports = app

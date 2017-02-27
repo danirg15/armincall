@@ -1,4 +1,5 @@
-const Workshop = require('../models/workshop')
+const Workshop  = require('../models/workshop')
+const Algolia   = require('../lib/Algolia').init('workshops')
 
 let self = module.exports = {
 
@@ -34,6 +35,9 @@ let self = module.exports = {
                      ]}).exec(callback)
     }
 
+    // search: (keyword, callback) => {
+    //     Algolia.search(keyword, callback)
+    // }
 
 }
 
