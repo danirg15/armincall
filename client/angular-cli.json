@@ -26,6 +26,7 @@
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/chart.js/dist/Chart.bundle.min.js",
+        "../node_modules/autocomplete.js/dist/autocomplete.min.js",
         "assets/js/custom.js"
       ],
       "environments": {
