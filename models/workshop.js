@@ -39,20 +39,13 @@ WorkshopSchema.pre('save', function(next) {
 	
 	if(this.address.description) {
 		MapHelpers.geocode(this.address.description, function(err, location){
-			if(err) {
-				next(err)
-			}
-			else {
+			if(!err) {
 				workshop.address.location = location
-				next()
 			}
 		})
 	}
-	else {
-		next()
-	}
-	
 
+	next()
 })
 
 
