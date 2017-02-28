@@ -38,6 +38,7 @@ WorkshopSchema.pre('save', function(next) {
 		
 	MapHelpers.geocode(this.address.description, function(err, location){
 		if(err) {
+			console.log(err)
 			next(err)
 		}
 		else {
