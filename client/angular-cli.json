@@ -20,7 +20,8 @@
       "styles": [
         "assets/css/bootstrap/dist/bootstrap.min.css",
         "assets/css/font-awesome/css/font-awesome.min.css",
-        "assets/css/custom_styles.css"
+        "assets/css/custom_styles.css",
+        "assets/css/smart_search.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
