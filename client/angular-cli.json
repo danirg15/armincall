@@ -20,12 +20,14 @@
       "styles": [
         "assets/css/bootstrap/dist/bootstrap.min.css",
         "assets/css/font-awesome/css/font-awesome.min.css",
-        "assets/css/custom_styles.css"
+        "assets/css/custom_styles.css",
+        "assets/css/smart_search.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/chart.js/dist/Chart.bundle.min.js",
+        "../node_modules/autocomplete.js/dist/autocomplete.min.js",
         "assets/js/custom.js"
       ],
       "environments": {

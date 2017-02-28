@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core'
 import {Router}             from '@angular/router';
 import {SharedServices}     from '../services/shared.service'
 import { AuthService }      from '../../auth/services/auth.service'
+import * as algoliasearch   from 'algoliasearch'
+import * as autocomplete    from 'autocomplete.js';
 
 @Component({
     selector: 'nav-bar',
@@ -23,6 +25,8 @@ export class NavBarComponent implements OnInit{
     }
 
     ngOnInit(){
+        this.initWorkshopSmartSearch()
+
         this.sharedServices.getBadges()
                            .subscribe(badges => this.badges = badges)
     }
@@ -34,6 +38,25 @@ export class NavBarComponent implements OnInit{
    
     find(keyword){
         this.router.navigate(['/workshops', {'q': keyword}])
+    }
+
+    initWorkshopSmartSearch() {
+        const client = algoliasearch("N5FLSJ2BJC", "00907831911300073a873eda9a70d709");
+        const index = client.initIndex('workshops');
+
+        autocomplete('#workshop-smart-search',
+        { hint: false }, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+            //value to be displayed in input control after user's suggestion selection
+            displayKey: 'name',
+            //hash of templates used when rendering dataset
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + suggestion._highlightResult.name.value + '</span>'+
+                           '<span>' + suggestion._highlightResult.distributor.value + '</span>';
+                }
+            }
+        })
     }
 
 }

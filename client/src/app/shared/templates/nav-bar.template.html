@@ -58,7 +58,9 @@
       </ul>
       <form class="navbar-form navbar-left" role="search" onsubmit="return false">
         <div class="form-group">
-          <input type="text" class="form-control"  #search placeholder="Taller, Tel., Distribuidor..." >
+
+          <input type="text" id='workshop-smart-search' class="form-control"  #search placeholder="Taller, Tel., Distribuidor...">
+
         </div>
         
         <button type="button" (click)="find(search.value)" class="btn btn-default" >Buscar</button>
@@ -78,3 +80,4 @@
     </div>
   </div>
 </nav>
+
