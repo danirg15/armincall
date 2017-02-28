@@ -27,19 +27,30 @@ let self = module.exports = {
     },
 
     search: (keyword, callback) => {
-        Workshop.find({ $or: [
-                            
-                        {$text: {$search: keyword}}, 
-                        {phone: keyword}
-                        
-                     ]}).exec(callback)
-    }
+        Workshop.find({ $text: {$search: keyword} }).exec(callback)
+    },
 
-    // search: (keyword, callback) => {
-    //     Algolia.search(keyword, callback)
-    // }
+    syncAlgolia: (callback) => {
+        Algolia.clearIndex()
 
+        Workshop.find({}, (err, workshops) => {
+            workshops.forEach((workshop) => {
+                Algolia.add({
+                    'objectID':     workshop._id,
+                    'name':         workshop.name,
+                    'cif':          workshop.cif,
+                    'distributor':  workshop.distributor,
+                    'phone':        workshop.phone,
+                    'contact':      workshop.contact
+                }, (err) => {
+                    if (err) callback(err)
+                })
+            })//foreach
+            callback({})
+        })//find
+    }   
 }
+
 
 
 

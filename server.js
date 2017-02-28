@@ -93,20 +93,5 @@ server.listen(port, function(err) {
 	console.log('Server running on port: ' + port)
 })
 
-// const Workshop = require('./models/workshop')
-
-// Workshop.findOne({}, (err, workshop) => {
-// 	if (err) throw err
-	
-// 	var test = workshop
-
-	
-// 	delete test.email
-
-
-// 	console.log(test)
-
-// })
-
 
 // module.exports = app

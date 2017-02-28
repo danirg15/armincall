@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const MapHelpers = require('../helpers/MapHelpers')
+const Algolia = require('../lib/Algolia').init('workshops')
+
 
 const WorkshopSchema = mongoose.Schema({
 	name: 		{"type": String, "require": true},
@@ -26,8 +28,8 @@ const WorkshopSchema = mongoose.Schema({
 //		Indexes
 //--------------------------------------------
 WorkshopSchema.index({ "name": 'text' });
-WorkshopSchema.index({ "distributor": 'text' });
-WorkshopSchema.index({ "phone": 1 });
+//WorkshopSchema.index({ "distributor": 'text' });
+//WorkshopSchema.index({ "phone": 1 });
 
 
 //--------------------------------------------
@@ -46,6 +48,19 @@ WorkshopSchema.pre('save', function(next) {
 	}
 
 	next()
+})
+
+WorkshopSchema.post('save', function(workshop) {
+	Algolia.add({
+		'objectID': 	workshop._id,
+		'name': 		workshop.name,
+		'cif': 			workshop.cif,
+		'distributor': 	workshop.distributor,
+		'phone': 		workshop.phone,
+		'contact': 		workshop.contact
+	}, (err) => {
+		if (err) throw err
+	})
 })
 
 

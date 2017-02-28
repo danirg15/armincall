@@ -39,4 +39,10 @@ router.delete('/workshops/:id', (req, res) => {
 	})	
 })
 
+router.post('/workshops/sync-algolia', (req, res) => {
+	WorkshopController.syncAlgolia((result) => {
+		res.status(200).json(result)
+	})
+})
+
 module.exports = router

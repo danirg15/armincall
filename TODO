@@ -6,7 +6,6 @@ no donut chart. -> show metrics like:
 	-Hora del día con más llamadas -> week chart like google
 
 date picker
-Use Algolia in search input
 Si abres incidencia desde popup hay que asociarle la llamada que se responde
 
 ////////

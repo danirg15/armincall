@@ -46,12 +46,10 @@ export class NavBarComponent implements OnInit{
 
         autocomplete('#workshop-smart-search',
         { hint: false }, {
-            source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
-            //value to be displayed in input control after user's suggestion selection
+            source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
             displayKey: 'name',
-            //hash of templates used when rendering dataset
             templates: {
-                suggestion: function(suggestion) {
+                suggestion: (suggestion) => {
                     return '<span>' + suggestion._highlightResult.name.value + '</span>'+
                            '<span>' + suggestion._highlightResult.distributor.value + '</span>';
                 }
