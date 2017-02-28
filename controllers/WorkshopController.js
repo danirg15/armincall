@@ -27,7 +27,7 @@ let self = module.exports = {
     },
 
     search: (keyword, callback) => {
-        Workshop.find({ $text: {$search: keyword} }).exec(callback)
+        Workshop.find({ 'name': keyword }).exec(callback)
     },
 
     syncAlgolia: (callback) => {

@@ -7,6 +7,7 @@ no donut chart. -> show metrics like:
 
 date picker
 Si abres incidencia desde popup hay que asociarle la llamada que se responde
+Keep mofified workshops in sync with algolia
 
 ////////
 export LC_ALL=C

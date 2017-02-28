@@ -27,7 +27,7 @@ const WorkshopSchema = mongoose.Schema({
 //--------------------------------------------
 //		Indexes
 //--------------------------------------------
-WorkshopSchema.index({ "name": 'text' });
+WorkshopSchema.index({ "name": 1 });
 //WorkshopSchema.index({ "distributor": 'text' });
 //WorkshopSchema.index({ "phone": 1 });
 
