@@ -1,46 +1,66 @@
 let router 			= require('express').Router()
 let ChartController = require('../controllers/ChartController')
 let Call 	= require('../models/call')
+const moment = require('moment')
 
-router.get('/stats/calls/:months/months', (req, res) => {
-	ChartController.getCallsByMonth(req.params.months, (err, count) => {
-		if (err) res.status(500).json(err)
-        else res.status(200).json(count)
-	}) 
+router.get('/stats/calls/evolution_by_months/:n_months', (req, res) => {
+    ChartController.getCallsEvolutionByMonth(req.params.n_months, (err, data) => {
+        if (err) res.status(500).json(err)
+        else res.status(200).json(data)
+    }) 
 })
 
-router.get('/stats/calls/avg_time', (req, res) => {
-	 let pipeline = [
-        // Get only records created in the last 31 days
-        {$match:{
-              "date":{$gt: new Date (Date.now() - 1000*60*60*24*31*1)},
-              "status": "Respondida",
-        }}, 
+router.get('/stats/calls/avg_time/this/:time_word', (req, res) => {
+    const valid_time_words = ['day', 'week', 'month', 'year']
 
-        // Get the year, month and day from the createdTimeStamp
-        {$project:{
-        	  "day": 	{ $dayOfMonth:"$date" },
-              "year": 	{ $year:"$date" }, 
-              "month":  { $month:"$date" },
-              "duration": "$durationInSeconds"
-        }}, 
+    if (valid_time_words.indexOf(req.params.time_word) != -1) {
+        ChartController.getCallsAvgTime(req.params.time_word, (err, data) => {
+            if (err) res.status(500).json(err)
+            else res.status(200).json(data)
+        })
+    }
+    else {
+        res.status(500).json({'error': 'Invalid time word'})
+    }
+})
 
-        {$group:{
-              _id: { day: "$day", month: "$month", year: "$year" }, 
-              avg: { $avg: "$duration" }
-        }},
+router.get('/stats/calls/count/this/:time_word', (req, res) => {
+    const valid_time_words = ['day', 'week', 'month', 'year']
 
-        {$sort: { _id: 1 }},
+    if (valid_time_words.indexOf(req.params.time_word) != -1) {
+        ChartController.getCallsCount(req.params.time_word, (err, data) => {
+            if (err) res.status(500).json(err)
+            else res.status(200).json(data)
+        })
+    }
+    else {
+        res.status(500).json({'error': 'Invalid time word'})
+    }
+})
 
-        {$limit: 13}
-    ]
 
-    Call.aggregate().append(pipeline).exec((err, data) => {
-    	if (err) res.json(err)
-    	else res.json(data)
+router.get('/stats/calls/count/week/histogram', (req, res) => {
+    ChartController.getCallsCountWeekHistogram((err, data) => {
+        if (err) res.status(500).json(err)
+        else res.status(200).json(data)
     })
 })
 
-	
+router.get('/stats/calls/count/hour/histogram', (req, res) => {
+    ChartController.getCallsCountHourHistogram((err, data) => {
+        if (err) res.status(500).json(err)
+        else res.status(200).json(data)
+    })
+})
+
+
+// router.get('/stats/calls/avg_time/week/histogram', (req, res) => {    
+//     ChartController.getCallsAvgTimeWeekHistogram((err, data) => {
+//         if (err) res.status(500).json(err)
+//         else res.status(200).json(data)
+//     })
+// })
+
+
 
 module.exports = router

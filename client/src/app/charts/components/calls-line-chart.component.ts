@@ -1,22 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartService } from '../services/chart.service'
 
+
+
 @Component({
-    selector: 'line-chart',
+    selector: 'calls-line-chart',
     template: `
         
-        <div class="text-center">
-            <input type="radio" 
-                   name="radio1" 
-                   value="6" 
-                   (change)="newChartData($event)" checked> Últimos 6 meses &nbsp;
-            
-            <input type="radio" 
-                   name="radio1" 
-                   value="12" 
-                   (change)="newChartData($event)"> Último año &nbsp;
-        </div>
-        
+        <div class="text-center"> <h5>Evolución de llamadas</h5> </div>
 
         <div style='display:block'>
             <canvas baseChart
@@ -31,13 +22,13 @@ import { ChartService } from '../services/chart.service'
     `
 
 })
-export class LineChartComponent implements OnInit {
+export class CallsLineChartComponent implements OnInit {
     lineChartLabels:Array<any> = [];
     
     lineChartData:Array<any> = [
         {
             data: [], 
-            label: 'Llamadas'
+            label: 'Llamadas entre meses'
         }
     ];
 
@@ -59,26 +50,18 @@ export class LineChartComponent implements OnInit {
 
     lineChartLegend:boolean = true;
     lineChartType:string = 'line';
+
     constructor(private chartService: ChartService) { 
 
     }
 
 
     ngOnInit() {
-        this.loadChartData(6)
-    }
-
-    newChartData(e){
-        if(e.target.checked){
-            this.loadChartData(e.target.value)
-        }
-    }
-
-    loadChartData(n_months){
-        this.chartService.getAll(n_months).subscribe( data => {
+        this.chartService.getCallsCountByMonths(12 + 1).subscribe( data => {
             this.lineChartLabels = data.tags
             this.lineChartData[0].data = data.count
         })
     }
+
 
 }

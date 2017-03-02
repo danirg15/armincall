@@ -1,8 +1,10 @@
 import { NgModule }         from '@angular/core'
 import { CommonModule }     from '@angular/common'
 
-import { DoughnutChartComponent }   from './components/doughnut-chart.component'
-import { LineChartComponent }       from './components/line-chart.component'
+import { CallsCountWeekHistogramComponent } from './components/calls-count-week-histogram.component'
+import { CallsCountHourHistogramComponent } from './components/calls-count-hour-histogram.component'
+import { CallsLineChartComponent }          from './components/calls-line-chart.component'
+import { GeneralStatsComponent }            from './components/general-stats.component'
 
 import { ChartService } from './services/chart.service'
 
@@ -17,12 +19,16 @@ import { SharedModule } from '../shared/shared.module'
         SharedModule
     ],
     declarations: [
-        DoughnutChartComponent,
-        LineChartComponent
+        CallsCountWeekHistogramComponent,
+        CallsLineChartComponent,
+        CallsCountHourHistogramComponent,
+        GeneralStatsComponent
     ],
     exports: [
-        DoughnutChartComponent,
-        LineChartComponent
+        CallsCountWeekHistogramComponent,
+        CallsLineChartComponent,
+        CallsCountHourHistogramComponent,
+        GeneralStatsComponent
     ],
 
     providers: [ChartService]

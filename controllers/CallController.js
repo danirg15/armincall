@@ -45,35 +45,7 @@ let self = module.exports = {
                 callback(null)
             }
         })
-    },
-
-    getNumberOfCallsByMonth: (nMonths, callback) => {
-        let pipeline = [
-            // Get only records created in the last 31 days
-            {$match:{
-                  "date":{$gt: new Date (Date.now() - 1000*60*60*24*31*nMonths)}
-            }}, 
-            // Get the year, month and day from the createdTimeStamp
-            {$project:{
-                  "year":{$year:"$date"}, 
-                  "month":{$month:"$date"}//, 
-            }}, 
-
-            {$group:{
-                  _id:{year: "$year", month: "$month"}, 
-                  "count":{$sum:1}
-            }},
-
-            {$sort: { _id: 1 }},
-
-            {$limit: Number(nMonths+1)}
-        ]
-
-        Call.aggregate().append(pipeline).exec(callback)
-    },
-
-
-    
+    }
 
 }
 
