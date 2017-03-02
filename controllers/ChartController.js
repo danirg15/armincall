@@ -20,8 +20,7 @@ module.exports = {
                   _id:      { year: "$year", month: "$month" }, 
                   count:    { $sum:1 }
             }},
-            {$sort: { _id: 1 }},
-            {$limit: Number(nMonths)}
+            {$sort: { _id: 1 }}
         ]
 
         Call.aggregate().append(pipeline).exec((err, data) => {
