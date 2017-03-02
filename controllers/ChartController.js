@@ -105,6 +105,11 @@ module.exports = {
                     result.tags.push(dayTags[value._id.dayOfWeek-1])
                     result.count.push(value.count)
                 })
+
+                //remove sunday
+                result.tags.shift()
+                result.count.shift()
+
                 callback(null, result)
             }
         })

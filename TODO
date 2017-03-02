@@ -1,13 +1,9 @@
-no donut chart. -> show metrics like:
-	-By Year, month, week, dia
-		Total llamadas
-		Duracion media
-	-Dia de la semana con más llamadas -> week chart like google
-	-Hora del día con más llamadas -> week chart like google
+histogram week -> find funking sunday calls
 
 date picker
 Si abres incidencia desde popup hay que asociarle la llamada que se responde
 Keep mofified workshops in sync with algolia
+Pagination
 
 ////////
 export LC_ALL=C
