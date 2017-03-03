@@ -11,9 +11,7 @@ import { ChartService } from '../services/chart.service'
                 [labels]="barChartLabels"
                 [options]="barChartOptions"
                 [legend]="barChartLegend"
-                [chartType]="barChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+                [chartType]="barChartType"></canvas>
     </div>
   `
 })

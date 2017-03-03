@@ -137,7 +137,7 @@ module.exports = {
             else {
                 let result = {'tags': [], 'count': []}
 
-                for (var i = 0; i < data.length-2; i++) {
+                for (var i = 0; i < data.length-1; i+=2) {
                     result.tags.push(data[i]._id.hourOfDay+':00 - '+data[i+2]._id.hourOfDay+':00')
                     result.count.push(data[i].count + data[i+1].count)
                 }
