@@ -28,7 +28,7 @@ export class CallsCountHourHistogramComponent implements OnInit{
     public barChartData:any[] = [
       {
           data: [], 
-          label: 'Llamadas entre horas'
+          label: 'Llamadas acumuladas por franja horaria'
       }
     ];
 

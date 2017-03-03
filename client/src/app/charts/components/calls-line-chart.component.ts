@@ -28,7 +28,7 @@ export class CallsLineChartComponent implements OnInit {
     lineChartData:Array<any> = [
         {
             data: [], 
-            label: 'Llamadas entre meses'
+            label: 'Llamadas por meses'
         }
     ];
 

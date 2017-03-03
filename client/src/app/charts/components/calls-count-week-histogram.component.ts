@@ -28,7 +28,7 @@ export class CallsCountWeekHistogramComponent implements OnInit{
     public barChartData:any[] = [
       {
           data: [], 
-          label: 'Llamadas por día'
+          label: 'Llamadas acumuladas por día'
       }
     ];
 
