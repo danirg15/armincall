@@ -27,7 +27,9 @@
             <td>{{workshop.name}}</td>
             <td>{{workshop.distributor}}</td>
             <td> 
-                <span *ngFor="let p of workshop.phone"> {{ p }} <br> </span>
+                <span *ngFor="let phone of workshop.phone"> 
+                    {{ phone | formattedPhone }} <br> 
+                </span>
             </td>
             <td>{{workshop.contact}}</td>
             <td>
