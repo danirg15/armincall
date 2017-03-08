@@ -3,8 +3,14 @@ const Workshop = require('../models/workshop')
 
 let self = module.exports = {
     getAll: (options, callback) => {
+        let limit = options.limit || 100
+        let page = options.page ? (limit * options.page) : 0
+        delete options.limit
+        delete options.page
+
         Call.find(options)
-            .limit(400)
+            .limit(limit)
+            .skip(page)
             .sort({date: 'desc'})
             .populate('workshop').exec(callback)
     },

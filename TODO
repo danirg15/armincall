@@ -1,9 +1,9 @@
-histogram week -> find funking sunday calls
-Charts - error function chartHovered()
+
+
 date picker
 Si abres incidencia desde popup hay que asociarle la llamada que se responde
 Keep mofified workshops in sync with algolia
-Pagination
+Pagination http://michaelbromley.github.io/ng2-pagination/#/server-paging
 
 ////////
 export LC_ALL=C
@@ -13,94 +13,18 @@ sudo service nginx restart
 
 nginx: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04
 
-
-SSL/HTTPS
 2. IncommingCall modal should be available anywhere
 4. Try Hapi.js https://scotch.io/tutorials/making-a-restful-api-with-hapi-js?utm_content=buffer49fca&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 5. Reminder middleware to send email notifications
 6. Mocha Test
-7. Make donut chart
 8. Uptime monitor
 9. Each panel shows the remaining time for next event
 10. Google maps
-11.Total Llamadas
-12.Llamadas Hoy
 13. Area to issue tokens and accounts
 3. Arreglar nav-bar, para reusabilidad
 9. Order by, calls, tickets, demos, reminders...
 10. Tickets category
 
-REFACTOR!!!!
 
-
-/*
-        https://github.com/brinkmanjg/ng2-typeahead
-*/
-
-//mocha https://www.codementor.io/nodejs/tutorial/unit-testing-nodejs-tdd-mocha-sinon
-//https://medium.com/defmethod-works/building-an-express-node-js-app-with-angular-2-and-the-twitter-api-4eebd06fecff#.uceqazhg7
-//https://getmdl.io/templates/index.html
-
-
-
-
-function stringToSec(str) {
-	let s = str.split(':')
-	let hou = Number(s[0].slice(0, -1))
-	let min = Number(s[1].slice(0, -1))
-	let sec = Number(s[2].slice(0, -1))
-
-	return hou*60*60 + min*60 + sec
-}
-
-const Call = require('./models/call')
-const test = require('./database/calls.json')
-const moment = require('moment')
-
-test.forEach( (t) => {
-	let a = new Call({
-		'callerNumber': t.Origen,
-		'recieverNumber': t.Destino,
-		'date': moment(t.Fecha + ' ' + t.Hora, 'DD/MM/YYYY HH:mm:ss').toISOString(),
-		'durationInSeconds': stringToSec(t.Duracion),
-		'status': t.Estado,
-		'isValidated': true
-	})
-
-	a.save(err => {
-			console.log(a)
-	})
-	
-})
-
-
-// const Workshop = require('./models/workshop')
-// const test = require('./database/workshops.json')
-// test.forEach( (t) => {
-
-// 	let w = {
-// 		"name": t.nombre_taller,
-// 		"cif": t.cif,
-// 		"contact": '',
-// 		"distributor": t.nombre,
-// 		"email": t.email,
-// 		"phone": []
-// 	}
-
-// 	if(t.telefono != ''){
-// 		w.phone.push(t.telefono)
-// 	}
-
-// 	if(t.telefono2 != ''){
-// 		w.phone.push(t.telefono2)
-// 	}
-
-
-// 	(new Workshop(w)).save(err => {
-// 		if (err) throw err
-// 		console.log(w)
-// 	})
-	
-// })
 
 

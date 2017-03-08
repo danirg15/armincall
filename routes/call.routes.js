@@ -8,8 +8,6 @@ const CallController    = require('../controllers/CallController')
 const Workshop          = require('../models/workshop')
 const Ticket            = require('../models/ticket')
 
-//const checkPermsForRoute = require('../middleware/permissions')
-
 router.get('/calls', (req, res) => { 
     CallController.getAll(req.query, (err, calls) => {
         if (err) res.status(500).json(err)
@@ -67,11 +65,10 @@ router.delete('/calls/:id', (req, res) => {
 })
 
 router.post('/calls/emit/incomming', (req, res) => {
-    
     let data = {
         'number': req.body.number
     }
-
+    
     async.waterfall([
         function (callback){
             Workshop.findOne({'phone': data.number}, (err, workshop) => {

@@ -52,12 +52,12 @@
         </div>
 
         <div class="col-md-offset-2 col-md-5">  
-            <div *ngIf="incommingCall.workshop">
+            <!--<div *ngIf="incommingCall.workshop">
                 <a class="btn btn-primary btn-sm"
                    [routerLink]="['/tickets/new', incommingCall.workshop._id]">
                    Abrir incidencia
                 </a> 
-            </div>
+            </div>-->
             <div *ngIf="!incommingCall.workshop">
                 <a class="btn btn-primary btn-sm"
                    [routerLink]="['/workshops/new', {'number': incommingCall.number}]">
