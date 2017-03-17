@@ -3,8 +3,8 @@ stages:
   # - build
   - deploy
 
-#variables:
-#  CI_PROJECT_DIR: "/opt/mean/test"
+variables:
+  CI_PROJECT_DIR: "/opt/mean/apps/armincall"
 
 # install_global_dependencies:
 #   script:
