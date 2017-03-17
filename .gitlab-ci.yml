@@ -30,5 +30,8 @@ deploy:
   script:
 #    - forever stopall
 #    - forever start /opt/mean/test/armincall/server.js
+     - ls -la
+     - pwd
+     - who i am
      - cd /opt/mean/test && git clone git@gitlab.com:dani.rg15/armincall.git
   stage: deploy
