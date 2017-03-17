@@ -3,8 +3,8 @@ stages:
   # - build
   - deploy
 
-variables:
-  CI_PROJECT_DIR: "/opt/mean/test"
+#variables:
+#  CI_PROJECT_DIR: "/opt/mean/test"
 
 # install_global_dependencies:
 #   script:
@@ -29,5 +29,6 @@ variables:
 deploy:
   script:
 #    - forever stopall
-    - forever start /opt/mean/test/armincall/server.js
+#    - forever start /opt/mean/test/armincall/server.js
+  - echo "Hello world"
   stage: deploy
