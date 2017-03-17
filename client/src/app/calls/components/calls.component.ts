@@ -36,6 +36,20 @@ export class CallsComponent implements OnInit, OnDestroy {
                             .subscribe(calls => this.calls = calls)
     }
 
+    // getPage(page: number) {
+    //     //this.loading = true;
+    //     // this.callService.getAll()
+    //     //                 .subscribe(calls => this.calls = calls)
+
+    //     // this.calls = serverCall(this.meals, page)
+    //     //     .do(res => {
+    //     //         this.total = res.total;
+    //     //         this.p = page;
+    //     //         this.loading = false;
+    //     //     })
+    //     //     .map(res => res.items);
+    // }
+
 
 
     select($event, call){

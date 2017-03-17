@@ -7,6 +7,8 @@ import { TicketsModule } from '../tickets/tickets.module'
 import { CallsComponent }       from './components/calls.component'
 import { IncommingComponent }   from './components/incomming.component'
 import { CallService }          from './services/call.service'
+import {Ng2PaginationModule} from 'ng2-pagination'
+
 
 @NgModule({
     imports: [
@@ -14,7 +16,8 @@ import { CallService }          from './services/call.service'
         CommonModule,
         ModalModule, 
         SharedModule,
-        TicketsModule
+        TicketsModule,
+        Ng2PaginationModule
     ],
     declarations: [CallsComponent, IncommingComponent],
     exports: [CallsComponent, IncommingComponent],

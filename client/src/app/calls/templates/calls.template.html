@@ -82,6 +82,19 @@
     </table> 
 
 
+
+    <!--<ul class="meal-list">
+        <li *ngFor="let call of calls | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: 1, totalItems: 100 }">
+            {{ call }}
+        </li>
+    </ul>
+
+    <div class="has-text-centered">
+        <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+        <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+    </div>-->
+
+
     <workshop-tickets #ticketsModal
         [call-ids]="selectedCallIds" 
         [workshop-id]="workshopIdOfSelectedCall">
