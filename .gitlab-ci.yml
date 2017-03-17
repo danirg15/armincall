@@ -30,5 +30,5 @@ deploy:
   script:
 #    - forever stopall
 #    - forever start /opt/mean/test/armincall/server.js
-  - echo "Hello world"
+  - echo "Hello world" > dani.txt
   stage: deploy
