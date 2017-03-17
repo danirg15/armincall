@@ -1,5 +1,5 @@
 
-setup:
+before_script:
   - apt-get update
   - apt-get install nodejs
   - apt-get install npm
