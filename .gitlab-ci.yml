@@ -4,7 +4,7 @@ stages:
   - deploy
 
 variables:
-  CI_PROJECT_DIR: "/opt/mean"
+  CI_PROJECT_DIR: "/opt/mean/test"
 
 # install_global_dependencies:
 #   script:
