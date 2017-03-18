@@ -3,8 +3,6 @@ stages:
   # - build
   - deploy
 
-variables:
-  GIT_STRATEGY: none
 
 # install_global_dependencies:
 #   script:
@@ -33,5 +31,5 @@ deploy:
      - ls -la
      - pwd
      - who i am
-     - cd /opt/mean/test && git clone git@gitlab.com:dani.rg15/armincall.git
+     - cat /builds/dani.rg15/armincall/server.js
   stage: deploy
