@@ -1,31 +1,22 @@
 stages:
-  # - install
-  # - build
+  - build
   - deploy
-
-# install_global_dependencies:
-#   script:
-#     - apt-get update
-#     - apt-get --yes install nodejs
-#     - apt-get --yes install npm
-#     - npm install forever -g
-#     - npm install -g @angular/cli
-#   stage: install
-
-# clone_repo:
-#   script:
-#     - cd /opt/mean/test && git clone git@gitlab.com:dani.rg15/armincall.git
-#   stage: install
-
-# install_node_dependencies_and_complile:
-#   script:
-#     - npm install
-#     - cd /opt/mean/test/armincall/client && ng build --prod
-#   stage: build
-
-deploy:
+  
+install_node_dependencies:
+  stage: build
+  tags: ['armincall']
   script:
-#    - forever stopall
-#    - forever start /opt/mean/test/armincall/server.js
-     - ls -l /opt/mean/test/build
+    - npm install
+
+compile_ng2:
+  stage: build
+  tags: ['armincall']
+  script:
+    - cd ./client && ng build --prod
+  
+deploy:
   stage: deploy
+  tags: ['armincall']
+  script:
+     - forever stopall && forever start server.js
+    
