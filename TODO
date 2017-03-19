@@ -7,10 +7,6 @@ Pagination http://michaelbromley.github.io/ng2-pagination/#/server-paging
 
 ////////
 export LC_ALL=C
-iptables -I INPUT 1 -i eth0 -p tcp --dport 5000 -j ACCEPT
-
-sudo service nginx restart
-
 nginx: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04
 
 2. IncommingCall modal should be available anywhere
