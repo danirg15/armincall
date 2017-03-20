@@ -30,8 +30,8 @@
         "../node_modules/autocomplete.js/dist/autocomplete.min.js",
         "assets/js/custom.js"
       ],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
