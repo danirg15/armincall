@@ -7,13 +7,7 @@ build:
   tags: ['armincall']
   script:
     - npm install
-
-# compile_ng2:
-#   stage: build
-#   tags: ['armincall']
-#   script:
-#     - cd ./client && ng build --prod
-  
+    
 deploy:
   stage: deploy
   tags: ['armincall']
