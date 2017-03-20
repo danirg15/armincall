@@ -7,13 +7,12 @@ install_node_dependencies:
   tags: ['armincall']
   script:
     - npm install
-    - cd ./client && npm install --only=dev
 
-compile_ng2:
-  stage: build
-  tags: ['armincall']
-  script:
-    - cd ./client && ng build --prod
+# compile_ng2:
+#   stage: build
+#   tags: ['armincall']
+#   script:
+#     - cd ./client && ng build --prod
   
 deploy:
   stage: deploy
