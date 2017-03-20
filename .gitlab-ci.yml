@@ -17,6 +17,8 @@ install_node_dependencies:
 deploy:
   stage: deploy
   tags: ['armincall']
+  variables:
+    GIT_STRATEGY: none
   script:
      - forever stopall && forever start server.js
     
