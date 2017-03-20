@@ -2,9 +2,9 @@ stages:
   - build
   - deploy
   
-install_node_dependencies:
+build:
   stage: build
-  tags: ['armincall']
+  #tags: ['armincall']
   script:
     - npm install
 
@@ -16,7 +16,7 @@ install_node_dependencies:
   
 deploy:
   stage: deploy
-  tags: ['armincall']
+  #tags: ['armincall']
   variables:
     GIT_STRATEGY: none
   script:
