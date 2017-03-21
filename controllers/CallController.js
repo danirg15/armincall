@@ -4,7 +4,7 @@ const Workshop = require('../models/workshop')
 let self = module.exports = {
     getAll: (options, callback) => {
         let limit = options.limit || 100
-        let page = options.page ? (limit * options.page) : 0
+        let page = options.page ? (limit * (options.page-1)) : 0
         delete options.limit
         delete options.page
 

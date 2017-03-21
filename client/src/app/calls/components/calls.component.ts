@@ -9,13 +9,20 @@ export class CallsComponent implements OnInit, OnDestroy {
     selectedCallIds: any[] = []
     workshopIdOfSelectedCall
     eventsConnection
-    discarButtonHidden = false
+    isShowingHistory = false
     
+    page = 1
+    pageLimit = 10
+    totalPages = 1
+
     constructor(private callService: CallService) { 
     }
 
     ngOnInit() { 
-        this.loadPendingCalls()    
+        this.loadPendingCalls()   
+        this.callService.getNumberOfCalls()
+                        .subscribe(n => this.totalPages = Math.ceil(n / this.pageLimit))
+
         this.eventsConnection = this.callService.getNewCalls()
                               .subscribe(newCall => this.calls.unshift(newCall))
     }
@@ -25,31 +32,30 @@ export class CallsComponent implements OnInit, OnDestroy {
     }
 
     loadHistoryCalls() {
-        this.discarButtonHidden = true
-        this.callService.getAll()
-                            .subscribe(calls => this.calls = calls)
+        this.isShowingHistory = true
+        this.callService.getCalls(this.page, this.pageLimit)
+                        .subscribe(calls => this.calls = calls)
     }
 
     loadPendingCalls() {
-        this.discarButtonHidden = false
+        this.isShowingHistory = false
         this.callService.getPendingCalls()
-                            .subscribe(calls => this.calls = calls)
+                        .subscribe(calls => this.calls = calls)
     }
 
-    // getPage(page: number) {
-    //     //this.loading = true;
-    //     // this.callService.getAll()
-    //     //                 .subscribe(calls => this.calls = calls)
+    nextPage() {
+        if(this.calls.length !== 0) {
+            this.page++
+            this.loadHistoryCalls()
+        }
+    }
 
-    //     // this.calls = serverCall(this.meals, page)
-    //     //     .do(res => {
-    //     //         this.total = res.total;
-    //     //         this.p = page;
-    //     //         this.loading = false;
-    //     //     })
-    //     //     .map(res => res.items);
-    // }
-
+    prevPage() {
+        if(this.page > 1) {
+            this.page--
+            this.loadHistoryCalls()
+        }
+    }
 
 
     select($event, call){

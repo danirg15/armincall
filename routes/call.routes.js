@@ -14,6 +14,13 @@ router.get('/calls', (req, res) => {
         else res.status(200).json(calls)
     })
 })
+
+router.get('/calls/count', (req, res) => { 
+    CallController.count(req.query, (err, calls) => {
+        if (err) res.status(500).json(err)
+        else res.status(200).json(calls)
+    })
+})
     
 router.get('/calls/recalculate-workshop', (req, res) => {
     CallController.getAll({

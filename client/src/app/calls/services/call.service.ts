@@ -16,8 +16,12 @@ export class CallService{
         return this.http.get(this.url+'?isValidated=false')
     }
 
-    getAll() {
-        return this.http.get(this.url)
+    getCalls(page=1, limit=20) {
+        return this.http.get(this.url+'?page='+page+'&limit='+limit)
+    }
+
+    getNumberOfCalls() {
+        return this.http.get(this.url+'/count')
     }
 
     updateCall(call){
