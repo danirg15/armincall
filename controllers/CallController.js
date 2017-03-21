@@ -9,8 +9,8 @@ let self = module.exports = {
         delete options.page
 
         Call.find(options)
-            .limit(limit)
-            .skip(page)
+            .limit(Number(limit))
+            .skip(Number(page))
             .sort({date: 'desc'})
             .populate('workshop').exec(callback)
     },
