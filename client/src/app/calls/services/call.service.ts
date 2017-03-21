@@ -21,6 +21,8 @@ export class CallService{
     }
 
     updateCall(call){
+        delete call.createdAt
+        delete call.updatedAt
         return this.http.put(this.url+'/'+call._id , call)
     }
 

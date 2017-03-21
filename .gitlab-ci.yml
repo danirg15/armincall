@@ -18,5 +18,5 @@ deploy:
   variables:
     GIT_STRATEGY: none
   script:
-     - forever stopall && forever start server.js
+     - killall nodejs && forever stopall && forever start server.js
     
