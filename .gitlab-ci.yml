@@ -2,17 +2,19 @@ stages:
   # - build
   - deploy
   
-# build:
-#   stage: build
-#   tags: ['armincall']
-#   only:
-#     - master
-#   script:
-#     - npm install
+build:
+  stage: build
+  tags: ['armincall']
+  only:
+    - master
+  script:
+    - npm install
     
 deploy:
   stage: deploy
   tags: ['armincall']
+  variables:
+    GIT_STRATEGY: none
   only:
     - master
   script:
