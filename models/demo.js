@@ -21,8 +21,7 @@ const DemoSchema = mongoose.Schema({
 //--------------------------------------------
 
 DemoSchema.pre('save', function(next) {
-	let isoDate = moment(this.date + this.time, "DD/MM/YYYY HH:mm").toDate()
-	this.ISODate = isoDate
+	this.ISODate = moment(this.date + this.time, "DD/MM/YYYY HH:mm").toDate()
 	next()
 });
 

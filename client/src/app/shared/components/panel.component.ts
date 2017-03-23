@@ -44,12 +44,14 @@ import { Component, OnInit, Input } from '@angular/core';
                         <div class="row">
                             <div class="col-sm-8">
                                 <span class="counter">{{counter}}</span><br>
-                                <span class="lead">{{title}}</span>
+                                <span class="">{{title}}</span>
                             </div>
                             <div class="col-sm-4">
                                 <i class="icon" [ngClass]="icon" aria-hidden="true"></i>
                             </div>
                         </div>
+
+                        <small style="font-size:1.05rem">{{ info }} &nbsp;</small> 
 
                     </div>
                     <div class="panel-footer" [ngStyle]="{'background-color': panelColor}"> 
@@ -74,6 +76,7 @@ export class PanelComponent implements OnInit {
     @Input() counter = 5
     @Input('panel-color') panelColor = "#1395fd"
     @Input('fa-icon') icon = "fa fa-users fa-4x pull-right"
+    @Input() info = ""
 
     constructor() { }
 

@@ -14,10 +14,7 @@ const ReminderSchema = mongoose.Schema({
 //--------------------------------------------
 
 ReminderSchema.pre('save', function(next) {
-	let isoDate = moment(this.date + this.time, "DD/MM/YYYY HH:mm").toDate()
-
-	this.ISODate = isoDate
-
+	this.ISODate = moment(this.date + this.time, "DD/MM/YYYY HH:mm").toDate()
 	next()
 });
 
