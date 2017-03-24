@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const MapHelpers = require('../helpers/MapHelpers')
-const Algolia = require('../lib/Algolia').init('workshops')
+const GoogleMapsInterface = require('../lib/GoogleMapsInterface')
+const AlgoliaInterface = require('../lib/AlgoliaInterface').init('workshops')
 
 
 const WorkshopSchema = mongoose.Schema({
@@ -40,7 +40,7 @@ WorkshopSchema.pre('save', function(next) {
 	let workshop = this
 	
 	if(this.address.description) {
-		MapHelpers.geocode(this.address.description, function(err, location){
+		GoogleMapsInterface.geocode(this.address.description, function(err, location){
 			if(!err) {
 				workshop.address.location = location
 			}
@@ -51,7 +51,7 @@ WorkshopSchema.pre('save', function(next) {
 })
 
 WorkshopSchema.post('save', function(workshop) {
-	Algolia.add({
+	AlgoliaInterface.add({
 		'objectID': 	workshop._id,
 		'name': 		workshop.name,
 		'cif': 			workshop.cif,

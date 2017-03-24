@@ -1,5 +1,5 @@
 const Workshop  = require('../models/workshop')
-const Algolia   = require('../lib/Algolia').init('workshops')
+const AlgoliaInterface   = require('../lib/AlgoliaInterface').init('workshops')
 
 let self = module.exports = {
 
@@ -30,12 +30,12 @@ let self = module.exports = {
         Workshop.find({ 'name': keyword }).exec(callback)
     },
 
-    syncAlgolia: (callback) => {
-        Algolia.clearIndex()
+    syncAlgoliaInterface: (callback) => {
+        AlgoliaInterface.clearIndex()
 
         Workshop.find({}, (err, workshops) => {
             workshops.forEach((workshop) => {
-                Algolia.add({
+                AlgoliaInterface.add({
                     'objectID':     workshop._id,
                     'name':         workshop.name,
                     'cif':          workshop.cif,

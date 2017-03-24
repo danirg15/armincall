@@ -14,6 +14,7 @@ const config = 			require('config')
 const auth = 			require('./middleware/jwtAuth')
 const moment_tz = 		require('moment-timezone')
 const helmet = 			require('helmet')
+const cron = 			require('node-cron')
 
 
 //--------------------------------------------
@@ -59,12 +60,19 @@ app.use('/api', auth, require('./routes/category.routes'))
 app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
 
-
-
+//Redirect to client app
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '/client/dist/index.html'))
 })
 
+
+//--------------------------------------------
+//		Jobs scheduling
+//--------------------------------------------
+cron.schedule('*/5 * * * *', function(){ //Run every 5 min
+	// require('./jobs/RemindersNotificationJob').handle()
+	// require('./jobs/DemosNotificationJob').handle()
+})
 
 
 
@@ -91,12 +99,5 @@ server.listen(port, function(err) {
 })
 
 module.exports = app
-
-
-
-
-
-
-
 
 
