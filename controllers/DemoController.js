@@ -1,4 +1,5 @@
 const Demo = require('../models/demo')
+const moment = require('moment')
 
 module.exports = {
     getAll: (options, callback) => {
@@ -12,11 +13,13 @@ module.exports = {
     },
 
     store: (demo, callback) => {
+        demo.ISODate = moment(demo.date + demo.time, "DD/MM/YYYY HH:mm").toDate();
         (new Demo(demo)).save(callback);
     }, 
 
-    update: (demo_id, fields, callback) => {
-        Demo.findByIdAndUpdate(demo_id, fields, callback)
+    update: (demo_id, demo, callback) => {
+        demo.ISODate = moment(demo.date + demo.time, "DD/MM/YYYY HH:mm").toDate();
+        Demo.findByIdAndUpdate(demo_id, demo, callback)
     },
 
     destroy: (demo_id, callback) => {

@@ -1,4 +1,5 @@
 const Reminder = require('../models/reminder')
+const moment = require('moment')
 
 module.exports = {
     getAll: (options, callback) => {
@@ -12,11 +13,13 @@ module.exports = {
     },
 
     store: (reminder, callback) => {
+        reminder.ISODate = moment(reminder.date + reminder.time, "DD/MM/YYYY HH:mm").toDate();
         (new Reminder(reminder)).save(callback)
     }, 
 
-    update: (reminder_id, fields, callback) => {
-        Reminder.findByIdAndUpdate(reminder_id, fields, callback)
+    update: (reminder_id, reminder, callback) => {
+        reminder.ISODate = moment(reminder.date + reminder.time, "DD/MM/YYYY HH:mm").toDate();
+        Reminder.findByIdAndUpdate(reminder_id, reminder, callback)
     },
 
     destroy: (reminder_id, callback) => {

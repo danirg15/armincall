@@ -1,5 +1,4 @@
 const mongoose 	= require('mongoose');
-const moment 	= require('moment')
 
 const DemoSchema = mongoose.Schema({
 	workshop_name: 			{"type": String, "require": true},
@@ -12,7 +11,8 @@ const DemoSchema = mongoose.Schema({
 	time: 			{"type": String, "require": true},
 	comments: 		{"type": String},
 	ISODate: 		{"type": Date, 	 "require": true},
-	completed: 		{"type": Boolean, "default": false}
+	completed: 		{"type": Boolean, "default": false},
+	notified: 		{"type": Boolean, "default": false},
 })
 
 
@@ -20,10 +20,6 @@ const DemoSchema = mongoose.Schema({
 //		Middlewares
 //--------------------------------------------
 
-DemoSchema.pre('save', function(next) {
-	this.ISODate = moment(this.date + this.time, "DD/MM/YYYY HH:mm").toDate()
-	next()
-});
 
 module.exports = mongoose.model('Demo', DemoSchema);
 

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-let secret = process.env.APP_KEY || Date.now()
+let secret = process.env.APP_KEY || 'head-down-and-feet-on-the-ground'
 
 
 let self = module.exports = {
