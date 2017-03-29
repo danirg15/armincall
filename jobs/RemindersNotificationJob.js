@@ -1,6 +1,8 @@
 const moment = require('moment')
 const Reminder = require('../models/reminder')
+const ReminderController = require('../controllers/ReminderController')
 const Mailgun = require('../lib/MailgunInterface')
+
 
 module.exports = {
 	
@@ -8,7 +10,10 @@ module.exports = {
 		let now = moment().toDate()
 		let halfHour = moment().add(30, 'minutes').toDate()
 
-		Reminder.find({'ISODate' : {'$gte': now, '$lte': halfHour} }, (err, reminders) => {
+		Reminder.find({
+			'notified': false,
+			'ISODate' : {'$gte': now, '$lte': halfHour} 
+		}, (err, reminders) => {
 			if (err || !reminders) {
 				return
 			}
@@ -25,6 +30,7 @@ module.exports = {
 					   .withBody(template)
 					   .send((err) => {
 					   		if (err) throw err
+					   		else ReminderController.update(reminder._id, {'notified':true})	
 					   })
 			})//for-each	
 		})

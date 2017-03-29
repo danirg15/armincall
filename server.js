@@ -70,10 +70,9 @@ app.get('*', (req, res) => {
 //		Jobs scheduling
 //--------------------------------------------
 cron.schedule('*/5 * * * *', function(){ //Run every 5 min
-	// require('./jobs/RemindersNotificationJob').handle()
-	// require('./jobs/DemosNotificationJob').handle()
+	require('./jobs/RemindersNotificationJob').handle()
+	require('./jobs/DemosNotificationJob').handle()
 })
-
 
 
 //--------------------------------------------

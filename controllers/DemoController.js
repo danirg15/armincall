@@ -13,12 +13,16 @@ module.exports = {
     },
 
     store: (demo, callback) => {
-        demo.ISODate = moment(demo.date + demo.time, "DD/MM/YYYY HH:mm").toDate();
+        if(demo.date && demo.time) {
+            demo.ISODate = moment(demo.date + demo.time, "DD/MM/YYYY HH:mm").toDate();
+        }
         (new Demo(demo)).save(callback);
     }, 
 
     update: (demo_id, demo, callback) => {
-        demo.ISODate = moment(demo.date + demo.time, "DD/MM/YYYY HH:mm").toDate();
+        if (demo.date && demo.time) {
+            demo.ISODate = moment(demo.date + demo.time, "DD/MM/YYYY HH:mm").toDate();
+        }
         Demo.findByIdAndUpdate(demo_id, demo, callback)
     },
 
