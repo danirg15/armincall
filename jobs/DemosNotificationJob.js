@@ -30,7 +30,7 @@ module.exports = {
 					   .withBody(template)
 					   .send((err) => {
 					   		if (err) throw err
-					   		else DemoController.update(demo._id, {'notified':true})					   		
+					   		else DemoController.update(demo._id, {'notified':true}, (err) => {})					   		
 					   })
 			})//for-each	
 		})

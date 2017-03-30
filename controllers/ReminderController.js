@@ -13,12 +13,16 @@ module.exports = {
     },
 
     store: (reminder, callback) => {
-        reminder.ISODate = moment(reminder.date + reminder.time, "DD/MM/YYYY HH:mm").toDate();
+        if(reminder.date && reminder.time) {
+            reminder.ISODate = moment(reminder.date + reminder.time, "DD/MM/YYYY HH:mm").toDate();
+        }
         (new Reminder(reminder)).save(callback)
     }, 
 
     update: (reminder_id, reminder, callback) => {
-        reminder.ISODate = moment(reminder.date + reminder.time, "DD/MM/YYYY HH:mm").toDate();
+        if(reminder.date && reminder.time) {
+            reminder.ISODate = moment(reminder.date + reminder.time, "DD/MM/YYYY HH:mm").toDate();
+        }
         Reminder.findByIdAndUpdate(reminder_id, reminder, callback)
     },
 

@@ -74,7 +74,6 @@ cron.schedule('*/5 * * * *', function(){ //Run every 5 min
 	require('./jobs/DemosNotificationJob').handle()
 })
 
-
 //--------------------------------------------
 //		Runnn!
 //--------------------------------------------

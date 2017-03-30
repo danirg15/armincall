@@ -3,7 +3,6 @@ const Reminder = require('../models/reminder')
 const ReminderController = require('../controllers/ReminderController')
 const Mailgun = require('../lib/MailgunInterface')
 
-
 module.exports = {
 	
 	handle: () => {
@@ -22,7 +21,7 @@ module.exports = {
 					<h1>ArminCall - Recordatorio</h1><br/>
 					<p>Hoy a las `+moment(reminder.ISODate, moment.ISO_8601).format("HH:mm")+`</p>
 					<p>`+reminder.description+`</p>`
-					
+
 				Mailgun.compose()
 					   .from(process.env.DEFAULT_EMAIL || 'no-reply@armincall.com')
 					   .to('dani.rg15@gmail.com')
@@ -30,7 +29,7 @@ module.exports = {
 					   .withBody(template)
 					   .send((err) => {
 					   		if (err) throw err
-					   		else ReminderController.update(reminder._id, {'notified':true})	
+					   		else ReminderController.update(reminder._id, {'notified':true}, (err) => {})
 					   })
 			})//for-each	
 		})
