@@ -38,7 +38,7 @@ export class CallsCountWeekHistogramComponent implements OnInit{
 
 
     ngOnInit() {
-        this.chartService.getCallsCountWeekHistogram().subscribe( data => {
+        this.chartService.getCallsCountWeekHistogram('year').subscribe( data => {
             this.barChartLabels = data.tags
             this.barChartData[0].data = data.count
         })

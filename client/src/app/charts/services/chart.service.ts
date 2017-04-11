@@ -14,20 +14,20 @@ export class ChartService {
     }
 
     
-    getCallsCount(word_time) {
-        return this.http.get(this.url+'/calls/count/this/'+word_time)
+    getCallsCount(time_word) {
+        return this.http.get(this.url+'/calls/count/this/'+time_word)
     }
 
-    getCallsAvgTime(word_time) {
-        return this.http.get(this.url+'/calls/avg_time/this/'+word_time)
+    getCallsAvgTime(time_word) {
+        return this.http.get(this.url+'/calls/avg_time/this/'+time_word)
     }
 
-    getCallsCountWeekHistogram() {
-        return this.http.get(this.url+ '/calls/count/week/histogram')
+    getCallsCountWeekHistogram(time_word) {
+        return this.http.get(this.url+ '/calls/count/daily/histogram/'+time_word)
     }
 
-    getCallsCountHourHistogram() {
-        return this.http.get(this.url+ '/calls/count/hour/histogram')
+    getCallsCountHourHistogram(time_word) {
+        return this.http.get(this.url+ '/calls/count/hourly/histogram/'+time_word)
     }
 
 }

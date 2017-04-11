@@ -78,12 +78,15 @@ module.exports = {
         })
     },
 
-    getCallsCountWeekHistogram: (callback) => {
+    getCallsCountWeekHistogram: (time_word, callback) => {
+        let date_lower_bound = moment().startOf(time_word).toDate()
+        let date_upper_bound = moment().endOf(time_word).toDate()
         let dayTags = moment.weekdaysShort()
 
         let pipeline = [
             {$match:{
                   'status': 'Respondida',
+                  'date': { $gte: date_lower_bound, $lte: date_upper_bound }
             }}, 
             {$project:{
                   'dayOfWeek':  { $dayOfWeek: '$date' },
@@ -107,18 +110,22 @@ module.exports = {
                 })
 
                 //remove sunday
-                result.tags.shift()
-                result.count.shift()
+                //result.tags.shift()
+                //result.count.shift()
 
                 callback(null, result)
             }
         })
     },
 
-    getCallsCountHourHistogram: (callback) => {
+    getCallsCountHourHistogram: (time_word, callback) => {
+        let date_lower_bound = moment().startOf(time_word).toDate()
+        let date_upper_bound = moment().endOf(time_word).toDate()
+
         let pipeline = [
             {$match:{
                   'status': 'Respondida',
+                  'date': { $gte: date_lower_bound, $lte: date_upper_bound }
             }}, 
             {$project:{
                   'hourOfDay':  { $hour: [{ $add: [ '$date', 3600000 ]}] },//timezone 
@@ -146,39 +153,5 @@ module.exports = {
             }
         })
     },
-
-    // getCallsAvgTimeWeekHistogram: (callback) => {
-    //     let dayTags = moment.weekdaysShort()
-
-    //     let pipeline = [
-    //         {$match:{
-    //               'status': 'Respondida',
-    //         }}, 
-    //         {$project:{
-    //               'dayOfWeek':  { $dayOfWeek: '$date' }, 
-    //               'duration': '$durationInSeconds'
-    //         }}, 
-    //         {$group:{
-    //               '_id': { dayOfWeek: '$dayOfWeek' }, 
-    //               'avg': { $avg: '$duration' }
-    //         }},
-    //         {$sort: { _id: 1 }}
-    //     ]
-
-    //     Call.aggregate().append(pipeline).exec((err, data) => {
-    //         if (err){
-    //             callback(err, null)
-    //         }
-    //         else {
-    //             let result = {'tags': [], 'count': []}
-    //             data.forEach((value) => {
-    //                 result.tags.push(dayTags[value._id.dayOfWeek-1])
-    //                 result.count.push(value.avg)
-    //             })
-    //             callback(null, result)
-    //         }
-    //     })
-    // }
-
 
 }
