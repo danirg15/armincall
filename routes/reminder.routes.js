@@ -18,6 +18,7 @@ router.get('/reminders/:id', (req, res) => {
 	})	
 })
 
+
 router.post('/reminders', validate(validator.reminder.full), (req, res) => {
 	ReminderController.store(req.body, (err) => {
 		if (err) res.status(500).json(err)

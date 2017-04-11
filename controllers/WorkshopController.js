@@ -30,7 +30,7 @@ let self = module.exports = {
         Workshop.find({ 'name': keyword }).exec(callback)
     },
 
-    syncAlgoliaInterface: (callback) => {
+    syncAlgolia: (callback) => {
         AlgoliaInterface.clearIndex()
 
         Workshop.find({}, (err, workshops) => {

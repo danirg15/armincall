@@ -36,6 +36,8 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
     app.use(logger('dev'))
 }
 
+
+
 //Serve client app
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
