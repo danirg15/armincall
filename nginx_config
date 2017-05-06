@@ -1,8 +1,15 @@
 server {
     listen 80;
+
+    location ^~ /.well-known/acme-challenge/ {
+       #alias /opt/mean/armincall/.well-known/acme-challenge/;
+       alias /var/www/.well-known/acme-challenge/;
+    }
+
     server_name armincall.com www.armincall.com;
     return 301 https://$host$request_uri;
 }
+
 
 server {
     listen 443 ssl;
