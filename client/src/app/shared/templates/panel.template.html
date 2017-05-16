@@ -1,0 +1,22 @@
+<div class="card text-xs-center" [ngStyle]="{'background-color': panelColor}">
+  
+  <div class="card-block">
+    <div class="row">
+        <div class="col-sm-8">
+            <span class="counter">{{counter}}</span><br>
+            <span class="title">{{title}}</span>
+        </div>
+        <div class="col-sm-4">
+            <i class="icon" [ngClass]="icon" aria-hidden="true"></i>
+        </div>
+    </div>
+    <small class="lead" style="font-size:0.80rem"> {{ info }} &nbsp;</small>
+  </div>
+
+  <div class="footer" > 
+    <div class="text-center">
+        <i class="ion-ios-information-outline" aria-hidden="true"></i> Ver detalle 
+    </div> 
+  </div>
+
+</div>

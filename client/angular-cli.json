@@ -18,8 +18,7 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "assets/css/bootstrap/dist/bootstrap.min.css",
-        "assets/css/font-awesome/css/font-awesome.min.css",
+        "assets/css/bootstrap/dist/bootswatch-v4-alpha.min.css",
         "assets/css/custom_styles.css",
         "assets/css/smart_search.css"
       ],

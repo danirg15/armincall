@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { ChartService } from '../services/chart.service'
 
 
@@ -15,7 +15,9 @@ import { ChartService } from '../services/chart.service'
     </div>
   `
 })
-export class CallsCountHourHistogramComponent implements OnInit{
+export class CallsCountHourHistogramComponent implements OnChanges{
+    @Input('time-period') time_period = 'year'
+
     public barChartOptions:any = {
       scaleShowVerticalLines: false,
       responsive: true
@@ -37,11 +39,13 @@ export class CallsCountHourHistogramComponent implements OnInit{
     }
 
 
-    ngOnInit() {
-        this.chartService.getCallsCountHourHistogram('year').subscribe( data => {
-            this.barChartLabels = data.tags
-            this.barChartData[0].data = data.count
-        })
+    ngOnChanges() {
+        if(this.time_period != undefined) {
+            this.chartService.getCallsCountHourHistogram(this.time_period).subscribe( data => {
+                this.barChartLabels = data.tags
+                this.barChartData[0].data = data.count
+            })
+        }
     }
 
     

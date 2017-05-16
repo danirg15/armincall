@@ -3,67 +3,39 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
     selector: 'panel',
     styles: [`
-        .panel {
-            cursor: pointer   
-        }
-        
-        .panel-body {
-            padding: 12px;
+        .card {
+            cursor: pointer;
             color: white;
+            border-color: white;
         }
-
-        .panel-footer {
+    
+        .footer {
             padding: 2px;
             color: white;
-            opacity: 0.9;
-            filter: alpha(opacity=90);
+            background-color: rgba(255, 255, 255, 0.24);
         }
 
         .counter{
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: bold;
         }
 
         .icon {
             opacity: 0.3;
             filter: alpha(opacity=30);
+            font-size: 4.0rem;
         }
 
-        span {
-            font-size: 1.5rem
+        .title {
+            font-size: 1.4rem
         }
+
+        .card-block {
+            padding: 0.8rem 1.0rem;
+        }
+
     `],
-    template: `
-
-        
-            <div class="col-md-3">
-
-                <div class="panel panel-default">
-                    <div class="panel-body" [ngStyle]="{'background-color': panelColor}">
-
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <span class="counter">{{counter}}</span><br>
-                                <span class="">{{title}}</span>
-                            </div>
-                            <div class="col-sm-4">
-                                <i class="icon" [ngClass]="icon" aria-hidden="true"></i>
-                            </div>
-                        </div>
-
-                        <small style="font-size:1.05rem">{{ info }} &nbsp;</small> 
-
-                    </div>
-                    <div class="panel-footer" [ngStyle]="{'background-color': panelColor}"> 
-                        <div class="text-center">
-                            Ver detalle <i class="fa fa-info-circle" aria-hidden="true"></i>
-                        </div> 
-                    </div>
-                </div>
-
-            </div>
-        
-    `
+    templateUrl: '../templates/panel.template.html' 
     
 })
 export class PanelComponent implements OnInit {

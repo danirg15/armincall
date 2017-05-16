@@ -40,9 +40,14 @@ module.exports = {
 
 
     getCallsAvgTime: (time_word, callback) => {
-        let date_lower_bound = moment().startOf(time_word).toDate()
-        let date_upper_bound = moment().endOf(time_word).toDate()
-
+        if(time_word == 'all') {
+            var date_lower_bound = moment().subtract(100, 'years').toDate()
+            var date_upper_bound = moment().add(100, 'years').toDate()
+        }else {
+            var date_lower_bound = moment().startOf(time_word).toDate()
+            var date_upper_bound = moment().endOf(time_word).toDate()
+        }  
+        
         let pipeline = [
             {$match:{
                   'date': { $gte: date_lower_bound, $lte: date_upper_bound },
@@ -60,8 +65,13 @@ module.exports = {
     },
 
     getCallsCount: (time_word, callback) => {
-        let date_lower_bound = moment().startOf(time_word).toDate()
-        let date_upper_bound = moment().endOf(time_word).toDate()
+        if(time_word == 'all') {
+            var date_lower_bound = moment().subtract(100, 'years').toDate()
+            var date_upper_bound = moment().add(100, 'years').toDate()
+        }else {
+            var date_lower_bound = moment().startOf(time_word).toDate()
+            var date_upper_bound = moment().endOf(time_word).toDate()
+        }        
 
         let pipeline = [
             {$match:{
@@ -79,8 +89,13 @@ module.exports = {
     },
 
     getCallsCountWeekHistogram: (time_word, callback) => {
-        let date_lower_bound = moment().startOf(time_word).toDate()
-        let date_upper_bound = moment().endOf(time_word).toDate()
+        if(time_word == 'all') {
+            var date_lower_bound = moment().subtract(100, 'years').toDate()
+            var date_upper_bound = moment().add(100, 'years').toDate()
+        }else {
+            var date_lower_bound = moment().startOf(time_word).toDate()
+            var date_upper_bound = moment().endOf(time_word).toDate()
+        }   
         let dayTags = moment.weekdaysShort()
 
         let pipeline = [
@@ -119,8 +134,13 @@ module.exports = {
     },
 
     getCallsCountHourHistogram: (time_word, callback) => {
-        let date_lower_bound = moment().startOf(time_word).toDate()
-        let date_upper_bound = moment().endOf(time_word).toDate()
+        if(time_word == 'all') {
+            var date_lower_bound = moment().subtract(100, 'years').toDate()
+            var date_upper_bound = moment().add(100, 'years').toDate()
+        }else {
+            var date_lower_bound = moment().startOf(time_word).toDate()
+            var date_upper_bound = moment().endOf(time_word).toDate()
+        }   
 
         let pipeline = [
             {$match:{

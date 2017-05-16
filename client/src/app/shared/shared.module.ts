@@ -5,6 +5,7 @@ import { RouterModule }             from '@angular/router'
 import { NavBarComponent }          from './components/nav-bar.component'
 import { NotFoundComponent }        from './components/notfound.component'
 import { PanelComponent }           from './components/panel.component'
+import { GoBackComponent }          from './components/go-back.component'
 
 import { SharedServices }           from './services/shared.service'
 import { HttpServices }             from './services/http.services'
@@ -28,6 +29,7 @@ import { PopoverModule }            from 'ng2-popover'
         NavBarComponent, 
         NotFoundComponent, 
         PanelComponent,
+        GoBackComponent,
 
         DiffForHumansPipe,
         DurationForHumansPipe,
@@ -38,6 +40,7 @@ import { PopoverModule }            from 'ng2-popover'
         NavBarComponent, 
         NotFoundComponent, 
         PanelComponent,
+        GoBackComponent,
 
         DiffForHumansPipe,
         DurationForHumansPipe,

@@ -2,22 +2,21 @@
 
 <div class="container">
 
-    <br><br>
-
-    <div class="well">
+    <div class="row">
+        <div class="col-md-12 offset-md-1">
 
         <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
             <fieldset>
 
                 <legend>{{title}}</legend>
 
-                <div class="form-group" [class.has-error]="form.controls.name.touched && form.controls.name.errors">
-                    <label for="inputName" class="col-lg-2 control-label">*Nombre</label>
+                <div class="form-group" [class.has-danger]="form.controls.name.touched && form.controls.name.errors">
+                    <label for="inputName" class="col-lg-2 form-control-label">*Nombre</label>
                     <div class="col-lg-10">
-                        <input [(ngModel)]="category.name" type="text" class="form-control" formControlName="name">
+                        <input [(ngModel)]="category.name" type="text" class="form-control form-control-danger" formControlName="name">
 
                         <div *ngIf="form.controls.name.touched && form.controls.name.errors" >
-                            <small class="text-danger" *ngIf="form.controls.name.errors.required">
+                            <small class="form-control-feedback" *ngIf="form.controls.name.errors.required">
                                 El campo Categoría es obligatorio.
                             </small>
                         </div>
@@ -37,4 +36,7 @@
         </form>
 
     </div>
+
+    </div>
+    
 </div>

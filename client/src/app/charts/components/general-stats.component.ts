@@ -1,60 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { ChartService } from '../services/chart.service'
 
 
 @Component({
     selector: 'general-stats',
     template: `
-        <div class="text-center">
-                <input type="radio" 
-                        name="radio1" 
-                        value="day" 
-                        (change)="newChartData($event)"
-                        checked> Hoy &nbsp;
-                
-                <input type="radio" 
-                        name="radio1" 
-                        value="week"
-                        (change)="newChartData($event)"> Esta semana &nbsp;
-
-                <input type="radio" 
-                        name="radio1" 
-                        value="month"
-                        (change)="newChartData($event)"> Este mes &nbsp;
-
-                <input type="radio" 
-                        name="radio1" 
-                        value="year"
-                        (change)="newChartData($event)"> Este año &nbsp;
-        </div>
-
-        <br>
-
         <ul class="list-group">
-                <li class="list-group-item">
-                        <span class="badge">{{ calls_count }}</span>
-                        Número de llamadas
-                </li>
-                <li class="list-group-item">
-                        <span class="badge">{{ calls_avg_time | durationForHumans }}</span>
-                        Tiempo medio de llamada
-                </li>
+            <li class="list-group-item justify-content-between">
+                Número de llamadas
+                <span class="badge badge-primary badge-pill" style="font-size: 0.9rem;">
+                    {{ calls_count }}
+                </span>
+            </li>
+            <li class="list-group-item justify-content-between">
+                Tiempo medio de llamada
+                <span class="badge badge-primary badge-pill" style="font-size: 0.9rem;"> 
+                    {{ calls_avg_time | durationForHumans }}
+                </span>
+            </li>
         </ul>
     `
 })
-export class GeneralStatsComponent implements OnInit {
+export class GeneralStatsComponent implements OnChanges {
+    @Input('time-period') time_period = 'year'
     calls_count = 0
     calls_avg_time = 0
 
     constructor(private chartService: ChartService) { }
 
-    ngOnInit() { 
-        this.loadChartData('day')
-    }
-
-    newChartData(e){
-        if(e.target.checked){
-            this.loadChartData(e.target.value)
+    ngOnChanges() { 
+        if(this.time_period != undefined) {
+            this.loadChartData(this.time_period)
         }
     }
 
@@ -67,7 +43,5 @@ export class GeneralStatsComponent implements OnInit {
             this.calls_avg_time = data.avg
         })
     }
-
-
 
 }

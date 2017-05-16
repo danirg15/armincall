@@ -7,8 +7,6 @@ import { ChartService } from '../services/chart.service'
     selector: 'calls-line-chart',
     template: `
         
-        <div class="text-center"> <h5>Evolución de llamadas</h5> </div>
-
         <div style='display:block'>
             <canvas baseChart
                     [datasets]="lineChartData"

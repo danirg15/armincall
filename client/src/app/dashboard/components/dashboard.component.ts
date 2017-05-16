@@ -5,6 +5,7 @@ import { SharedServices }       from '../../shared/services/shared.service'
     templateUrl: '../templates/dashboard.template.html'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+    selected_period = 'month'
     eventsConnection
 
     badges = {

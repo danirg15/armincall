@@ -1,80 +1,95 @@
 <nav-bar></nav-bar>
 
+
 <div class="container">
 
-        <br>  
-
-        <panel  routerLink="/calls" 
-                [title]="'Llamadas'" 
-                [counter]="badges.pendingCalls" 
-                [panel-color]="'#e84c3d'"
-                [fa-icon]="'fa fa-phone fa-4x'"  
-                [info]="badges.infoCalls" 
-        >
-        </panel>
-
-        <panel  routerLink="/tickets" 
-                [title]="'Incidencias'" 
-                [counter]="badges.pendingTickets" 
-                [panel-color]="'#f39c11'"
-                [fa-icon]="'fa fa-exclamation-triangle fa-4x'"
-                [info]="badges.infoTickets" 
-        >
-        </panel>
-
-        <panel  routerLink="/demos" 
-                [title]="'Demos'" 
-                [counter]="badges.pendingDemos" 
-                [panel-color]="'#1395fd'"
-                [fa-icon]="'fa fa-desktop fa-4x'"
-                [info]="badges.infoDemos" 
-        >
-        </panel>
-
-        <panel  routerLink="/reminders" 
-                [title]="'Recordatorios'" 
-                [counter]="badges.pendingReminders" 
-                [panel-color]="'#1abc9c'"
-                [fa-icon]="'fa fa-bell fa-4x'"
-                [info]="badges.infoReminders"  
-        >
-        </panel>
-
-
-        <!--<div class="row">
-                <div class="col-md-12">
-                        <div class="well pull-right">
-                                <h6>Estado de sistemas</h6>
-                                <i title="Activo" class="fa fa-square fa-1x" aria-hidden="true" style="color:#19a719;"></i>&nbsp; <small>ARMIN</small>
-                                <i title="Inactivo" class="fa fa-square fa-1x" aria-hidden="true" style="color:#e42e2e;"></i>&nbsp; <small>ARMIN GEST</small>
-                        </div>
+        <div class="row">
+                <div class="col-md-3">
+                        <panel  routerLink="/calls" 
+                                [title]="'Llamadas'" 
+                                [counter]="badges.pendingCalls" 
+                                [panel-color]="'#e84c3d'"
+                                [fa-icon]="'ion-android-call'"  
+                                [info]="badges.infoCalls" >
+                        </panel>
                 </div>
-        </div>-->
+                <div class="col-md-3">
+                        <panel  routerLink="/tickets" 
+                                [title]="'Incidencias'" 
+                                [counter]="badges.pendingTickets" 
+                                [panel-color]="'#f39c11'"
+                                [fa-icon]="'ion-alert-circled'"
+                                [info]="badges.infoTickets" >
+                        </panel>
+                </div>
+                <div class="col-md-3">
+                        <panel  routerLink="/demos" 
+                                [title]="'Demos'" 
+                                [counter]="badges.pendingDemos" 
+                                [panel-color]="'#1395fd'"
+                                [fa-icon]="'ion-android-desktop'"
+                                [info]="badges.infoDemos" >
+                        </panel>
+                </div>
+                <div class="col-md-3">
+                        <panel  routerLink="/reminders" 
+                                [title]="'Recordatorios'" 
+                                [counter]="badges.pendingReminders" 
+                                [panel-color]="'#1abc9c'"
+                                [fa-icon]="'ion-android-notifications'"
+                                [info]="badges.infoReminders" >
+                        </panel>
+                </div>
+        </div>
 
         <p>&nbsp;</p>
 
         <div class="row">
                 <div class="col-md-7">
-                        <div class="well">
-                                <calls-line-chart></calls-line-chart>
-                        </div>
+                        
+                        <div class="text-center"> <h5>Evolución de llamadas <i class="ion-stats-bars"></i> </h5> </div>
+
+                        <calls-line-chart></calls-line-chart>
                 </div>
+                
                 <div class="col-md-5">
-                        <div class="well">
-                                <div class="text-center"><h5>Estadísticas</h5></div>
+                        <div class="text-center"><h5>Estadísticas <i class="ion-stats-bars"></i></h5></div>
+                        
+                        <div class="text-center">
+                                <input type="radio" 
+                                        name="radio1"  
+                                        (change)="selected_period = 'day'"> Hoy &nbsp;
                                 
-                                <general-stats></general-stats>
+                                <input type="radio" 
+                                        name="radio1" 
+                                        (change)="selected_period = 'week'"> Esta semana &nbsp;
 
-                                <br> <hr>
+                                <input type="radio" 
+                                        name="radio1" 
+                                        (change)="selected_period = 'month'" checked> Este mes &nbsp;
 
-                                <div class="text-center"><h5>Históricos</h5></div>
+                                <input type="radio" 
+                                        name="radio1" 
+                                        (change)="selected_period = 'year'"> Este año &nbsp;
 
-                                <calls-count-week-histogram></calls-count-week-histogram>
-                                
-                                <br>
-                                
-                                <calls-count-hour-histogram></calls-count-hour-histogram>
+                                <input type="radio" 
+                                        name="radio1" 
+                                        (change)="selected_period = 'all'"> Todas &nbsp;
                         </div>
+
+                        <br>
+
+                        <general-stats [time-period]="selected_period"></general-stats>
+
+                        <br> <hr>
+
+                        <div class="text-center"><h5>Históricos <i class="ion-stats-bars"></i></h5></div>
+
+                        <calls-count-week-histogram [time-period]="selected_period"></calls-count-week-histogram>
+                        
+                        <br>
+                        
+                        <calls-count-hour-histogram [time-period]="selected_period"></calls-count-hour-histogram>
                 </div>
         </div> 
 

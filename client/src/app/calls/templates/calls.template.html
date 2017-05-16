@@ -6,27 +6,29 @@
         <h2>Llamadas</h2>
     </div>
 
-    <button class="btn btn-primary btn-sm pull-right" 
+    <button class="btn btn-primary btn-sm float-right" 
             [disabled]="selectedCallIds.length == 0"
-            (click)="ticketsModal.show()">        
+            (click)="ticketsModal.show()">       
+
+            <i class="icon ion-link"></i>
             Asociar Incidencia
     </button> 
 
     <br><br>
 
     <ul class="nav nav-tabs">
-        <li class="active" (click)="loadPendingCalls()">
-            <a data-toggle="tab" aria-expanded="true">Llamadas Pendientes</a>
+        <li class="nav-item" (click)="loadPendingCalls()">
+            <a class="nav-link active" data-toggle="tab" aria-expanded="true">Llamadas Pendientes</a>
         </li>
-        <li class="" (click)="loadHistoryCalls()">
-            <a data-toggle="tab" aria-expanded="false">Historial</a>
+        <li class="nav-item" (click)="loadHistoryCalls()">
+            <a class="nav-link" data-toggle="tab" aria-expanded="false">Historial</a>
         </li>
     </ul>
 
     <br><br>
-
+    
     <table class="table table-striped table-hover ">
-        <thead>
+        <thead class="thead-inverse">
             <tr>
                 <th [hidden]="isShowingHistory"></th>
                 <th>Taller</th>
@@ -39,15 +41,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let call of calls">
+            <tr *ngFor="let call of calls" 
+                [ngClass]="{
+                        'table-success': call.status == 'Respondida', 
+                        'table-warning': call.status == 'Ocupada',
+                        'table-danger': call.status == 'Sin responder',
+                        'table-active': call.status == 'Fallada'
+                    }">
+
                 <td [hidden]="isShowingHistory">
                     <div class="checkbox" *ngIf="call.workshop">
-                        <label>
-                            <input type="checkbox" value="" (change)="select($event, call)" />
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="" (change)="select($event, call)" />
                         </label>
                     </div>
                 </td>
-                <td> 
+                <td > 
                     <div *ngIf="call.workshop">
                         <a [routerLink]="['/workshops', call.workshop._id]"> 
                             {{call.workshop.name}} 
@@ -62,31 +71,67 @@
                     <span *ngIf="call.recieverNumber == '0102' || call.recieverNumber == '0101'">ARMIN</span>
                     <span *ngIf="call.recieverNumber != '0102' && call.recieverNumber != '0101'">{{call.recieverNumber | formattedPhone}}</span>
                 </td>
-                <td>{{call.date | humanizeDate}} ({{call.date | diffForHumans}})</td>
-                <td>{{call.durationInSeconds | durationForHumans}}</td>
+
+                <td>
+                    <span data-toggle="tooltip" data-placement="top" title="{{call.date | humanizeDate}}">
+                        {{call.date | diffForHumans}}
+                    </span>    
+                </td>
+                
+                <td>
+                    <span data-toggle="tooltip" data-placement="top" title="{{call.durationInSeconds}} segundos">
+                        {{call.durationInSeconds | durationForHumans}}
+                    </span>
+                </td>
+                
                 <td>
                     <div [ngSwitch]="call.status">
-                        <span *ngSwitchCase="'Respondida'" style="color:green">Respondida</span>
-                        <span *ngSwitchCase="'Sin responder'" style="color:red">Sin Responder</span>
-                        <span *ngSwitchCase="'Ocupada'" style="color:#ff9800">Ocupada</span>
-                        <span *ngSwitchCase="'Fallada'" style="color:grey">Fallada</span>
+                        <span *ngSwitchCase="'Respondida'" style="color:green">{{ call.status }}</span>
+                        <span *ngSwitchCase="'Sin responder'" style="color:red">{{ call.status }}</span>
+                        <span *ngSwitchCase="'Ocupada'" style="color:#ff9800">{{ call.status }}</span>
+                        <span *ngSwitchCase="'Fallada'" style="color:grey">{{ call.status }}</span>
                     </div>
                 </td>
                 <td [hidden]="isShowingHistory">
-                    <a class="btn btn-warning btn-sm" (click)="discard(call)">
+                    <button class="btn btn-warning btn-sm" (click)="discard(call)">
+                        <i class="icon ion-ios-close-outline"></i>
                         Descartar
-                    </a>
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table> 
 
 
-    <ul class="pager" [hidden]="!isShowingHistory">
+    <section [hidden]="!isShowingHistory">
+        <p class="text-center"> Página {{ page }} de {{ totalPages }} </p>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <button type="button" 
+                        class="btn btn-sm btn-outline-primary float-left"
+                        [ngClass]="{'disabled': page === 1}"
+                        (click)="prevPage()">
+                    <i class="icon-lg ion-ios-arrow-thin-left align-middle"></i> 
+                    Atras
+                </button>
+                <button type="button" 
+                        class="btn btn-sm btn-outline-primary  float-right"
+                        [ngClass]="{'disabled': page === calls.length-1}" 
+                        (click)="nextPage()">
+                    Siguiente
+                    <i class="icon-lg ion-ios-arrow-thin-right align-middle"></i> 
+                </button>
+            </div>
+        </div>
+    </section>
+    
+
+    
+    <!--<ul class="pager" [hidden]="!isShowingHistory">
         <li class="previous" [ngClass]="{'disabled': page === 1}"><a (click)="prevPage()">&larr; Anterior</a></li>
         <span class="text-center"> Página {{ page }} de {{ totalPages }} </span>
         <li class="next" [ngClass]="{'disabled': calls.length === 0}"><a (click)="nextPage()">Siguiente &rarr;</a></li>
-    </ul>
+    </ul>-->
 
 
     <workshop-tickets #ticketsModal
@@ -95,5 +140,15 @@
     </workshop-tickets>
 
     <incomming></incomming>
+    
+
+    <go-back></go-back>
+
 
 </div>
+
+
+
+
+
+

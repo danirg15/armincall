@@ -2,119 +2,120 @@
 
 <div class="container">
 
-    <br><br>
+    <div class="row">
+        <div class="col-md-12 offset-md-1">
 
-    <div class="well">
+            <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+                <fieldset>
+                    <legend>{{title}}</legend>
 
-        <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
-            <fieldset>
+                    <div class="form-group" [class.has-danger]="form.controls.workshop_name.touched && form.controls.workshop_name.errors">
+                        <label for="inputName" class="col-lg-2 form-control-label">*Taller</label>
+                        <div class="col-lg-10">
+                            <input [(ngModel)]="demo.workshop_name" type="text" class="form-control form-control-danger" formControlName="workshop_name">
 
-                <legend>{{title}}</legend>
+                            <div *ngIf="form.controls.workshop_name.touched && form.controls.workshop_name.errors" >
+                                <small class="form-control-feedback" *ngIf="form.controls.workshop_name.errors.required">
+                                    El campo Taller es obligatorio.
+                                </small>
+                            </div>
 
-                <div class="form-group" [class.has-error]="form.controls.workshop_name.touched && form.controls.workshop_name.errors">
-                    <label for="inputName" class="col-lg-2 control-label">*Taller</label>
-                    <div class="col-lg-10">
-                        <input [(ngModel)]="demo.workshop_name" type="text" class="form-control" formControlName="workshop_name">
-
-                        <div *ngIf="form.controls.workshop_name.touched && form.controls.workshop_name.errors" >
-                            <small class="text-danger" *ngIf="form.controls.workshop_name.errors.required">
-                                El campo Taller es obligatorio.
-                            </small>
                         </div>
-
                     </div>
-                </div>
-                
-                <div class="form-group" [class.has-error]="form.controls.distributor.touched && form.controls.distributor.errors">
-                    <label for="selectDistribuidor" class="col-lg-2 control-label">*Distribuidor</label>
-                    <div class="col-lg-10">
-                        <select [(ngModel)]="demo.distributor" class="form-control" formControlName="distributor">
-                            <option>Elegir</option>
-                            <option *ngFor="let distributor of distributors" value="{{distributor.code}}">
-                                {{distributor.name}}
-                            </option>
-                        </select>
-                        
-                        <div *ngIf="form.controls.distributor.touched && form.controls.distributor.errors" >
-                            <small class="text-danger" *ngIf="form.controls.distributor.errors.required">
-                                El campo Distribudor es obligatorio.
-                            </small>
+                    
+                    <div class="form-group" [class.has-danger]="form.controls.distributor.touched && form.controls.distributor.errors">
+                        <label for="selectDistribuidor" class="col-lg-2 form-control-label">*Distribuidor</label>
+                        <div class="col-lg-10">
+                            <select [(ngModel)]="demo.distributor" class="form-control form-control-danger" formControlName="distributor">
+                                <option>Elegir</option>
+                                <option *ngFor="let distributor of distributors" value="{{distributor.code}}">
+                                    {{distributor.name}}
+                                </option>
+                            </select>
+                            
+                            <div *ngIf="form.controls.distributor.touched && form.controls.distributor.errors" >
+                                <small class="form-control-feedback" *ngIf="form.controls.distributor.errors.required">
+                                    El campo Distribudor es obligatorio.
+                                </small>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="inputContacto" class="col-lg-2 control-label">Contacto</label>
-                    <div class="col-lg-10">
-                        <input [(ngModel)]="demo.contact" type="text" class="form-control" formControlName="contact">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputTelefono" class="col-lg-2 control-label">Teléfono</label>
-                    <div class="col-lg-10">
-                        <input [(ngModel)]="demo.phone" type="tel" class="form-control" formControlName="phone">
-                    </div>
-                </div>
-
-                <div class="form-group" [class.has-error]="form.controls.date.touched && form.controls.date.errors">
-                    <label for="inputFecha" class="col-lg-2 control-label">*Fecha</label>
-                    <div class="col-lg-10">
-                        <input [(ngModel)]="demo.date" type="text" class="form-control" formControlName="date">
-                        
-                        <div *ngIf="form.controls.date.touched && form.controls.date.errors" >
-                            <small class="text-danger" *ngIf="form.controls.date.errors.required">
-                                El campo Fecha es obligatorio.
-                            </small>
-                            <small class="text-danger" *ngIf="form.controls.date.errors.date">
-                                Fecha inválida.
-                            </small>
+                    <div class="form-group">
+                        <label for="inputContacto" class="col-lg-2 form-control-label">Contacto</label>
+                        <div class="col-lg-10">
+                            <input [(ngModel)]="demo.contact" type="text" class="form-control" formControlName="contact">
                         </div>
-
                     </div>
-                </div>
 
-                <div class="form-group" [class.has-error]="form.controls.time.touched && form.controls.time.errors">
-                    <label for="inputHora" class="col-lg-2 control-label">*Hora</label>
-                    <div class="col-lg-10">
-                        <input [(ngModel)]="demo.time" type="time" class="form-control" formControlName="time">
-
-                        <div *ngIf="form.controls.time.touched && form.controls.time.errors" >
-                            <small class="text-danger" *ngIf="form.controls.time.errors.required">
-                                El campo Hora es obligatorio.
-                            </small>
-                            <small class="text-danger" *ngIf="form.controls.time.errors.time">
-                                Hora inválida.
-                            </small>
+                    <div class="form-group">
+                        <label for="inputTelefono" class="col-lg-2 form-control-label">Teléfono</label>
+                        <div class="col-lg-10">
+                            <input [(ngModel)]="demo.phone" type="tel" class="form-control" formControlName="phone">
                         </div>
-
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="inputDescription" class="col-lg-2 control-label">Descripción</label>
-                    <div class="col-lg-10">
-                        <textarea [(ngModel)]="demo.description" class="form-control" formControlName="description"></textarea>
+                    <div class="form-group" [class.has-danger]="form.controls.date.touched && form.controls.date.errors">
+                        <label for="inputFecha" class="col-lg-2 form-control-label">*Fecha</label>
+                        <div class="col-lg-10">
+                            <input [(ngModel)]="demo.date" type="text" class="form-control form-control-danger" formControlName="date">
+                            
+                            <div *ngIf="form.controls.date.touched && form.controls.date.errors" >
+                                <small class="text-danger" *ngIf="form.controls.date.errors.required">
+                                    El campo Fecha es obligatorio.
+                                </small>
+                                <small class="form-control-feedback" *ngIf="form.controls.date.errors.date">
+                                    Fecha inválida.
+                                </small>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="inputComments" class="col-lg-2 control-label">Comentarios</label>
-                    <div class="col-lg-10">
-                        <textarea [(ngModel)]="demo.comments" class="form-control" formControlName="comments"></textarea>
+                    <div class="form-group" [class.has-danger]="form.controls.time.touched && form.controls.time.errors">
+                        <label for="inputHora" class="col-lg-2 form-control-label">*Hora</label>
+                        <div class="col-lg-10">
+                            <input [(ngModel)]="demo.time" type="time" class="form-control form-control-danger" formControlName="time">
+
+                            <div *ngIf="form.controls.time.touched && form.controls.time.errors" >
+                                <small class="text-danger" *ngIf="form.controls.time.errors.required">
+                                    El campo Hora es obligatorio.
+                                </small>
+                                <small class="form-control-feedback" *ngIf="form.controls.time.errors.time">
+                                    Hora inválida.
+                                </small>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2">
-                        <button type="reset" class="btn btn-default" routerLink="/demos">Cancelar</button>
-                        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Guardar</button>
+                    <div class="form-group">
+                        <label for="inputDescription" class="col-lg-2 form-control-label">Descripción</label>
+                        <div class="col-lg-10">
+                            <textarea [(ngModel)]="demo.description" class="form-control" formControlName="description"></textarea>
+                        </div>
                     </div>
-                </div>
 
-            </fieldset>
-        </form>
+                    <div class="form-group">
+                        <label for="inputComments" class="col-lg-2 form-control-label">Comentarios</label>
+                        <div class="col-lg-10">
+                            <textarea [(ngModel)]="demo.comments" class="form-control" formControlName="comments"></textarea>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <button type="reset" class="btn btn-default" routerLink="/demos">Cancelar</button>
+                            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+        </div>
     </div>
 </div>
+
+<br><br>

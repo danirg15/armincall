@@ -2,112 +2,118 @@
 
 <div class="container">
 
-    <div class="panel panel-default">
-        <div class="panel-heading"><h5>Incidencia</h5></div>
-        <div class="panel-body">
-            
-            <form class="form-horizontal">
+
+    <div class="card">
+        <div class="card-block">
+            <h4 class="card-title">Incidencia</h4>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <div class="card-text">
                 
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label"><strong>Taller</strong></label>
-                    <div class="col-sm-10">
-                        <span class="form-control">
-                            <a [routerLink]="['/workshops', ticket.workshop._id]">
-                                {{ ticket.workshop.name }}
-                            </a>
-                        </span>
+                <div class="row">
+                    <div class="col-md-2">
+                        <strong>Taller</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <a [routerLink]="['/workshops', ticket.workshop._id]">
+                            {{ ticket.workshop.name }}
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <strong>Categoría</strong>
+                    </div>
+                    <div class="col-md-8">
+                        {{ ticket.category }}
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label"><strong>Categoria</strong></label>
-                    <div class="col-sm-10">
-                        <span class="form-control">
-                            {{ ticket.category }}
-                        </span>
+                <div class="row">
+                    <div class="col-md-2">
+                        <strong>Incidencia</strong>
+                    </div>
+                    <div class="col-md-8">
+                        {{ ticket.description }}
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label"><strong>Incidencia</strong></label>
-                    <div class="col-sm-10">
-                        <span class="form-control">
-                            {{ ticket.description }}
-                        </span>
+                <div class="row">
+                    <div class="col-md-2">
+                        <strong>Creada</strong>
+                    </div>
+                    <div class="col-md-8">
+                        {{ ticket.createdAt | humanizeDate }}
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label"><strong>Creada</strong></label>
-                    <div class="col-sm-10">
-                        <span class="form-control">
-                            {{ ticket.createdAt | humanizeDate }}
+                <div class="row">
+                    <div class="col-md-2">
+                        <strong>Resuelta</strong>
+                    </div>
+                    <div class="col-md-8">
+                        {{ ticket.completed ? 'Si' : 'No' }} 
+                        <span *ngIf="ticket.completed" >
+                            ({{ ticket.updatedAt | humanizeDate }})
                         </span>
                     </div>
-                </div>
+                </div>   
 
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label"><strong>Resuelta</strong></label>
-                    <div class="col-sm-10">
-                        <span class="form-control">
-                            {{ ticket.completed ? 'Si' : 'No' }} 
-                            
-                            <span *ngIf="ticket.completed" >
-                                ({{ ticket.updatedAt | humanizeDate }})
-                            </span>
-                            
-                        </span>
-                    </div>
-                </div>
+            </div>
 
-            </form>
-
-
-        </div>
-    </div>
-
-    <div class="panel panel-primary" *ngIf="ticket.calls.length > 0">
-        <div class="panel-heading">
-            <h3 class="panel-title">Llamadas</h3>
-        </div>
-        <div class="panel-body">
-
-            <table class="table table-striped table-hover ">
-                <thead>
-                    <tr>
-                        <th>Emisor</th>
-                        <th>Receptor</th>
-                        <th>Fecha/Hora</th>
-                        <th>Duración</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let call of ticket.calls">
-                        <td>
-                            <span *ngIf="call.callerNumber == '917376582'">ARMIN</span>
-                            <span *ngIf="call.callerNumber != '917376582'">{{call.callerNumber | formattedPhone}}</span>
-                        </td>
-                        <td>
-                            <span *ngIf="call.recieverNumber == '0102' || call.recieverNumber == '0101'">ARMIN</span>
-                            <span *ngIf="call.recieverNumber != '0102' && call.recieverNumber != '0101'">{{call.recieverNumber | formattedPhone}}</span>
-                        </td>
-                        <td>{{call.createdAt | humanizeDate}} ({{call.date | diffForHumans}})</td>
-                        <td>{{call.durationInSeconds | durationForHumans}}</td>
-                        <td>
-                            <div [ngSwitch]="call.status">
-                                <span *ngSwitchCase="'Respondida'" style="color:green">Respondida</span>
-                                <span *ngSwitchCase="'Sin responder'" style="color:red">Sin Responder</span>
-                                <span *ngSwitchCase="'Ocupada'" style="color:#ff9800">Ocupada</span>
-                                <span *ngSwitchCase="'Fallada'" style="color:grey">Fallada</span>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> 
             
         </div>
     </div>
+
+    <br><hr><br>
+
+
+    <div class="page-header">
+        <h2>Llamadas</h2>
+    </div>
+
+    <table class="table table-striped table-hover ">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Emisor</th>
+                <th>Receptor</th>
+                <th>Fecha/Hora</th>
+                <th>Duración</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let call of ticket.calls" [ngClass]="{
+                        'table-success': call.status == 'Respondida', 
+                        'table-warning': call.status == 'Ocupada',
+                        'table-danger': call.status == 'Sin responder',
+                        'table-active': call.status == 'Fallada'
+                    }">
+                    
+                <td>
+                    <span *ngIf="call.callerNumber == '917376582'">ARMIN</span>
+                    <span *ngIf="call.callerNumber != '917376582'">{{call.callerNumber | formattedPhone}}</span>
+                </td>
+                <td>
+                    <span *ngIf="call.recieverNumber == '0102' || call.recieverNumber == '0101'">ARMIN</span>
+                    <span *ngIf="call.recieverNumber != '0102' && call.recieverNumber != '0101'">{{call.recieverNumber | formattedPhone}}</span>
+                </td>
+                <td>{{call.createdAt | humanizeDate}} ({{call.date | diffForHumans}})</td>
+                <td>{{call.durationInSeconds | durationForHumans}}</td>
+                <td>
+                    <div [ngSwitch]="call.status">
+                        <span *ngSwitchCase="'Respondida'" style="color:green">{{ call.status }}</span>
+                        <span *ngSwitchCase="'Sin responder'" style="color:red">{{ call.status }}</span>
+                        <span *ngSwitchCase="'Ocupada'" style="color:#ff9800">{{ call.status }}</span>
+                        <span *ngSwitchCase="'Fallada'" style="color:grey">{{ call.status }}</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
+
+
+    <go-back></go-back>
 
 
 </div>

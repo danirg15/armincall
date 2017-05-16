@@ -6,23 +6,23 @@
     <h2>Demos</h2>
 </div>
 
-<a routerLink="/demos/new" class="btn btn-primary btn-sm pull-right">
-    <i class="fa fa-plus" aria-hidden="true"></i> Nueva Demo
+<a routerLink="/demos/new" class="btn btn-primary btn-sm float-right">
+    <i class="icon ion-ios-plus-outline" aria-hidden="true"></i> Nueva Demo
 </a> 
 
 <ul class="nav nav-tabs">
-    <li class="active" (click)="loadPendingDemos()">
-        <a  data-toggle="tab" aria-expanded="true">Demos Pendientes</a>
+    <li class="nav-item active" (click)="loadPendingDemos()">
+        <a class="nav-link" data-toggle="tab" aria-expanded="true">Demos Pendientes</a>
     </li>
-    <li class="" (click)="loadDemosHistory()">
-        <a  data-toggle="tab" aria-expanded="false">Historial</a>
+    <li class="nav-item" (click)="loadDemosHistory()">
+        <a class="nav-link" data-toggle="tab" aria-expanded="false">Historial</a>
     </li>
 </ul>
 
 <br><br>
 
 <table class="table table-striped table-hover ">
-    <thead>
+    <thead class="thead-inverse">
         <tr>
             <th>Taller</th>
             <th>Contacto</th>
@@ -41,23 +41,29 @@
             <td>{{demo.description}}</td>
             <td>{{demo.comments}}</td>
             <td>
-                {{ demo.ISODate | humanizeDate }}
-                ({{ demo.ISODate | diffForHumans }})
+                <span data-toggle="tooltip" data-placement="top" title="{{ demo.ISODate | humanizeDate }}">
+                    {{ demo.ISODate | diffForHumans }}
+                </span>
             </td>
             <td>
-                <span [hidden]="discardButtonHidden">
+                <span [hidden]="discardButtonHidden" class="white">
                     <a class="btn btn-warning btn-sm" [routerLink]="['/demos/new', demo._id]">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i class="icon ion-compose" aria-hidden="true"></i> Editar
                     </a>
                 </span>
-                <span [hidden]="discardButtonHidden">
+                <span [hidden]="discardButtonHidden" class="white">
                     <a class="btn btn-danger btn-sm" (click)="delete(demo)">
-                        <i  class="fa fa-trash-o" aria-hidden="true"></i>
+                        <i  class="icon ion-ios-trash" aria-hidden="true"></i> Eliminar
                     </a>
                 </span>
             </td>
         </tr>
     </tbody>
 </table> 
+
+
+<go-back></go-back>
+
+
 
 </div>

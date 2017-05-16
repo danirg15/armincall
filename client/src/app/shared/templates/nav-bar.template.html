@@ -1,83 +1,75 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand">ARMIN Call</a>
-    </div>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+  <a class="navbar-brand" href="#">ArminCall</a>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-      <ul class="nav navbar-nav">
-        
-        <li routerLinkActive="active">
-          <a routerLink="/dashboard">Dashboard</a>
-        </li>
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
 
-        <li>
-          <a routerLink="/workshops">Talleres</a>
-        </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+      </li>
 
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              Secciones 
-              <span class="badge badge-white">{{ badges.pendingCalls + badges.pendingTickets + badges.pendingDemos + badges.pendingReminders }}</span> 
-              <span class="caret"></span>
-          </a>
-          
-          <ul class="dropdown-menu" role="menu">
-            <li >
-              <a routerLink="/calls">Llamadas 
-                <span class="badge">{{badges.pendingCalls}}</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/tickets">Incidencias 
-                <span class="badge">{{badges.pendingTickets}}</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/demos">Demos 
-                <span class="badge">{{badges.pendingDemos}}</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/reminders">Recordatorios 
-                <span class="badge">{{badges.pendingReminders}}</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/categories">Categorías</a>
-            </li>
-          </ul>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/workshops">Talleres</a>
+      </li>
 
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search" onsubmit="return false">
-        <div class="form-group">
-
-          <input type="text" id='workshop-smart-search' class="form-control"  #search placeholder="Taller, Tel., Distribuidor...">
-
-        </div>
-        
-        <button type="button" (click)="find(search.value)" class="btn btn-default" >Buscar</button>
-
-        <a routerLink="/info-board">
-          <i class="fa fa-info-circle" style="color:white; margin-left:15px;"></i>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Secciones 
+            <span class="badge badge-pill badge-default">{{ badges.pendingCalls + badges.pendingTickets + badges.pendingDemos + badges.pendingReminders }}</span> 
+            <span class="caret"></span>
         </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="/calls">Llamadas 
+              <span class="badge badge-pill badge-primary">{{badges.pendingCalls}}</span>
+            </a>
+            <a class="dropdown-item" routerLink="/tickets">Incidencias 
+                <span class="badge badge-pill badge-primary">{{badges.pendingTickets}}</span>
+            </a>
+            <a class="dropdown-item" routerLink="/demos">Demos 
+              <span class="badge badge-pill badge-primary">{{badges.pendingDemos}}</span>
+            </a>
+            <a class="dropdown-item" routerLink="/reminders">Recordatorios 
+              <span class="badge badge-pill badge-primary">{{badges.pendingReminders}}</span>
+            </a>
+            <a class="dropdown-item" routerLink="/categories">Categorías</a>
+            <a class="dropdown-item" routerLink="/info-board">Información General</a>
+        </div>
+      </li>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;
+
+      <form class="form-inline" role="search" onsubmit="return false">
+        <input class="form-control mr-sm-2" id='workshop-smart-search' type="text" #search placeholder="Taller, Tel., Distribuidor...">
+        <button class="btn btn-secondary my-2 my-sm-0" (click)="find(search.value)" type="button">
+          <i class="icon ion-pinpoint"></i> Buscar
+        </button>
         
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a style="cursor: pointer" (click)="logout()"> 
-            <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión
+        <!--<a routerLink="/info-board" style="color:white">
+          <i class="icon-lg ion-ios-information-outline" style="margin-left:1rem;"></i>
+        </a>-->
+        <div style="margin-left: 2.0rem;">
+          <a target="_blank" href="http://live.gaues.armin.armiwa.eu/?username=bsebastian&password=armintech"> 
+            <i class="icon-lg ion-log-in white align-middle"></i> 
+            <img width="120.0rem" class="img-fluid " src="/assets/armin_logo.png" alt=""> 
           </a>
-        </li>
-      </ul>
+        </div>
+
+      </form>
+
+    </ul>
+
+
+    <div class="form-inline my-2 my-lg-0">
+      <a style="cursor: pointer; color:white"  (click)="logout()"> 
+        <i class="icon-lg ion-log-out align-middle" aria-hidden="true"></i> Cerrar sesión
+      </a>
     </div>
+
+  
   </div>
 </nav>
 
+<br><br>
