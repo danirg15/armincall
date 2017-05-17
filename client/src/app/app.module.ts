@@ -17,8 +17,8 @@ import { CategoriesModule } from './categories/categories.module'
 
 import { InfoBoardComponent } from './info-board/info-board.component';
 
-
 import { routing }          from './app.routing';
+
 
 @NgModule({
   imports:  [ 
@@ -35,7 +35,9 @@ import { routing }          from './app.routing';
     WorkshopsModule,
     DashboardModule,
     CategoriesModule,
-    AuthModule
+    AuthModule,
+
+   
   ],
   declarations: [ 
     AppComponent,InfoBoardComponent

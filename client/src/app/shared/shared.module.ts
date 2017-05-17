@@ -17,13 +17,14 @@ import { HumanizeDatePipe }         from './pipes/humanizeDate.pipe'
 import { FormattedPhonePipe }         from './pipes/formattedPhone.pipe'
 
 
-import { PopoverModule }            from 'ng2-popover'
+// import { PopoverModule }            from 'ng2-popover'
  
 @NgModule({
     imports: [
         CommonModule, 
         RouterModule,
-        PopoverModule
+        //PopoverModule,
+        
     ],
     declarations: [
         NavBarComponent, 

@@ -3,7 +3,7 @@ import { CommonModule }     from '@angular/common'
 import { RouterModule }     from '@angular/router'
 import { SharedModule }     from '../shared/shared.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { ModalModule }      from 'ng2-modal'
+import { ModalModule }      from 'ngx-modal'
 
 import { TicketFormComponent }          from './components/ticket-form.component'
 import { TicketsComponent }             from './components/tickets.component'

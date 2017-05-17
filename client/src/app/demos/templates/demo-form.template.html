@@ -59,7 +59,7 @@
                     <div class="form-group" [class.has-danger]="form.controls.date.touched && form.controls.date.errors">
                         <label for="inputFecha" class="col-lg-2 form-control-label">*Fecha</label>
                         <div class="col-lg-10">
-                            <input [(ngModel)]="demo.date" type="text" class="form-control form-control-danger" formControlName="date">
+                            <input [(ngModel)]="demo.date" type="date" class="form-control form-control-danger" formControlName="date">
                             
                             <div *ngIf="form.controls.date.touched && form.controls.date.errors" >
                                 <small class="text-danger" *ngIf="form.controls.date.errors.required">

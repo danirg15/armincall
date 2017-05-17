@@ -17,8 +17,6 @@ export class IncommingComponent implements OnInit, OnDestroy {
         this.eventsConnection = this.callService.getIncommingCalls()
                         .subscribe( incomming => {
 
-                            console.log(incomming)
-
                             this.modal.open()
                             this.incommingCall = incomming
 
