@@ -1,16 +1,14 @@
 import { Component, OnInit }    from '@angular/core';
 import { ActivatedRoute }       from '@angular/router'
 import { TicketService }        from '../services/ticket.service'
+import { Ticket }               from '../ticket'
 
 @Component({
     selector: 'ticket-detail',
     templateUrl: '../templates/ticket-detail.template.html'
 })
 export class TicketDetailComponent implements OnInit {
-    ticket = {
-        'workshop': {},
-        'calls': []
-    }
+    ticket = new Ticket()
 
     constructor(private route: ActivatedRoute, 
                 private ticketService: TicketService) { 

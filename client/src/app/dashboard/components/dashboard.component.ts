@@ -12,7 +12,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         pendingCalls: 0,
         pendingTickets: 0,
         pendingDemos: 0,
-        pendingReminders: 0
+        pendingReminders: 0,
+        infoReminders: '',
+        infoDemos: '',
+        infoTickets: '',
+        infoCalls: ''
     } 
     
     constructor(private sharedServices: SharedServices){   

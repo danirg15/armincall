@@ -1,6 +1,5 @@
 const router        = require('express').Router()
 const async         = require('async')
-const distributors  = require('../shared/distributors.json')
 const moment = require('moment')
 
 const ReminderController  = require('../controllers/ReminderController')
@@ -15,8 +14,12 @@ const Ticket = require('../models/ticket')
 
 
 router.get('/distributors', (req, res) => {
-    res.json(distributors)
-});
+    res.json(require('../shared/distributors.json'))
+})
+
+router.get('/dmss', (req, res) => {
+    res.json(require('../shared/dmss.json'))
+})
 
 router.get('/badges', (req, res) => {
     async.parallel({

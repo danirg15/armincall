@@ -16,6 +16,15 @@ let self = module.exports = {
 
     store: (workshop, callback) => {
         (new Workshop(workshop)).save(callback)
+        
+        AlgoliaInterface.add({
+            'objectID':     workshop._id,
+            'name':         workshop.name,
+            'cif':          workshop.cif,
+            'distributor':  workshop.distributor,
+            'phone':        workshop.phone,
+            'contact':      workshop.contact
+        }, () => {})
     }, 
 
     update: (workshop_id, fields, callback) => {

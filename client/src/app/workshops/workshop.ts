@@ -11,4 +11,6 @@ export class Workshop {
     distributor: string;
     email: string;
     phone: string;
+    current_dms: string;
+    previous_dms: string;
 }

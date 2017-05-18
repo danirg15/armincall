@@ -10,9 +10,11 @@ module.exports = {
             address: {
               description:  Joi.string().optional().allow(''),
             },
-            distributor:  Joi.string().required(),
-            email:      Joi.string().email().optional().allow(''),
-            phone:      Joi.array().items(Joi.string().allow('')),
+            distributor:    Joi.string().required(),
+            email:          Joi.string().email().optional().allow(''),
+            phone:          Joi.array().items(Joi.string().allow('')),
+            previous_dms:   Joi.string().optional().allow(''),
+            current_dms:    Joi.string().optional().allow('')
         }
     }
 

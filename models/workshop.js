@@ -15,9 +15,11 @@ const WorkshopSchema = mongoose.Schema({
 		}
 	},
 	distributor: 	{"type": String, "require": true},
-	email: 			String,
-	phone: 			[String],
+	email: 			{"type": String},
+	phone: 			[{"type": String}],
 	licence: 		[{"type": String}],
+	previous_dms: 	{"type": String},
+	current_dms: 	{"type": String}
 },
 { 
 	timestamps: true

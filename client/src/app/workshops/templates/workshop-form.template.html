@@ -60,6 +60,30 @@
                   </div>
                 </div>
 
+                <div class="form-group" >
+                  <label for="selectDistribuidor" class="col-lg-3 form-control-label">DMS Anterior</label>
+                  <div class="col-lg-9">
+                    <select [(ngModel)]="workshop.previous_dms" class="form-control form-control-danger" formControlName="previous_dms">
+                      <option>Elegir</option>
+                      <option *ngFor="let dsm of dmss" value="{{dsm.code}}">
+                          {{dsm.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" >
+                  <label for="selectDistribuidor" class="col-lg-3 form-control-label">DMS Actual</label>
+                  <div class="col-lg-9">
+                    <select [(ngModel)]="workshop.current_dms" class="form-control form-control-danger" formControlName="current_dms">
+                      <option>Elegir</option>
+                      <option *ngFor="let dsm of dmss" value="{{dsm.code}}">
+                          {{dsm.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
               </div><!--col-->
 
               <div class="col-md-6">

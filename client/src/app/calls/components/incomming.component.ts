@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy, ViewChild }  from '@angular/core';
 import {CallService}    from '../services/call.service'
+import { Workshop } from '../../workshops/workshop'
+import { Ticket } from '../../tickets/ticket'
+import { Incomming } from '../incomming'
 
 @Component({
     selector: 'incomming',
@@ -7,7 +10,7 @@ import {CallService}    from '../services/call.service'
 })
 export class IncommingComponent implements OnInit, OnDestroy {
     @ViewChild('incommingCallModal') modal;
-    incommingCall = {}
+    incommingCall = new Incomming()
     eventsConnection
 
     constructor(private callService: CallService) { }
@@ -16,9 +19,9 @@ export class IncommingComponent implements OnInit, OnDestroy {
 
         this.eventsConnection = this.callService.getIncommingCalls()
                         .subscribe( incomming => {
-
+                            
                             this.modal.open()
-                            this.incommingCall = incomming
+                            this.incommingCall = <Incomming>incomming
 
                             setTimeout(()=>{
                                 this.modal.close()

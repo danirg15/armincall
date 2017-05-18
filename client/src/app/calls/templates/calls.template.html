@@ -127,13 +127,6 @@
     
 
     
-    <!--<ul class="pager" [hidden]="!isShowingHistory">
-        <li class="previous" [ngClass]="{'disabled': page === 1}"><a (click)="prevPage()">&larr; Anterior</a></li>
-        <span class="text-center"> Página {{ page }} de {{ totalPages }} </span>
-        <li class="next" [ngClass]="{'disabled': calls.length === 0}"><a (click)="nextPage()">Siguiente &rarr;</a></li>
-    </ul>-->
-
-
     <workshop-tickets #ticketsModal
         [call-ids]="selectedCallIds" 
         [workshop-id]="workshopIdOfSelectedCall">

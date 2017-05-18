@@ -18,6 +18,7 @@ export class WorkshopFormComponent implements OnInit {
     title = 'Nuevo Taller'
 
     distributors: any[]
+    dmss: any[] = []
 
     constructor(fb: FormBuilder, 
                 private workshopService: WorkshopService,
@@ -33,6 +34,8 @@ export class WorkshopFormComponent implements OnInit {
                 description: ['']
             }),
             distributor:    ['', Validators.required],
+            current_dms:    [''],
+            previous_dms:   [''],
             email:          ['', BasicValidators.email],
             phone:          ['', Validators.compose([Validators.required, 
                                                      BasicValidators.phone])]
@@ -53,6 +56,8 @@ export class WorkshopFormComponent implements OnInit {
 
             this.sharedServices.getDistributors()
                             .subscribe(distributors => this.distributors = distributors)
+            this.sharedServices.getDmss()
+                            .subscribe(dmss => this.dmss = dmss)
         })    
     }
 

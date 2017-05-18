@@ -1,10 +1,23 @@
 export class Ticket {
-    description: string
-    completed: boolean
+    description: string = ''
+    createdAt: string = ''
+    completed: boolean = false
+    category: Category = new Category()
+    calls: Call[] = []
+    workshop: Workshop = new Workshop()
+}
 
-    constructor(description, completed) {
-        this.description = description
-        this.completed = completed
-    }
+class Category {
+    name: string = ''
+}
 
+class Workshop {
+    _id: string = ''
+    name: string = ''
+}
+
+class Call {
+    status:string = ''
+    callerNumber: string = ''
+    recieverNumber: string = ''
 }

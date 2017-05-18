@@ -29,6 +29,11 @@ export class SharedServices implements OnInit{
         return this.http.get(url)
     }
 
+    getDmss(){
+        const url = '/api/dmss'
+        return this.http.get(url)
+    }
+
     createSocketObservable(endpoint, event) {
         let socket = null
         let observable = new Observable(observer => {

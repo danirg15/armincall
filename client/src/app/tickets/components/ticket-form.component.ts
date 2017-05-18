@@ -13,7 +13,7 @@ import { CategoryService }          from '../../categories/services/category.ser
     templateUrl: '../templates/ticket-form.template.html'
 })
 export class TicketFormComponent implements OnInit {
-    ticket = new Ticket('', false)
+    ticket = new Ticket()
     workshop = { name: ''}
     form: FormGroup
     categories = []
