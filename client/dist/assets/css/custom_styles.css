@@ -56,7 +56,9 @@ a:hover {
 }
 
 
-
+#incomming-details {
+	font-size: 1rem;
+}
 
 /*begin Fix modal for boostrap 4*/
 .fade.in {

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild }  from '@angular/core';
-import {CallService}    from '../services/call.service'
+import { CallService }    from '../services/call.service'
 import { Workshop } from '../../workshops/workshop'
 import { Ticket } from '../../tickets/ticket'
 import { Incomming } from '../incomming'
@@ -11,12 +11,11 @@ import { Incomming } from '../incomming'
 export class IncommingComponent implements OnInit, OnDestroy {
     @ViewChild('incommingCallModal') modal;
     incommingCall = new Incomming()
-    eventsConnection
+    eventsConnection: any = null
 
     constructor(private callService: CallService) { }
 
     ngOnInit() { 
-
         this.eventsConnection = this.callService.getIncommingCalls()
                         .subscribe( incomming => {
                             

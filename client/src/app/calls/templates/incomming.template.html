@@ -10,78 +10,91 @@
 </modal-header>
 
 <modal-content>
+
+    <ng-container *ngIf="incommingCall.workshop?.name; then trueBlock; else falseBlock"></ng-container>
+    <ng-template #trueBlock>
+        <h2 class="text-center">
+            <i class="icon-lg ion-person"></i>
+            {{incommingCall.workshop.name}}
+            <!--<small>{{incommingCall.number | formattedPhone}}</small>-->
+        </h2>
+    </ng-template>
+    <ng-template #falseBlock>
+        <h2 class="text-center">
+            <i class="icon-lg ion-android-call"></i>
+            {{incommingCall.number | formattedPhone}}
+        </h2>
+    </ng-template>
+
     
-    <h2 class="text-center" *ngIf="incommingCall.workshop">
-        <i class="icon-lg ion-ios-pulse"></i>
-        {{incommingCall.workshop.name}}
-        <small>{{incommingCall.number | formattedPhone}}</small>
-    </h2>
-    <h2 class="text-center" *ngIf="!incommingCall.workshop">
-        <i class="icon-lg ion-ios-pulse"></i>
-        {{incommingCall.number | formattedPhone}}
-    </h2>
+    <br>
 
-    <div class="row">
-        <div class="col-md-5">  
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Contacto:</label>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control" readonly 
-                        value="{{incommingCall.workshop?.contact}}">
+    <div class="card" *ngIf="incommingCall.workshop">
+        <div class="card-block">
+            <h5 class="card-title"></h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <div class="card-text" id="incomming-details">
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <strong>Distribuidor:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ incommingCall.workshop?.distributor }}
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Distribuidor:</label>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control" readonly 
-                        value="{{incommingCall.workshop?.distributor}}">
+                <div class="row">
+                    <div class="col-md-3">
+                        <strong>Contacto</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ incommingCall.workshop?.contact }}
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Dirección:</label>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control" readonly 
-                        value="{{incommingCall.workshop?.address?.description}}">
+                <div class="row">
+                    <div class="col-md-3">
+                        <strong>Dirección:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ incommingCall.workshop?.address?.description }}
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">DMS:</label>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control" readonly 
-                        value="{{incommingCall.workshop?.current_dms}}">
-                    </div>
-                </div>
-                <!--<div class="form-group">
-                    <label class="col-lg-3 control-label">Licencia:</label>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control" readonly 
-                        value="ARMIN PRO, ARMIN GEST (fake)">
-                    </div>
-                </div>-->
-            </form>
-        </div>
 
-        <div class="col-md-offset-2 col-md-5">  
-            <!--<div *ngIf="incommingCall.workshop">
+                <div class="row">
+                    <div class="col-md-3">
+                        <strong>DMS:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ incommingCall.workshop?.current_dms }}
+                    </div>
+                </div>
+            </div><!--card text-->
+        </div><!--card block-->
+    </div><!--card-->
+
+
+
+    <div *ngIf="!incommingCall.workshop">
+        <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4>Atención!</h4>
+            <p>
+                La llamada entrante es desconocida. 
+                &nbsp;&nbsp;
                 <a class="btn btn-primary btn-sm"
-                   [routerLink]="['/tickets/new', incommingCall.workshop._id]">
-                   Abrir incidencia
+                    [routerLink]="['/workshops/new', {'number': incommingCall.number}]">
+                    Crear taller
                 </a> 
-            </div>-->
-            <div *ngIf="!incommingCall.workshop">
-                <a class="btn btn-primary btn-sm"
-                   [routerLink]="['/workshops/new', {'number': incommingCall.number}]">
-                   Crear taller
-                </a> 
-            </div>
+            </p>
         </div>
-
+        
     </div>
-    
-    <hr>
 
-    <section *ngIf="incommingCall.tickets.length > 0">
+    
+
+    <section *ngIf="incommingCall.tickets?.length > 0">
+        <hr>
+
         <div class="page-header">
             <h4>Incidencias Pendientes</h4>
         </div>

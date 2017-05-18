@@ -14,17 +14,15 @@ import { AuthService }              from '../auth/services/auth.service'
 import { DiffForHumansPipe }        from './pipes/diffForHumans.pipe'
 import { DurationForHumansPipe }    from './pipes/durationForHumans.pipe'
 import { HumanizeDatePipe }         from './pipes/humanizeDate.pipe'
-import { FormattedPhonePipe }         from './pipes/formattedPhone.pipe'
+import { FormattedPhonePipe }       from './pipes/formattedPhone.pipe'
 
+// import { CallsModule } from '../calls/calls.module'
 
-// import { PopoverModule }            from 'ng2-popover'
- 
 @NgModule({
     imports: [
         CommonModule, 
-        RouterModule,
-        //PopoverModule,
-        
+        RouterModule,    
+        // CallsModule    
     ],
     declarations: [
         NavBarComponent, 
