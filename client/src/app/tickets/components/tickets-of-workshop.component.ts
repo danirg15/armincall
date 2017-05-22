@@ -17,6 +17,7 @@ export class TicketsOfWorkshopComponent implements OnInit{
     ticketMarkedAsCompleted = false
     descriptionOfNewTicket = ""
     categoryOfNewTicket = ""
+    isNewTicket: boolean = false
 
     constructor(private ticketService: TicketService,
                 private categoryService: CategoryService,
