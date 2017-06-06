@@ -8,7 +8,9 @@ body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("../../../assets/background.png") no-repeat center center fixed;
+  background: url("../../../assets/background.png");
+  background-repeat: no-repeat;
+  background-position: center top;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
