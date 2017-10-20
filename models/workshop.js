@@ -10,8 +10,8 @@ const WorkshopSchema = mongoose.Schema({
 	address: {
 		description: String,
 		location: {
-			lat: String,
-			lng: String
+			lat: Number,
+			lng: Number
 		}
 	},
 	distributor: 	{"type": String, "require": true},
@@ -40,16 +40,19 @@ WorkshopSchema.index({ "name": 1 });
 
 WorkshopSchema.pre('save', function(next) {
 	let workshop = this
-	
+
 	if(this.address.description) {
 		GoogleMapsInterface.geocode(this.address.description, function(err, location){
 			if(!err) {
-				workshop.address.location = location
+				workshop.address['location']['lat'] = location.lat
+				workshop.address['location']['lng'] = location.lng
 			}
+			next()
 		})
 	}
-
-	next()
+	else {
+		next()
+	}
 })
 
 WorkshopSchema.post('save', function(workshop) {

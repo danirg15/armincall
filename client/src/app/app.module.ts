@@ -37,10 +37,12 @@ import { routing }          from './app.routing';
     CategoriesModule,
     AuthModule,
 
+    
+
    
   ],
   declarations: [ 
-    AppComponent,InfoBoardComponent
+    AppComponent, InfoBoardComponent
   ],
   bootstrap:    [ AppComponent ]
 })

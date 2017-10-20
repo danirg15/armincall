@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://armincall.com",
+    "target": "http://localhost:3000",
     "secure": false
   }
 }

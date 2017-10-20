@@ -2,3 +2,4 @@ node_modules/
 !systemjs.config.js
 .vscode
 dist/
+.DS_Store

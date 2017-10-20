@@ -1,11 +1,14 @@
 import { NgModule }                 from '@angular/core'
 import { CommonModule }             from '@angular/common'
 import { RouterModule }             from '@angular/router'
+import { AgmCoreModule }            from '@agm/core';
 
 import { NavBarComponent }          from './components/nav-bar.component'
 import { NotFoundComponent }        from './components/notfound.component'
 import { PanelComponent }           from './components/panel.component'
 import { GoBackComponent }          from './components/go-back.component'
+import { MapComponent }          from './components/map.component'
+
 
 import { SharedServices }           from './services/shared.service'
 import { HttpServices }             from './services/http.services'
@@ -16,19 +19,21 @@ import { DurationForHumansPipe }    from './pipes/durationForHumans.pipe'
 import { HumanizeDatePipe }         from './pipes/humanizeDate.pipe'
 import { FormattedPhonePipe }       from './pipes/formattedPhone.pipe'
 
-// import { CallsModule } from '../calls/calls.module'
 
 @NgModule({
     imports: [
         CommonModule, 
         RouterModule,    
-        // CallsModule    
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCc7Ddn819UFyZxZCjlQyNiCPMoUO_FTNM'
+        })
     ],
     declarations: [
         NavBarComponent, 
         NotFoundComponent, 
         PanelComponent,
         GoBackComponent,
+        MapComponent,
 
         DiffForHumansPipe,
         DurationForHumansPipe,
@@ -44,7 +49,8 @@ import { FormattedPhonePipe }       from './pipes/formattedPhone.pipe'
         DiffForHumansPipe,
         DurationForHumansPipe,
         HumanizeDatePipe,
-        FormattedPhonePipe
+        FormattedPhonePipe,
+        MapComponent
 
     ],
     providers:[SharedServices, HttpServices, AuthService]

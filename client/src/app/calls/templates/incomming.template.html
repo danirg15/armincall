@@ -115,6 +115,13 @@
             </tbody>
         </table> 
     </section>
+
+    <section>
+        <map *ngIf="showmap" 
+             [lat]="incommingCall.workshop.address.location.lat"
+             [lng]="incommingCall.workshop.address.location.lng"
+        ></map>
+    </section>
     
       
 </modal-content>
