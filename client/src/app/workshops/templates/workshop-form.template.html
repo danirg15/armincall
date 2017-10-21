@@ -138,4 +138,15 @@
 
   </div>
 
+
+  <map *ngIf="workshop.address.location"
+      [lat]="workshop.address.location.lat"
+      [lng]="workshop.address.location.lng"
+  ></map>
+
+  <br/>
+  <br/>
+
+
+
 </div>
