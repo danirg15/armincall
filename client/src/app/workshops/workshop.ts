@@ -1,5 +1,6 @@
 export class Address {
     description: string; 
+    location = {}
 }
 
 export class Workshop {

@@ -19,6 +19,7 @@ export class IncommingComponent implements OnInit, OnDestroy {
     ngOnInit() { 
         this.eventsConnection = this.callService.getIncommingCalls()
             .subscribe( incomming => {
+                this.showmap = false
 
                 this.incommingCall = <Incomming>incomming
                 
@@ -29,7 +30,7 @@ export class IncommingComponent implements OnInit, OnDestroy {
                 setTimeout(()=>{
                     this.modal.close()
                     this.showmap = false
-                }, 60*1000)
+                }, 90 * 1000)
 
             })
     }
@@ -42,10 +43,13 @@ export class IncommingComponent implements OnInit, OnDestroy {
     //Map needs to be rendered after modal is fully loaded
     showMap() {
         if(this.incommingCall.hasOwnProperty('workshop') && 
+           this.incommingCall.workshop.hasOwnProperty('address') && 
            this.incommingCall.workshop.address.hasOwnProperty('location')) {
+
             setTimeout(() => {
                 this.showmap = true
             }, 500)
+            
         }
     }
 
