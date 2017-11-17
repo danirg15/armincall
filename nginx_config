@@ -7,16 +7,14 @@ server {
 
     server_name armincall.com www.armincall.com;
     return 301 https://$host$request_uri;
+
 }
 
 
 server {
     listen 443 ssl;
-	
-    server_name armincall.com;
 
-    ssl_certificate  /etc/letsencrypt/live/armincall.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/armincall.com/privkey.pem;
+    server_name armincall.com;
 
     location / {
         proxy_pass http://127.0.0.1:3000;
@@ -27,4 +25,7 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 
+
+    ssl_certificate /etc/letsencrypt/live/armincall.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/armincall.com/privkey.pem; # managed by Certbot
 }

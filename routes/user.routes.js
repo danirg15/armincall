@@ -3,12 +3,12 @@ let UserController = require('../controllers/UserController')
 let validate = require('express-validation');
 let validator = require('./validators');
 
-
-// router.get('/users', UserController.getAll)
-
-// router.get('/users/:id', UserController.getOne)
-
-// router.post('/users', UserController.store)
+router.post('/users', validate(validator.user.full), (req, res) => {
+	UserController.store(req.body, (err) => {
+		if (err) res.status(500).json(err)
+        else res.status(201).json({})
+	})	
+})
 
 
 module.exports = router;

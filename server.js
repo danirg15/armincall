@@ -52,6 +52,7 @@ require('./database').connect(config.DB_URI)
 //		Routing
 //--------------------------------------------
 app.use('/api', require('./routes/auth.routes'))
+app.use('/api', auth, require('./routes/user.routes'))
 app.use('/api', auth, require('./routes/call.routes'))
 app.use('/api', auth, require('./routes/ticket.routes'))
 app.use('/api', auth, require('./routes/reminder.routes'))
@@ -61,6 +62,10 @@ app.use('/api', auth, require('./routes/demo.routes'))
 app.use('/api', auth, require('./routes/category.routes'))
 app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
+
+//Parse validation errors
+app.use((err, req, res, next) => res.status(400).json(err))
+
 
 //Redirect to client app
 app.get('*', (req, res) => {
@@ -97,6 +102,7 @@ server.listen(port, function(err) {
 	if (err) throw err
 	console.log('Server running on port: ' + port)
 })
+
 
 module.exports = app
 
