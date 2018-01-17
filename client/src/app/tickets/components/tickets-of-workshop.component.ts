@@ -16,6 +16,7 @@ export class TicketsOfWorkshopComponent implements OnInit{
     selectedTicketId = null
     ticketMarkedAsCompleted = false
     descriptionOfNewTicket = ""
+    solutionOfNewTicket = ""
     categoryOfNewTicket = ""
     isNewTicket: boolean = false
 
@@ -61,6 +62,7 @@ export class TicketsOfWorkshopComponent implements OnInit{
                 'calls':        this.callIds,
                 'completed':    this.ticketMarkedAsCompleted,
                 'description':  this.descriptionOfNewTicket,
+                'solution':     this.solutionOfNewTicket,
                 'category':     this.categoryOfNewTicket
             }).subscribe( x => {
                 //console.log("by descrip")

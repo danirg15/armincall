@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 
 const TicketSchema = mongoose.Schema({
 	workshop: 		{ "type": mongoose.Schema.Types.ObjectId, "ref": 'Workshop' },
-	description: 	String,
 	category: 		String,
+	description: 	String,
+	solution: 		String,
 	calls: 			[{ "type": mongoose.Schema.Types.ObjectId, "ref": 'Call' }],
 	completed: 		{ "type": Boolean, "require": true, "default": false}
 },

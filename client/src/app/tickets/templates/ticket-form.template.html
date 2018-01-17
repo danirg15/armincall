@@ -47,6 +47,13 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="inputName" class="col-lg-3 form-control-label">Solución</label>
+                    <div class="col-lg-9">
+                      <textarea [(ngModel)]="ticket.solution" type="text" class="form-control" formControlName="solution" placeholder="Solución de la incidencia"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                     <label for="select" class="col-lg-3 control-label">Estado</label>
                     <div class="col-lg-9">
                       <select [(ngModel)]="ticket.completed" class="form-control" formControlName="completed">
