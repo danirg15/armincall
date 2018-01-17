@@ -1,5 +1,6 @@
 export class Ticket {
     description: string = ''
+    solution: string = ''
     createdAt: string = ''
     completed: boolean = false
     category: Category = new Category()
