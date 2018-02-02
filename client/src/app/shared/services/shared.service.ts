@@ -19,6 +19,11 @@ export class SharedServices implements OnInit{
         }
     }
 
+    getUser(){
+        const url = '/api/user'
+        return this.http.get(url)
+    }
+
     getBadges(){
         const url = '/api/badges'
         return this.http.get(url)

@@ -6,8 +6,8 @@ module.exports = {
         User.find({}, callback)
     },
 
-    getOne: (callback) => {
-        User.findById(req.params.id, callback)
+    getOne: (id, callback) => {
+        User.findById(id).select('-password').exec(callback)
     },
 
     store: (user, callback) => {

@@ -11,6 +11,7 @@ import * as autocomplete    from 'autocomplete.js';
 })
 
 export class NavBarComponent implements OnInit{
+    user: object = {}
     badges = {
         pendingCalls: 0,
         pendingTickets: 0,
@@ -26,6 +27,9 @@ export class NavBarComponent implements OnInit{
 
     ngOnInit(){
         this.initWorkshopSmartSearch()
+
+        this.sharedServices.getUser()
+                           .subscribe(user => this.user = user)
 
         this.sharedServices.getBadges()
                            .subscribe(badges => this.badges = badges)
