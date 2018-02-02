@@ -4,6 +4,7 @@ import {SharedServices}     from '../services/shared.service'
 import { AuthService }      from '../../auth/services/auth.service'
 import * as algoliasearch   from 'algoliasearch'
 import * as autocomplete    from 'autocomplete.js';
+import { User } from '../../users/user'
 
 @Component({
     selector: 'nav-bar',
@@ -11,7 +12,7 @@ import * as autocomplete    from 'autocomplete.js';
 })
 
 export class NavBarComponent implements OnInit{
-    user: object = {}
+    user: User = null
     badges = {
         pendingCalls: 0,
         pendingTickets: 0,
