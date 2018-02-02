@@ -2,15 +2,6 @@
 
 git checkout develop
 
-# cd ./client && ng build --prod
-
-# if [[ $? != 0 ]]; then
-# 	echo "Error ng build --prod"
-# 	exit -1
-# fi
-
-# cd ..
-
 git add * && git add .*
 
 git commit -m "$1"
