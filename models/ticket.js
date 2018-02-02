@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-//const Call = require('./call')
 
 const TicketSchema = mongoose.Schema({
 	workshop: 		{ "type": mongoose.Schema.Types.ObjectId, "ref": 'Workshop' },

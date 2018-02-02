@@ -25,7 +25,7 @@ module.exports = {
 					
 				Mailgun.compose()
 					   .from(process.env.DEFAULT_EMAIL || 'no-reply@armincall.com')
-					   .to(['dramirez@groupautounion.es', 'salonso@groupautounion.es'])
+					   .to(['dramirez@groupautounion.es'])
 					   .withSubject('ArminCall | Demo')
 					   .withBody(template)
 					   .send((err) => {
