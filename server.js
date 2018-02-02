@@ -52,6 +52,9 @@ require('./database').connect(config.DB_URI)
 //		Routing
 //--------------------------------------------
 app.use('/api', require('./routes/auth.routes'))
+
+app.use('/api/test', require('./routes/test.routes'))
+
 app.use('/api', auth, require('./routes/user.routes'))
 app.use('/api', auth, require('./routes/call.routes'))
 app.use('/api', auth, require('./routes/ticket.routes'))
