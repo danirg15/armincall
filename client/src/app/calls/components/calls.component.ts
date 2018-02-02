@@ -1,5 +1,6 @@
 import {Component, OnInit, OnDestroy}  from '@angular/core';
 import {CallService}        from '../services/call.service'
+import * as consts          from '../../config/constants'
 
 @Component({
     templateUrl: '../templates/calls.template.html'
@@ -10,13 +11,16 @@ export class CallsComponent implements OnInit, OnDestroy {
     workshopIdOfSelectedCall
     eventsConnection
     isShowingHistory = false
+    consts: object = consts
     
     page = 1
     pageLimit = 10
     totalPages = 1
 
     constructor(private callService: CallService) { 
+
     }
+
 
     ngOnInit() { 
         this.loadPendingCalls()   

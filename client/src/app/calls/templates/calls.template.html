@@ -64,8 +64,8 @@
                     </div>
                 </td>
                 <td>
-                    <span *ngIf="call.callerNumber == '917376582'">ARMIN</span>
-                    <span *ngIf="call.callerNumber != '917376582'">{{call.callerNumber | formattedPhone}}</span>
+                    <span *ngIf="call.callerNumber == consts.phones.ARMIN_CSS">ARMIN</span>
+                    <span *ngIf="call.callerNumber != consts.phones.ARMIN_CSS">{{call.callerNumber | formattedPhone}}</span>
                 </td>
                 <td>
                     <span *ngIf="call.recieverNumber == '0102' || call.recieverNumber == '0101'">ARMIN</span>
