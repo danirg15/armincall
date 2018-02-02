@@ -19,6 +19,8 @@ router.get('/demos/:id', (req, res) => {
 })
 
 router.post('/demos', validate(validator.demo.full), (req, res) => {	
+	req.body.owner = req.token_payload.body.user_id
+	
 	DemoController.store(req.body, (err) =>{
 		if (err) res.status(500).json(err)
         else res.status(201).json({})

@@ -104,13 +104,15 @@
                     <th>Fecha/Hora</th>
                     <th>Categoría</th>
                     <th>Descripción</th>
+                    <th>Operador</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let ticket of incommingCall.tickets">
-                    <td>{{ticket.createdAt | diffForHumans}}</td>
-                    <td>{{ticket.category}}</td>
-                    <td>{{ticket.description}}</td>
+                    <td>{{ ticket.createdAt | diffForHumans }}</td>
+                    <td>{{ ticket.category }}</td>
+                    <td>{{ ticket.description }}</td>
+                    <td>{{ ticket.owner.name }}</td>
                 </tr>
             </tbody>
         </table> 

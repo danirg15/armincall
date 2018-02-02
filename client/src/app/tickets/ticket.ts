@@ -1,3 +1,5 @@
+import { User } from '../users/user'
+
 export class Ticket {
     description: string = ''
     solution: string = ''
@@ -6,6 +8,7 @@ export class Ticket {
     category: Category = new Category()
     calls: Call[] = []
     workshop: Workshop = new Workshop()
+    owner: User;
 }
 
 class Category {

@@ -17,6 +17,7 @@
             <tr>
                 <th>Descripción</th>
                 <th>Fecha/Hora</th>
+                <th>Operador</th>
                 <th>Acción</th>
             </tr>
         </thead>
@@ -29,6 +30,8 @@
                         {{ reminder.ISODate | diffForHumans }}
                     </span>
                 </td>
+
+                <td>{{ reminder.owner?.name }}</td>
         
                 <td>
                     <button class="btn btn-danger btn-sm" (click)="delete(reminder)">

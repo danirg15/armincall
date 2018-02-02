@@ -84,9 +84,12 @@ router.post('/calls/emit/incomming', (req, res) => {
         },
         function (workshop, callback){
             if(workshop){
-                Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]}, (err, tickets) => {
-                    callback(err, {workshop, tickets, number: data.number})
-                })
+                Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]})
+                      .populate('owner', 'name')
+                      .exec((err, tickets) => {
+                        console.log(tickets)
+                         callback(err, {workshop, tickets, number: data.number})
+                      })
             }
             else{
                 callback(null, {number: data.number})

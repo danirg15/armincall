@@ -27,6 +27,7 @@
                 <th>Categoría</th>
                 <th>Descripción</th>
                 <th>Fecha/Hora</th>
+                <th>Operador</th>
                 <th>Acción</th>
             </tr>
         </thead>
@@ -51,6 +52,9 @@
                     <span data-toggle="tooltip" data-placement="top" title="{{ticket.createdAt | humanizeDate}}">
                         {{ ticket.createdAt | diffForHumans }}
                     </span>
+
+                <td>{{ ticket.owner?.name }}</td>
+
                 <td>
                     <a class="btn btn-primary btn-sm" [routerLink]="['/tickets', ticket._id]" >
                         <i class="icon ion-ios-search-strong" aria-hidden="true"></i> Ver

@@ -30,21 +30,23 @@
             <th>Descripción</th>
             <th>Comentarios</th>
             <th>Fecha/Hora</th>
+            <th>Operador</th>
             <th [hidden]="discardButtonHidden">Acción</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let demo of demos">
-            <td>{{demo.workshop_name }} ({{demo.distributor}})</td>
-            <td>{{demo.contact}}</td>
-            <td>{{demo.phone}}</td>
-            <td>{{demo.description}}</td>
-            <td>{{demo.comments}}</td>
+            <td>{{ demo.workshop_name }} ({{ demo.distributor }})</td>
+            <td>{{ demo.contact }}</td>
+            <td>{{ demo.phone }}</td>
+            <td>{{ demo.description }}</td>
+            <td>{{ demo.comments }}</td>
             <td>
                 <span data-toggle="tooltip" data-placement="top" title="{{ demo.ISODate | humanizeDate }}">
                     {{ demo.ISODate | diffForHumans }}
                 </span>
             </td>
+            <td>{{ demo.owner?.name }}</td>
             <td>
                 <span [hidden]="discardButtonHidden" class="white">
                     <a class="btn btn-warning btn-sm" [routerLink]="['/demos/new', demo._id]">

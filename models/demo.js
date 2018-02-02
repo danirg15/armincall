@@ -1,7 +1,8 @@
 const mongoose 	= require('mongoose');
 
 const DemoSchema = mongoose.Schema({
-	workshop_name: 			{"type": String, "require": true},
+	owner: 			{"type": mongoose.Schema.Types.ObjectId, "ref": "User"},
+	workshop_name: 	{"type": String, "require": true},
 	distributor: 	{"type": String, "require": true},
 	licence: 		{"type": String},
 	contact: 		{"type": String},

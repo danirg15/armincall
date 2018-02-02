@@ -69,7 +69,16 @@
                             ({{ ticket.updatedAt | humanizeDate }})
                         </span>
                     </div>
-                </div>   
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-2">
+                        <strong>Creada por</strong>
+                    </div>
+                    <div class="col-md-8">
+                        {{ ticket.owner?.name }}
+                    </div>
+                </div>
 
             </div>
 

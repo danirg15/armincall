@@ -1,3 +1,5 @@
+import { User } from '../users/user'
+
 export class Demo {
     workshop_name: string;
     contact: string; 
@@ -7,4 +9,5 @@ export class Demo {
     time: string;
     description: string;
     comments: string;
+    owner: User;
 }

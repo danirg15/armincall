@@ -7,6 +7,7 @@ module.exports = {
               .sort({createdAt: 'desc'})
               .populate('workshop')
               .populate('calls')
+              .populate('owner', 'name')
               .exec(callback)
     },
 
@@ -14,6 +15,7 @@ module.exports = {
         Ticket.findById(ticket_id)
               .populate('workshop')
               .populate('calls')
+              .populate('owner', 'name')
               .exec(callback)
     },
 

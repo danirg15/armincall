@@ -5,6 +5,7 @@ module.exports = {
     getAll: (options, callback) => {
         Demo.find(options)
             .sort({ISODate: 'desc'})
+            .populate('owner', 'name')
             .exec(callback)
     },
 

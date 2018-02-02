@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const TicketSchema = mongoose.Schema({
+	owner: 			{"type": mongoose.Schema.Types.ObjectId, "ref": "User"},
 	workshop: 		{ "type": mongoose.Schema.Types.ObjectId, "ref": 'Workshop' },
 	category: 		String,
 	description: 	String,
