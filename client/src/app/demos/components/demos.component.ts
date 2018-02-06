@@ -29,7 +29,7 @@ export class DemosComponent implements OnInit {
     }
 
 
-    delete(demo){
+    completed(demo){
         if(!confirm('Estas seguro que deseas eliminar'))
             return
 

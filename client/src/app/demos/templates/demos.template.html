@@ -38,7 +38,7 @@
         <tr *ngFor="let demo of demos">
             <td>{{ demo.workshop_name }} ({{ demo.distributor }})</td>
             <td>{{ demo.contact }}</td>
-            <td>{{ demo.phone }}</td>
+            <td style="min-width:7rem;">{{ demo.phone | formattedPhone}}</td>
             <td>{{ demo.description }}</td>
             <td>{{ demo.comments }}</td>
             <td>
@@ -54,8 +54,8 @@
                     </a>
                 </span>
                 <span [hidden]="discardButtonHidden" class="white">
-                    <a class="btn btn-danger btn-sm" (click)="delete(demo)">
-                        <i  class="icon ion-ios-trash" aria-hidden="true"></i> Eliminar
+                    <a class="btn btn-success btn-sm" (click)="completed(demo)">
+                        <i  class="icon ion-checkmark" aria-hidden="true"></i> Completada
                     </a>
                 </span>
             </td>
