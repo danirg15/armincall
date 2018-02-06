@@ -12,7 +12,8 @@ module.exports = {
 		Reminder.find({
 			'notified': false,
 			'ISODate' : {'$gte': now, '$lte': halfHour} 
-		}, (err, reminders) => {
+		}).populate('owner').exec((err, reminders) => {
+
 			if (err || !reminders) {
 				return
 			}
@@ -24,7 +25,7 @@ module.exports = {
 
 				Mailgun.compose()
 					   .from(process.env.DEFAULT_EMAIL || 'no-reply@armincall.com')
-					   .to(['dramirez@groupautounion.es', 'salonso@groupautounion.es'])
+					   .to(reminder.owner.email)
 					   .withSubject('ArminCall | Recordatorio')
 					   .withBody(template)
 					   .send((err) => {

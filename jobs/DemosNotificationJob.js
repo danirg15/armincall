@@ -13,10 +13,11 @@ module.exports = {
 				'notified': false ,
 				'completed': false,
 				'ISODate' : {'$gte': now, '$lte': halfHour} 
-		}, (err, demos) => {
+		}).populate('owner').exec((err, demos) => {
 			if (err || !demos) {
 				return
 			}
+
 			demos.forEach((demo) => {
 				const template = `
 					<h1>ArminCall - Demo</h1><br/>
@@ -25,7 +26,7 @@ module.exports = {
 					
 				Mailgun.compose()
 					   .from(process.env.DEFAULT_EMAIL || 'no-reply@armincall.com')
-					   .to(['dramirez@groupautounion.es'])
+					   .to(demo.owner.email)
 					   .withSubject('ArminCall | Demo')
 					   .withBody(template)
 					   .send((err) => {
