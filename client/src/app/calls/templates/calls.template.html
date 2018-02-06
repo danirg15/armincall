@@ -64,14 +64,13 @@
                     </div>
                 </td>
                 <td>
-                    <span *ngIf="call.callerNumber == consts.phones.ARMIN_CSS">ARMIN</span>
-                    <span *ngIf="call.callerNumber != consts.phones.ARMIN_CSS">{{call.callerNumber | formattedPhone}}</span>
+                    <span *ngIf="call.callerNumber == consts.phones.ARMIN_Gesteca">Soporte ({{ consts.extensions[call.extension] }})</span>
+                    <span *ngIf="call.callerNumber != consts.phones.ARMIN_Gesteca">{{call.callerNumber | formattedPhone}}</span>
                 </td>
                 <td>
-                    <span *ngIf="call.recieverNumber == '0102' || call.recieverNumber == '0101'">ARMIN</span>
-                    <span *ngIf="call.recieverNumber != '0102' && call.recieverNumber != '0101'">{{call.recieverNumber | formattedPhone}}</span>
+                    <span *ngIf="call.recieverNumber == consts.phones.ARMIN_Gesteca">Soporte ({{ consts.extensions[call.extension] }})</span>
+                    <span *ngIf="call.recieverNumber != consts.phones.ARMIN_Gesteca">{{call.recieverNumber | formattedPhone}}</span>
                 </td>
-
                 <td>
                     <span data-toggle="tooltip" data-placement="top" title="{{call.date | humanizeDate}}">
                         {{call.date | diffForHumans}}
