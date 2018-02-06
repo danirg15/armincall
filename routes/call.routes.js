@@ -48,15 +48,6 @@ router.get('/calls/:id', (req, res) => {
     })
 })
 
-
-
-router.post('/calls', validate(validator.call.full), (req, res) =>{
-    CallController.store(req.body, (err) => {
-        if (err) res.status(500).json(err)
-        else res.status(201).json({})
-    })
-})
-
 router.put('/calls/:id', validate(validator.call.optional), (req, res) => {
     CallController.update(req.params.id, req.body, (err) => {
         if (err) res.status(500).json(err)
@@ -71,41 +62,12 @@ router.delete('/calls/:id', (req, res) => {
     })  
 })
 
-router.post('/calls/emit/incomming', (req, res) => {
-    let data = {
-        'number': req.body.number
-    }
-    
-    async.waterfall([
-        function (callback){
-            Workshop.findOne({'phone': data.number}, (err, workshop) => {
-                callback(err, workshop)
-            })    
-        },
-        function (workshop, callback){
-            if(workshop){
-                Ticket.find({ $and: [{'completed': false, 'workshop': workshop._id}]})
-                      .populate('owner', 'name')
-                      .exec((err, tickets) => {
-                        console.log(tickets)
-                         callback(err, {workshop, tickets, number: data.number})
-                      })
-            }
-            else{
-                callback(null, {number: data.number})
-            }
-        }
 
-    ], function (err, result) {
-        if (err) {
-            res.status(500).json({})
-        }
-        else{
-            SocketIOEventEmitter.emit('incommingCall', result)
-            res.status(200).json({})
-        }
-    })	
-
+router.post('/calls', validate(validator.call.full), (req, res) =>{
+    CallController.store(req.body, (err) => {
+        if (err) res.status(500).json(err)
+        else res.status(201).json({})
+    })
 })
 
 

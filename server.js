@@ -53,7 +53,7 @@ require('./database').connect(config.DB_URI)
 //--------------------------------------------
 app.use('/api', require('./routes/auth.routes'))
 
-app.use('/api/test', require('./routes/test.routes'))
+app.use('/api/calls_service', require('./routes/calls_service.routes'))
 
 app.use('/api', auth, require('./routes/user.routes'))
 app.use('/api', auth, require('./routes/call.routes'))
@@ -67,7 +67,7 @@ app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
 
 //Parse validation errors
-app.use((err, req, res, next) => res.status(400).json(err))
+//app.use((err, req, res, next) => res.status(400).json(err))
 
 
 //Redirect to client app
