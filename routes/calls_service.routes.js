@@ -11,25 +11,32 @@ const Ticket = require('../models/ticket')
 
 
 router.get('/started', validate(validator.calls_service), (req, res) => {
-	let call = new Call()
-	call.callId = req.query.callid
-	call.extension = req.query.ext
-	call.date = Date.now()
-	call.status = 'Sin responder' //If answered this value gets updated
+	let new_call = new Call()
+	new_call.callId = req.query.callid
+	new_call.extension = req.query.ext
+	new_call.date = Date.now()
+	new_call.status = 'Sin responder' //If answered this value gets updated
 
 	if(req.query.direction == 'inbound') {
-		call.callerNumber = req.query.callerid
-		call.recieverNumber = process.env.APP_PHONE_NUMBER
+		new_call.callerNumber = req.query.callerid
+		new_call.recieverNumber = process.env.APP_PHONE_NUMBER
 	} 
 	else if(req.query.direction == 'outbound') {
-		call.callerNumber = process.env.APP_PHONE_NUMBER
-		call.recieverNumber = req.query.callerid
+		new_call.callerNumber = process.env.APP_PHONE_NUMBER
+		new_call.recieverNumber = req.query.callerid
 	}
 
 	async.waterfall([
+		//1. Try to find a workhop for the phone number and assign to call
 	    function (callback){
-	    	Workshop.findOne({ 'phone': req.query.callerid }, callback)
+	    	Workshop.findOne({ 'phone': req.query.callerid }, (err, workshop) => {
+	    		if (workshop) {
+	    			new_call.workshop = workshop._id 
+	    		}
+	    		callback(err, workshop)
+	    	})
 	    },
+	    //2. Find the open tickets for the workshop
 	    function (workshop, callback){
 	    	if (workshop) {
 	    		Ticket.find({ 'workshop': workshop._id }, (err, tickets) => {
@@ -40,14 +47,20 @@ router.get('/started', validate(validator.calls_service), (req, res) => {
 	    		callback(null, null, null)
 	    	}
 	    },
+	    //3. Save the call if it's new
 	    function (workshop, tickets, callback){
-	    	if (workshop) {
-	    		call.workshop = workshop._id 
-	    	}
 	    	
-	    	call.save((err) => {
-	    		callback(err, workshop, tickets)
+	    	Call.findOne({'callid': req.query.callid}, (err, call) => {
+	    		if(!call) {
+	    			new_call.save((err) => {
+	    				callback(err, workshop, tickets)
+	    			})
+	    		}
+	    		else {
+	    			callback(err, workshop, tickets)
+	    		}
 	    	})
+
 	    }
 	], function (err, workshop, tickets) {
 	    if (err) {

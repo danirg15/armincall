@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Workshop = require('./workshop')
 
 const CallSchema = mongoose.Schema({
-	callId: 			{ "type": String, "require": true },
+	callId: 			{ "type": String, "require": true, "unique": true },
 	extension: 			{ "type": Number, "require": false },
 	callerNumber: 		{ "type": String, "require": true },
 	recieverNumber:		{ "type": String, "require": true },
