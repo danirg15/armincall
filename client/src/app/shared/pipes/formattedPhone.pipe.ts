@@ -7,8 +7,10 @@ export class FormattedPhonePipe implements PipeTransform{
 
 
     transform(value: string, args: string[]){
-         if(value)
-             return value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6, 9) 
+        if(value){
+            value = value.toString()
+            return value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6, 9)
+        }
     }
 
 }

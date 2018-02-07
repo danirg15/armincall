@@ -42,7 +42,7 @@ export class IncommingComponent implements OnInit, OnDestroy {
     //Workaround to fix issue with modal and map
     //Map needs to be rendered after modal is fully loaded
     showMap() {
-        if(this.incommingCall.hasOwnProperty('workshop') && 
+        if(this.incommingCall.workshop != null && 
            this.incommingCall.workshop.hasOwnProperty('address') && 
            this.incommingCall.workshop.address.hasOwnProperty('location')) {
 
