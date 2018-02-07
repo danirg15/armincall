@@ -67,7 +67,9 @@ app.use('/api', auth, require('./routes/stats.routes'))
 app.use('/api', auth, require('./routes/shared.routes'))
 
 //Parse validation errors
-//app.use((err, req, res, next) => res.status(400).json(err))
+if(config.util.getEnv('NODE_ENV') === 'prod') {
+    app.use((err, req, res, next) => res.status(400).json(err))
+}
 
 
 //Redirect to client app
@@ -102,10 +104,14 @@ SocketIOEventEmitter.bind({
 
 
 server.listen(port, function(err) {
-	if (err) throw err
-	console.log('Server running on port: ' + port)
+	if (err) {
+		throw err
+	}
+	else {
+		console.log('Server running on port: ' + port)
+		console.log('Enviroment: ' + config.util.getEnv('NODE_ENV'))
+	}	
 })
-
 
 module.exports = app
 

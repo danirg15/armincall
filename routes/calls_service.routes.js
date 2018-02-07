@@ -56,13 +56,14 @@ router.get('/started', validate(validator.calls_service), (req, res) => {
 	    else{
 	        res.status(200).json({})
 
-	        let event = {
-	        	'number': req.query.callerid,
-	        	'workshop': workshop,
-	        	'tickets': tickets
+	        if(req.query.direction == 'inbound') {
+	        	SocketIOEventEmitter.emit('incommingCall', {
+	        		'number': req.query.callerid,
+	        		'workshop': workshop,
+	        		'tickets': tickets
+	        	})
 	        }
-
-	        SocketIOEventEmitter.emit('incommingCall', event)
+	        
 	    }
 	})
 
