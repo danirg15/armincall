@@ -1,13 +1,13 @@
-const router = require('express').Router()
-const async = require('async')
+const router 			= require('express').Router()
+const async 			= require('async')
 const validate 			= require('express-validation');
 const validator 		= require('./validators');
 
-const SocketIOEventEmitter = require('../lib/SocketIOEventEmitter')
-const CallController = require('../controllers/CallController')
-const Call = require('../models/call')
-const Workshop = require('../models/workshop')
-const Ticket = require('../models/ticket')
+const SocketIOEventEmitter 	= require('../lib/SocketIOEventEmitter')
+const CallController 		= require('../controllers/CallController')
+const Call 					= require('../models/call')
+const Workshop 				= require('../models/workshop')
+const Ticket 				= require('../models/ticket')
 
 
 router.get('/started', validate(validator.calls_service), (req, res) => {
@@ -28,9 +28,6 @@ router.get('/started', validate(validator.calls_service), (req, res) => {
 		new_call.callerNumber = process.env.APP_PHONE_NUMBER
 		new_call.recieverNumber = req.query.callerid
 	}
-
-	console.log('Saving...')
-	console.log(new_call)
 
 	async.waterfall([
 		//1. Try to find a workhop for the phone number and assign to call
@@ -55,20 +52,17 @@ router.get('/started', validate(validator.calls_service), (req, res) => {
 	    },
 	    //3. Save the call if it's new
 	    function (workshop, tickets, callback){
-	    	new_call.save((err) => {
-	    		callback(err, workshop, tickets)
+
+	    	Call.findOne({'callId': req.query.callid}, (err, call) => {
+	    		if(!call) {
+	    			new_call.save((err) => {
+	    				callback(err, workshop, tickets)
+	    			})
+	    		}
+	    		else {
+	    			callback(err, workshop, tickets)
+	    		}
 	    	})
-	    	
-	    	// Call.findOne({'callid': req.query.callid}, (err, call) => {
-	    	// 	if(!call) {
-	    	// 		new_call.save((err) => {
-	    	// 			callback(err, workshop, tickets)
-	    	// 		})
-	    	// 	}
-	    	// 	else {
-	    	// 		callback(err, workshop, tickets)
-	    	// 	}
-	    	// })
 
 	    }
 	], function (err, workshop, tickets) {
@@ -96,7 +90,7 @@ router.get('/answered', validate(validator.calls_service), (req, res) => {
 	console.log(req.query)
 
 	Call.update({ 'callId': req.query.callid }, { 
-		$set: {'status': 'Respondida'} 
+		$set: {'status': 'Respondida', 'extension': req.query.ext} 
 	}, (err, call) => {
 		if (err) res.status(500).json(err)
 		else res.status(200).json({})
@@ -116,7 +110,8 @@ router.get('/finished', validate(validator.calls_service), (req, res) => {
         },
         function (call, callback){
         	CallController.update(call._id, {
-        		'durationInSeconds': req.query.duration
+        		'durationInSeconds': req.query.duration,
+        		'extension': req.query.ext
         	}, (err, data) => {
         		data.workshop = call.workshop
         		callback(err, data)

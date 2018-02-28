@@ -52,7 +52,7 @@
                 <td [hidden]="isShowingHistory">
                     <div class="checkbox" *ngIf="call.workshop">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" value="" (change)="select($event, call)" />
+                            <input type="checkbox" class="form-check-input" (change)="select($event, call)" />
                         </label>
                     </div>
                 </td>
@@ -92,7 +92,7 @@
                     </div>
                 </td>
                 <td [hidden]="isShowingHistory">
-                    <button class="btn btn-warning btn-sm" (click)="discard(call)">
+                    <button class="btn btn-warning btn-sm" title="{{ call.callId }}" (click)="discard(call)">
                         <i class="icon ion-ios-close-outline"></i>
                         Descartar
                     </button>
