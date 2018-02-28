@@ -9,7 +9,7 @@
     "dev": "export NODE_ENV=dev && nodemon server",
     "test": "export NODE_ENV=test && mocha --timeout 10000"
   },
-  "author": "dani",
+  "author": "Daniel Ramirez",
   "license": "ISC",
   "dependencies": {
     "algoliasearch": "^3.21.1",
